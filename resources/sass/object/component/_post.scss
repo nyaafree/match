@@ -1,0 +1,89 @@
+.c-post{
+    background: rgb(247, 175, 19);
+    min-height: 500px;
+    width:82%;
+    padding: $space_xl;
+    box-sizing: border-box;
+    &__title{
+        font-size: $font-size_xxl;
+        text-align: center;
+        margin-bottom: $space_xl;
+        font-weight: bold;
+        color: #fff;
+    }
+    &__inputGroup{
+       width: 100%;
+       margin-bottom: $space_l;
+    }
+    &__labelTitle{
+        display: block;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: $space_m;
+        font-size: $font-size_l;
+    }
+    &__input{
+        display: block;
+        width: 50%;
+        margin: $space_m auto;
+        border-radius: $space_s;
+        padding: $space_m $space_l;
+        box-sizing: border-box;
+        text-align: center;
+        background: #607af1;
+        color: #fff;
+        border: #fff solid 2px;
+    }
+    &__select{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        display: block;
+        margin: $space_m auto;
+        border-radius: $space_s;
+        padding: $space_m $space_l;
+        text-align: center;
+        background: #607af1;
+        color: #fff;
+        border: #fff solid 2px;
+
+    }
+    &__price{
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: $space_s;
+        padding: $space_m;
+        background: #607af1;
+        color: #fff;
+        border: #fff solid 2px;
+        margin-right: $space_s;
+    }
+    &__priceWrapper{
+        display:flex;
+        justify-content: space-between;
+        width: 50%;
+        margin: $space_xl auto;
+        span{
+            padding: $space_m 0;
+            color: #fff;
+            font-size: $font-size_l;
+        }
+    }
+    &__center{
+        line-height: 100%;
+        color: #fff;
+        font-weight: bold;
+    }
+    &__submit{
+        width: 50%;
+        margin: $space_m auto;
+        padding: $space_m $space_l;
+        box-sizing: border-box;
+        color: #fff;
+        display:flex;
+        justify-content: center;
+    }
+
+}

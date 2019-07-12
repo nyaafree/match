@@ -1,0 +1,17 @@
+.c-search{
+
+    &__input{
+        width:400px;
+        height:28px;
+        border-radius:5px;
+        padding:$space_s $space_m;
+        box-sizing:border-box;
+    }
+    &__btn{
+        height:30px;
+        font-size: $font-size_m;
+        border-radius: $space_s;
+        padding: $space_s $space_m;
+        box-sizing: border-box;
+    }
+}

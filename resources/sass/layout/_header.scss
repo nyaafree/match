@@ -1,0 +1,21 @@
+#header{
+    height:100px;
+    padding: 5px;
+    box-sizing:border-box;
+     padding: 0.5em 1em;
+    background: -moz-linear-gradient(left #0b6eee, #70c6ff);
+    background: -webkit-linear-gradient(left #0b6eee, #70c6ff);
+    background: linear-gradient(to right, #0b6eee, #70c6ff);
+    position:fixed;
+    align-items: center;
+    justify-content:space-between;
+    margin-bottom:80px;
+    width:100%;
+    left:0;
+    top:0;
+    z-index:4;
+    @include mq(){
+        height: 60px;
+        margin-bottom:60px;
+    }
+}

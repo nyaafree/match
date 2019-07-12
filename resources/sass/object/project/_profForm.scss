@@ -1,0 +1,62 @@
+.p-prof{
+    background: rgb(247, 175, 19);
+    min-height: 500px;
+    width:82%;
+    padding: $space_xl;
+    box-sizing: border-box;
+    &__title{
+        font-size: $font-size_xxl;
+        text-align: center;
+        margin-bottom: $space_xl;
+        font-weight: bold;
+        color: #fff;
+    }
+    &__formArea{
+        margin: $space_xl auto;
+        width: 90%;
+        box-sizing: border-box;
+        padding: $space_m $space_xl;
+        border-radius: $space_s;
+    }
+    &__form{
+        width: 100%;
+        display: flex;
+    }
+    &__inputWrapper1{
+        width:25%;
+        margin-right: $space_xl;
+        min-height: 800px;
+    }
+    &__inputWrapper2{
+        width:73%;
+        min-height: 800px;
+    }
+    &__inputGroup{
+       width: 100%;
+       margin-bottom: $space_l;
+    }
+    &__labelTitle{
+        display: block;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        margin-bottom: $space_m;
+        font-size: $font-size_l;
+    }
+    &__input{
+        display: block;
+        width: 80%;
+        margin: $space_m auto;
+        border-radius: $space_s;
+        padding: $space_m $space_l;
+        box-sizing: border-box;
+        text-align: center;
+        background: #607af1;
+        color: #fff;
+        border: #fff solid 2px;
+    }
+    &__image{
+        border: solid 3px #607af1;
+        margin-bottom: $space_l;
+    }
+}

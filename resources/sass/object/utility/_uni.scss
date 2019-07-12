@@ -1,0 +1,101 @@
+.btn-yellow{
+    background:rgb(235, 205, 34);
+    color:#fff;
+    font-weight:bold;
+    &:hover{
+        background: #f7d0f1;
+    }
+}
+.background-creamGreen{
+    background:rgb(147, 229, 147);
+    min-height: 800px;
+    margin-top: 100px;
+    padding:50px;
+    box-sizing: border-box;
+}
+.btn-right{
+    text-align: right;
+}
+.flex-main{
+    display:flex;
+    min-height: 800px;
+    margin-top: 100px;
+    position: relative;
+
+}
+.btn{
+    width: 200px;
+    padding: $space_m $space_l;
+    border-radius: $space_s;
+    box-sizing: border-box;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.btn-wide{
+    padding: $space_m $space_l;
+    border-radius: $space_s;
+    box-sizing: border-box;
+    color: #fff;
+    border: 2px solid #fff;
+    width: 100%;
+}
+.btn-purple{
+    background:#607af1
+}
+.btn-lightblue{
+    background: #43ccc5;
+    height: 50px;
+    position: relative;
+    top: 120px;
+
+}
+.flex-reverse{
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    right: 10%;
+}
+.flash_message{
+    position:absolute;
+    background:rgb(172, 241, 60);
+    width:450px;
+    color:#fff;
+    font-size:$font-size_l;
+    top:30px;
+    left:38%;
+    padding:$space_s $space_m;
+    box-sizing:border-box;
+    text-align:center;
+    border-radius:$space_s;
+    z-index:5;
+    @include mq(){
+        left:-30px;
+        text-align: center;
+        top:0vh;
+        font-size:14px;
+
+    }
+
+
+}
+.text-left{
+    text-align: left!important;
+}
+.index-title{
+    color: #6cb4e4;
+  text-align: center;
+  padding: $space_xl;
+  font-size: $font-size_xl;
+  border-top: solid 2px #6cb4e4;
+  border-bottom: solid 2px #6cb4e4;
+  background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+  background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+}
+.flex-right{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.paginate-original{
+    margin-top: $space_3l;
+}
+

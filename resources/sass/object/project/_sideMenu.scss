@@ -1,0 +1,17 @@
+.p-side{
+    list-style: none;
+    &__li{
+        margin-bottom: $space_xl;
+    }
+    &__link{
+        padding: $space_m $space_l;
+        box-sizing: border-box;
+        font-weight: bold;
+        color: #607af1;
+    }
+    &__btn{
+        padding: $space_m;
+        background: rgb(245, 224, 104);
+        border-radius: $space_s;
+    }
+}

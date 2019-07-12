@@ -1,0 +1,36 @@
+.p-middleHead{
+    height:500px;
+    background-image: url('/images/businessman-collaborate-collaboration-872957.jpg');
+    background-size:cover;
+    opacity: 1;
+    margin-top:100px;
+    background-position: center;
+    background-size:center;
+    padding: $space_l;
+    box-sizing: border-box;
+    @include mq(){
+        padding: 0;
+    }
+    &__content{
+        padding-top:$space_3l;
+        box-sizing:border-box;
+        color:#fbfbfa;
+        border-radius:$space_m;
+        background:rgba(41, 46, 38, 0.35);
+        font-size: $font-size_l;
+        font-weight:bold;
+        line-height: 250%;
+        margin:0 auto;
+        text-align: center;
+        margin-top:$space_3l;
+        @include mq(){
+            line-height: 230%;
+            padding: $space_m;
+        }
+    }
+    &__center{
+        text-align: left;
+        display:inline-block;
+        opacity:1;
+    }
+}

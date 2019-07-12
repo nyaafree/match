@@ -1,0 +1,58 @@
+.c-auth{
+    background:rgb(22, 240, 22);
+    width:50%;
+    min-height:350px;
+    margin:0 auto;
+    padding:$space_l;
+    box-sizing: border-box;
+    text-align: center;
+    border: 3px solid #fff;
+    border-radius: $space_m;
+    color: #fff;
+    font-weight: bold;
+    &__title{
+        font-size: $font-size_xxl;
+        font-weight: bold;
+        margin-bottom: $space_l;
+    }
+    &__inputGroup{
+        width:70%;
+        margin: 0 auto;
+        margin-bottom:$space_l;
+    }
+    &__inputTitle{
+        display: block;
+        margin-bottom: $space_m;
+    }
+    &__inputField{
+        width:100%;
+        padding: $space_m;
+        box-sizing: border-box;
+        border-radius: 5px;
+        display:block;
+        margin-bottom: $space_s;
+        text-align: center;
+        &.is-invalid{
+            border: solid 3px rgb(255, 85, 85);
+        }
+    }
+    &__submit{
+        padding: $space_m $space_xl;
+        font-size: $font-size_l;
+        border-radius:$space_s;
+        text-align: left !important;
+    }
+    &__error{
+        width:100%;
+        margin-top: .25rem;
+        font-size: 80%;
+        color:rgb(252, 86, 86);
+    }
+   
+    &__passLink{
+        margin-right: $space_m;
+        &:hover{
+            color: rgb(10, 127, 173);
+        }
+    }
+}

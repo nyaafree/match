@@ -1,21 +1,5 @@
 <template>
   <div>
-     <!-- <div class="flex-right">
-            <form action="/category" method="GET">
-                @csrf
-                <select name="category" id="category_id" onchange="submit(this.form)" class="c-post__select">
-                    <option class="c-post__option" value="0">全ての案件を表示</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}"
-                            @if (!empty($_GET['category']))
-                                {{ $_GET['category'] == $category->id ? 'selected' : '' }}
-                            @endif>
-                                {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-            </form>
-     </div> -->
     <div class="flex-right">
             <form action="">
                 <input type="hidden" name="_token" v-bind:value="csrf">
@@ -30,13 +14,15 @@
                 </select>
             </form>
         </div>
-    <a :href="'items/' + item.id" class="c-panel" v-for="item in displayItems" :key="item.id" >
+    <!-- <a :href="'items/' + item.id" class="c-panel" v-for="(item, index) in displayItems" :key="item.id" >
         <div class="c-panel__container1">
             <h2 class="c-panel__title">{{ item.title }}</h2>
-                <div class="c-panel__prof">
-                    <span>registered by</span>
+                <div class="c-panel__prof" @click="showProfile(index, $event)">
+                    <span class="c-panel__span">registered by</span>
                     <img :src="imgFolder + item.user.photo.filename" class="c-panel__img">
-                    <span>{{ item.user.name }}</span>
+                    <span class="c-panel__span">{{ item.user.name }}</span>
+
+
                 </div>
         </div>
         <div class="c-panel__container2">
@@ -46,7 +32,10 @@
         <div class="c-panel__detail">
             {{ item.detail.substr(0,110)}}...read more
         </div>
-    </a>
+        <show-profile :item="item" ref="child"/>
+
+    </a> -->
+    <item-component :item = item  v-for=" item in displayItems" :key="item.key"/>
     <div class="container paginate-original">
         <nav>
     <ul class="pagination">
@@ -79,11 +68,15 @@
 </template>
 
 <script>
+import showProfile from "./showProfile";
 export default {
+  components:{
+      showProfile,
+  },
   props:['categories','items','csrf'],
   data(){
       return{
-          imgFolder: "images/profile/",
+
           receiveItems: this.items,
           itemCategory: {
               id: 0,
@@ -183,6 +176,7 @@ export default {
               console.log(error);
           })
         },
+
         /**
      * ページ先頭に移動する
      */

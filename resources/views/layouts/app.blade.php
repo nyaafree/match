@@ -10,8 +10,8 @@
     <title>Match</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('vendor/jquery/jquery-3.3.1.min.js') }}"></script>
-    
+    <script src="{{ asset('/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
+
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto:300,400,500,700&display=swap" rel="stylesheet">
@@ -45,15 +45,27 @@
                     $('.js-toggle-sp-menu').toggleClass('active');
                     $('.js-toggle-sp-menu-target').toggleClass('active');
                  });
+
+                 $('.js-click-show-applies').on('click',function(){
+                    $('.js-display-none').toggleClass("is-hide");
+                 });
+
+                 $('.js-click-hide').on('click',function(){
+                    $('.js-display-none').toggleClass("is-hide");
+                 });
+
+                 $(document).ready(function(){
+                    $('.flash_message').slideDown('slow');
+
+                     setTimeout(function(){
+                         $('.flash_message').slideUp('slow');
+                     },5000);
+                 });
             });
 
-            $(document).ready(function(){
-                 $('.flash_message').slideDown('slow');
 
-                 setTimeout(function(){
-                     $('.flash_message').slideUp('slow');
-                 },5000);
-            });
+
+
 
 
 

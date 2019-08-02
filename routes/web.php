@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,16 @@ Route::resources(['/items'=>'ItemController']);
 Route::resources(['/comments'=>'CommentsController']);
 
 Route::post('/comments/{id}','CommentsController@comment')->name('comment');
+Route::post('/apply/{id}', 'ApplyItemController@store');
 
+Route::get('/board/{id}','ApplyItemController@show')->name('board');
+Route::post('/message/{id}','MessagesController@message')->name('message');
 
+// $user = Auth::user();
+// $allItems = $user->items;
 
+// View::share('allItems', $user->items);
+// View::share('allItems', $allItems);
 
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -1,7 +1,10 @@
 #sidebar{
     width: 18%;
     color: #fff;
-    padding: $space_3l $space_m;
+    padding: $space_xl $space_m;
     box-sizing: border-box;
-    background: rgb(131, 223, 70);
+    background: rgb(111, 135, 243);
+    @include mq(){
+        display: none;
+    }
 }

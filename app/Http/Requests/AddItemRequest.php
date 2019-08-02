@@ -23,12 +23,13 @@ class AddItemRequest extends FormRequest
      */
     public function rules()
     {
+        $priceValidate = $this->input('category_id') == 1 ? 'required|integer': '';
         return [
             'title' => 'required|max:100',
             'category_id' => 'required|integer',
             'detail' => 'required',
-            // 'lowPrice' => 'integer',
-            // 'highPrice' => 'integer'
+            'lowPrice' => $priceValidate,
+            'highPrice' => $priceValidate,
 
         ];
     }

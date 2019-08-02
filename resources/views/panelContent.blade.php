@@ -14,10 +14,12 @@
   <div class="p-item">
         <div class="c-panel__container1">
             <h2 class="c-panel__title">{{ $item->title }}</h2>
-            <div class="c-panel__prof">
-                <span>registered by</span>
+            <div class="c-panel__prof js-show-profile" data-user="{{ $item->user }}" id="user">
+                <span class="c-panel__span">registered by</span>
                 <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="c-panel__img">
-                <span>{{ $item->user->name }}</span>
+                <span class="c-panel__span">{{ $item->user->name }}</span>
+
+
             </div>
         </div>
         <div class="c-panel__container2">
@@ -30,65 +32,64 @@
             {{ $item->detail }}
         </div>
         <div class="flex-right">
-            <button class="btn btn-purple">応募する</button>
+            <form action="/apply/{{ $item->id }}" method="POST">
+            @csrf
+                <button class="btn btn-purple">応募する</button>
+            </form>
         </div>
+        <p class="guide-message">
+            案件について何か気になることがあればコメントしてみましょう
+        </p>
         <h2 class="p-item__comment">コメント一覧</h2>
         @if (empty($comments->count()))
             <p class="p-item__nothing">コメントはまだ投稿されていません。</p>
         @endif
         <div id="app">
-            <comment-area  comments="{{ $comments }}" item="{{ $item }}"/>
+            <comment-area  comments="{{ $comments }}" item="{{ $item }}" user="{{ $user }}"/>
         </div>
-        {{-- <h2 class="p-item__comment">コメント一覧</h2>
-        @if (empty($comments->count()))
-           <p class="p-item__nothing">コメントはまだ投稿されていません。</p>
-        @else
-        <div class="c-comment"><!--①LINE会話全体を囲う-->
-            @foreach ($comments as $comment)
-
-                @if ($comment->user_id != $item->user_id)
-                    <!--②左コメント始-->
-                    <div class="c-comment__questioner">
-                        <div class="c-comment__imgArea">
-                            <img src="{{ url('/images/profile/'.$comment->user->photo->filename) }}" alt="" class="c-comment__image">
-                        </div>
-                        <div class="c-comment__question">
-                            <div class="c-comment__says">
-                               <p>{{ $comment->comment }}</p>
-                            </div>
-                        </div>
-                    </div>
-                  <!--②/左コメント終-->
-                @else
-                <!--③右コメント始-->
-                  <div class="c-comment__answer">
-                    <p>
-                        {{ $comment->comment}}
-                    </p>
-                  </div>
-                  <!--/③右コメント終-->
-                @endif
-
-
-
-           @endforeach
-          </div><!--/①LINE会話終 !-->
-        @endif
-            <form action="/comments/{{ $item->id }}" method="POST">
-                @csrf
-                <div class="p-item__container1">
-                    <textarea name="comment" cols="30" rows="8" class="p-item__input">
-
-                    </textarea>
-                    <button type="submit" class="btn btn-lightblue">コメントする</button>
-                </div>
-            </form> --}}
-
+        @include('mypage.includes.formErrors');
 
   </div>
 @endsection
 
 @section('footer')
+<div class="modal-window js-profile-window is-hide">
+        <div class="p-modal">
+            <div class="p-modal__container1">
+                <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="p-modal__img">
+                <div class="p-modal__container2">
+                    <h2 class="p-modal__title">ユーザー名:{{ $item->user->name}}</h2>
+                    <h2 class="p-modal__title">自己紹介</h2>
+                    <p class="p-modal__introduction">{{ $item->user->introduction }}</p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="cover js-profile-background is-hide">
+
+    </div>
   @include('includes.footer')
+  <script>
+      $(function(){
+        $('.js-show-profile').on('click', function(event){
+                    // event.stopPropagation();
+                     console.log('clicked!!');
+                     $('.js-profile-window').toggleClass('is-hide');
+                     $('.js-profile-background').toggleClass('is-hide');
+
+
+
+
+
+
+                 });
+                 $('.js-profile-background').on('click', function(){
+                        $('.js-profile-window').toggleClass('is-hide');
+                        $(this).toggleClass('is-hide');
+                 });
+      });
+  </script>
   @parent
 @endsection

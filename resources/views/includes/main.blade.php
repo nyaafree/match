@@ -18,7 +18,7 @@
             </form>
         </div> --}}
         <div id="app">
-                <item-component :categories="{{ $categories }}" :items="{{ $items }}" csrf="{{csrf_token()}}"></item-component>
+                <item-area :categories="{{ $categories }}" :items="{{ $items }}" csrf="{{csrf_token()}}"></item-area>
         </div>
         {{-- @foreach ($items as $item)
             <a href="/items/{{ $item->id }}" class="c-panel">

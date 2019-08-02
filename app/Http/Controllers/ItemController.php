@@ -8,6 +8,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddItemRequest;
+use App\Http\Requests\EditItemRequest;
 use Illuminate\Support\Facades\Session;
 
 class ItemController extends Controller
@@ -17,7 +18,15 @@ class ItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -94,7 +103,10 @@ class ItemController extends Controller
      */
     public function edit($id)
     {
-        //
+      $user = Auth::user();
+      $categories = Category::all();
+      $item = Item::findOrFail($id);
+      return(view('itemEditForm',compact('user','categories','item')));
     }
 
     /**
@@ -104,9 +116,25 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditItemRequest $request, $id)
     {
-        //
+        $item = Item::findOrFail($id);
+        $input = $request->all();
+        if($input['category_id'] == 1){
+            $input['lowPrice'] = $request->lowPrice.'000';
+            $input['highPrice'] = $request->highPrice.'000';
+        }else{
+            $input['lowPrice'] = null;
+            $input['highPrice'] = null;
+        }
+        $input['user_id'] = Auth::user()->id;
+
+        $item->update($input);
+        Session::flash('flash_message','案件編集が完了しました');
+
+        return redirect('/mypage');
+
+
     }
 
     /**
@@ -117,26 +145,13 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function category(Request $request){
-        $categories = Category::all();
-        $categories = json_encode($categories);
-        $id = $request->input(['id']);
-        if($id == 0){
-            // $items = Item::with(['user.photo', 'category'])->find(1);
-            $items = Item::with(['user.photo', 'category'])->get();
-            $items = json_encode($items);
-        }else{
-            $category = Category::find($id);
-            $items = $category->items()->with(['user.photo','category'])->get();
-            $items = json_encode($items);
-        }
-        return $items;
-        // return $category;
+        Item::destroy($id);
+        Session::flash('flash_message', '案件削除完了しました');
+        return redirect('/mypage');
 
     }
+
+   
 
     public function list(){
         $items = Item::with('user.photo','category')->get();

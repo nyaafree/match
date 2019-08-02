@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="c-comment__answer" v-for="comment in prpComments" :key="comment.key" >
+        <div class="c-comment__answer">
             <p>
-                {{ comment.comment}}
+                {{ prpComment.comment}}
             </p>
         </div>
     </div>
@@ -10,9 +10,9 @@
 
 <script>
 export default {
-    props:['prpComments'],
+    props:['prpComment'],
     mounted(){
-        console.log(this.prpComments);
+        console.log(this.prpComment);
     }
 }
 </script>

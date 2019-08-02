@@ -6,9 +6,18 @@
 @endsection
 
 @section('content')
+
   <div class="flex-main">
-      @include('mypage.includes.sidebar')
+     @include('mypage.includes.sidebar')
       <div class="c-post">
+        <div id="app">
+            <item-form :user="{{ json_encode($user) }}" :categories="{{ json_encode($categories) }}"
+        :olds="{{ json_encode(old()) }}"/>
+        </div>
+        @include('mypage.includes.formErrors')
+     </div>
+
+      {{-- <div class="c-post">
             <h1 class="c-post__title">案件投稿</h1>
             <div class="c-post__formArea">
                 <form action="/items" method="POST" class="c-post__form">
@@ -53,7 +62,7 @@
                     @include('mypage.includes.formErrors')
                 </form>
             </div>
-      </div>
+      </div> --}}
   </div>
 @endsection
 

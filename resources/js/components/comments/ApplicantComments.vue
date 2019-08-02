@@ -1,21 +1,24 @@
 <template>
     <div>
-        <div class="c-comment__questioner"  v-for="comment in aplComments" :key="comment.key">
+        <div class="c-comment__questioner">
             <div class="c-comment__imgArea">
-                <img :src="imgFolder + comment.user.photo.filename" alt="" class="c-comment__image">
+                <img :src="imgFolder + aplComment.user.photo.filename" alt="" class="c-comment__image" @click="showProfile($event)">
             </div>
             <div class="c-comment__question">
                 <div class="c-comment__says">
-                    <p>{{ comment.comment }}</p>
+                    <p>{{ aplComment.comment }}</p>
                 </div>
             </div>
         </div>
+         <show-profile :item="aplComment" ref="child"/>
     </div>
 </template>
 
 <script>
+import showProfile from "../showProfile";
 export default {
-    props: ['aplComments'],
+    // props: ['aplComments'],
+        props: ['aplComment'],
     data(){
         return{
             imgFolder: '/images/profile/',
@@ -23,7 +26,17 @@ export default {
         }
     },
     mounted(){
-        console.log(this.aplComments);
+        console.log(this.aplComment);
+    },
+    methods:{
+        showProfile: function(event){
+            console.log('clicked!!');
+            event.preventDefault();
+            this.$refs.child.showUser();
+        },
+    },
+    components:{
+        showProfile,
     }
 }
 </script>

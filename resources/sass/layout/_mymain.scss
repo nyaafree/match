@@ -1,0 +1,13 @@
+#myMain{
+    width:82%;
+    padding: $space_l;
+    box-sizing: border-box;
+    min-height: 500px;
+    margin: 0 auto;
+    padding: $space_xl $space_3l;
+    box-sizing: border-box;
+    @include mq(){
+        width: 100%;
+        padding: $space_m;
+    }
+}

@@ -1,9 +1,14 @@
 .c-post{
-    background: rgb(247, 175, 19);
+    background: -moz-linear-gradient(top left, rgb(241, 121, 235), #FFC778);
+    background: -webkit-linear-gradient(top left, rgb(241, 121, 235), #FFC778);
+    background: linear-gradient(to bottom right, rgb(241, 121, 235), #FFC778);
     min-height: 500px;
     width:82%;
     padding: $space_xl;
     box-sizing: border-box;
+    @include mq(){
+        width: 100%;
+    }
     &__title{
         font-size: $font-size_xxl;
         text-align: center;
@@ -25,7 +30,7 @@
     }
     &__input{
         display: block;
-        width: 50%;
+        width: 80%;
         margin: $space_m auto;
         border-radius: $space_s;
         padding: $space_m $space_l;
@@ -43,7 +48,6 @@
         margin: $space_m auto;
         border-radius: $space_s;
         padding: $space_m $space_l;
-        text-align: center;
         background: #607af1;
         color: #fff;
         border: #fff solid 2px;
@@ -53,31 +57,38 @@
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+        padding: 0 $space_s;
+        box-sizing: border-box;
         border-radius: $space_s;
-        padding: $space_m;
         background: #607af1;
         color: #fff;
         border: #fff solid 2px;
         margin-right: $space_s;
+        width: 70px;
+        line-height: 100%;
     }
     &__priceWrapper{
         display:flex;
-        justify-content: space-between;
-        width: 50%;
+        text-align: center;
+        width: 26%;
         margin: $space_xl auto;
         span{
-            padding: $space_m 0;
             color: #fff;
             font-size: $font-size_l;
+            line-height: 100%;
+        }
+        @include mq(){
+            width: 80%;
         }
     }
     &__center{
         line-height: 100%;
         color: #fff;
         font-weight: bold;
+        margin: 0 $space_xl;
     }
     &__submit{
-        width: 50%;
+        width: 80%;
         margin: $space_m auto;
         padding: $space_m $space_l;
         box-sizing: border-box;

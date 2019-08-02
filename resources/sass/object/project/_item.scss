@@ -10,6 +10,11 @@
     margin-bottom: $space_3l;
     border-radius: $space_s;
     color: #fff;
+    @include mq(){
+        width: 100%;
+        padding: $space_xl $space_m;
+        margin-top: 60px;
+    }
     &__comment{
         position: relative;
         padding: 0.25em 0;
@@ -19,6 +24,11 @@
         width: 20%;
         font-weight: bold;
         font-size: $font-size_xl;
+        text-align: center;
+        @include mq('lg'){
+            width: 80%;
+            margin-top: $space_l;
+        }
         &:after{
             content: "";
             display: block;
@@ -29,6 +39,11 @@
      }
      &__container1{
          display:flex;
+         height: 220px;
+         position: relative;
+         @include mq(){
+             display: block;
+         }
      }
      &__input{
          background: #fbfbfa;
@@ -40,7 +55,9 @@
          margin-right: $space_3l;
          border-radius: $space_m;
          display: block;
-
+         @include mq(){
+             width: 90%;
+         }
      }
      &__nothing{
          margin-top: $space_xl;
@@ -49,5 +66,8 @@
          font-size: $font-size_xl;
          font-weight: bold;
          text-align: center;
+         @include mq(){
+             font-size: $font-size_l;
+         }
      }
 }

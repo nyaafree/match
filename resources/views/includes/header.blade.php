@@ -3,11 +3,34 @@
         <div class="p-nav__container1">
             <a href="/" class="p-nav__title">Match</a>
             @include('includes.searchItems')
+            @if (Auth::check())
+            <div class="bell-area">
+                <i class="fas fa-bell bell-color js-click-show-applies"></i>
+                <span class="apply-number">{{ count($applyNumbers) }}</span>
+                <ul class="show-applies js-display-none is-hide">
+                 <span class="area-hide js-click-hide"><i class="far fa-times-circle"></i></span>
+                   @if (count($loginUser->items) != 0)
+                       @foreach ($loginUser->items as $item)
+                           <?php $applies = $item->applies ?>
+                           @foreach ($applies as $apply)
+                               @if ($apply->read === 0)
+                                   <li><a href="/board/{{ $apply->board->id }}">{{ $apply->item->title }}に{{ $apply->user->name }}さんからの応募がありました。</a></li>
+                               @endif
+                            @endforeach
+                        @endforeach
+                   @else
+                       <li>案件に対する応募はありません</li>
+                   @endif
+
+                </ul>
+            </div>
+            @endif
 
         </div>
 
              <ul class="p-nav__menus u-right">
              @if(Auth::check())
+
              <li class="p-nav__li"><a href="{{ route('logout') }}"  onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">Logout</a></li>
              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

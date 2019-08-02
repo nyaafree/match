@@ -32,6 +32,21 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
+    public function applies(){
+        return $this->hasMany('App\Apply');
+    }
+
+    public function messages(){
+        return $this->hasMany('App\Message');
+    }
+
+    public function applyItems(){
+        return $this->hasManyThrough('App\Item','App\Apply','user_id','id','id','item_id');
+    }
+    public function boards(){
+        return $this->hasManyThrough('App\Board','App\Apply');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

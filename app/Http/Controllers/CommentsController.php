@@ -7,6 +7,7 @@ use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\AddCommentRequest;
 
 class CommentsController extends Controller
 {
@@ -89,15 +90,13 @@ class CommentsController extends Controller
         //
     }
 
-    public function comment(Request $request){
+    public function comment(AddCommentRequest $request){
 
         $input['item_id'] = $request->input(['id']);
         // $input['item_id'] = 4;
         $input['comment'] = $request->input(['comment']);
         // $input['user_id'] = Auth::user()->id;
-        $user = Auth::user();
-        dd($user);
-        $input['user_id'] = $user->id;
+        $input['user_id'] = $request->input(['user_id']);
         Comment::create($input);
         $item = Item::find($input['item_id']);
         $comments = $item->comments()->with(['user.photo','category'])->get();

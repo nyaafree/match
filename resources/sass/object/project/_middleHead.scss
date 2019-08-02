@@ -10,6 +10,8 @@
     box-sizing: border-box;
     @include mq(){
         padding: 0;
+        margin-top: 80px;
+        height: 270px;
     }
     &__content{
         padding-top:$space_3l;
@@ -24,13 +26,16 @@
         text-align: center;
         margin-top:$space_3l;
         @include mq(){
-            line-height: 230%;
+            line-height: 200%;
             padding: $space_m;
+            font-size: $font-size_m;
         }
     }
     &__center{
         text-align: left;
         display:inline-block;
         opacity:1;
+        margin-top: $space_xl;
+
     }
 }

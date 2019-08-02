@@ -2,9 +2,7 @@
     background:rgb(235, 205, 34);
     color:#fff;
     font-weight:bold;
-    &:hover{
-        background: #f7d0f1;
-    }
+
 }
 .background-creamGreen{
     background:rgb(147, 229, 147);
@@ -20,8 +18,9 @@
     display:flex;
     min-height: 800px;
     margin-top: 100px;
-    position: relative;
-
+    @include mq(){
+        margin-top: 60px;
+    }
 }
 .btn{
     width: 200px;
@@ -30,6 +29,9 @@
     box-sizing: border-box;
     color: #fff;
     border: 2px solid #fff;
+    @include mq(){
+        width: 150px;
+    }
 }
 .btn-wide{
     padding: $space_m $space_l;
@@ -45,8 +47,16 @@
 .btn-lightblue{
     background: #43ccc5;
     height: 50px;
-    position: relative;
-    top: 120px;
+    position: absolute;
+    bottom: $space_xl;
+    right:$space_xl;
+    @include mq(){
+        position: absolute;
+        right: $space_s;
+        bottom: $space_s;
+
+
+    }
 
 }
 .flex-reverse{
@@ -82,7 +92,7 @@
     text-align: left!important;
 }
 .index-title{
-    color: #6cb4e4;
+  color: #6cb4e4;
   text-align: center;
   padding: $space_xl;
   font-size: $font-size_xl;
@@ -90,12 +100,198 @@
   border-bottom: solid 2px #6cb4e4;
   background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
   background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+  margin: $space_l auto;
+  @include mq(){
+      margin: 0 auto;
+      margin-bottom: $space_m;
+  }
 }
 .flex-right{
     display: flex;
     flex-direction: row-reverse;
+    position:relative;
 }
 .paginate-original{
     margin-top: $space_3l;
 }
+.message-area{
+    width:90%;
+    margin: 0 auto;
+    margin-top: 140px;
+    min-height: 800px;
+    background: #fbfbfa;
+    padding: $space_xl;
+    border: solid 1px #99f81e;
+    box-sizing: border-box;
+    margin-bottom: $space_3l;
+    @include mq(){
+        width: 100%;
+        margin-top: 100px;
+        padding: $space_m;
+    }
 
+}
+.guide-message{
+    padding: $space_m;
+    box-sizing: border-box;
+    border: rgb(194, 162, 245) 2px solid;
+    border-radius: $space_s;
+    background: rgba(164, 137, 214, 0.5);
+    color: $font-color_default;
+    margin-top: $space_m;
+}
+.error-show{
+    color: red;
+    margin: $space_m auto;
+    width: 80%;
+    @include mq(){
+        font-size: $font-size_m;
+    }
+}
+.error-message{
+    background: rgb(245, 213, 213);
+    padding: $space_m;
+    box-sizing: border-box;
+    color: rgb(223, 33, 33);
+    width: 80%;
+    border-radius: $space_s;
+    margin: $space_l auto;
+}
+.bell-color{
+    color: rgb(243, 178, 59);
+    line-height: 30px;
+    font-size: $font-size_l;
+    padding: $space_s;
+}
+.bell-area{
+    // background: #fbfbfa;
+    width: 30px;
+    height: 30px;
+    text-align:center;
+    position: relative;
+    margin-left: $space_l;
+    &:hover{
+        cursor: pointer;
+    }
+}
+.apply-number{
+    position: absolute;
+    right: 5px;
+    top: 3px;
+    font-size: 10px;
+    background: #1ff053;
+    color: #fff;
+    padding: 1px;
+
+}
+.show-applies{
+    position: absolute;
+    width: 500px;
+    min-height: 50px;
+    color: #668ad8;
+    border: double 5px #668ad8;/*二重線 太さ 色*/
+    background: #f1f8ff;
+    padding: $space_m;
+    box-sizing: border-box;
+    font-size: $font-size_s;
+    li{
+        line-height: 1.5;
+        padding: 0.5em 0;
+        border-bottom: 2px solid rgb(76, 38, 216);
+        a{
+            color: #668ad8;
+            &:hover{
+                color: rgb(243, 104, 220);
+            }
+        }
+    }
+
+}
+.area-hide{
+    right: 3px;
+    top: 3px;
+    position: absolute;
+    color:rgb(208, 90, 238);
+    font-size: $font-size_m;
+    font-weight: bold;
+    z-index: 10;
+    padding: $space_s;
+}
+.is-hide{
+    display: none;
+}
+.half-width{
+    width: 50%;
+    margin: $space_l auto;
+}
+.btn-lightred{
+    background: rgb(243, 103, 85);
+    position: relative;
+    z-index: 2;
+}
+.bg-yellow{
+    border: rgb(243, 230, 52) solid 1px;
+    color: #777;
+    min-height: 130px;
+    a{
+        color: #777;
+    }
+    &:hover{
+        color: rgb(97, 142, 240);
+        background: rgb(238, 240, 146);
+    }
+}
+.bg-purple{
+    border: solid 1px rgb(192, 136, 17);
+    color: #777;
+    min-height: 130px;
+    a{
+        color: #777;
+    }
+    &:hover{
+        color: rgb(97, 142, 240);
+        background:  rgb(253, 223, 157);
+    }
+}
+.cover{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(27, 85, 243, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index:3;
+}
+.modal-window{
+    width: 80%;
+    z-index: 4;
+    min-height: 300px;
+    padding: $space_l;
+    border: rgb(97, 45, 218) 1px solid;
+    border-radius: $space_s;
+    background: rgba(75, 89, 225, .9);
+    position: absolute;
+    left: 10%;
+    top: 30%;
+    color: #fbfbfa;
+    @include mq(){
+        padding: $space_s;
+        width: 90%;
+        left: 5%;
+    }
+}
+.hide-profile{
+    right: 3px;
+    top: 3px;
+    position: absolute;
+    color: #fff;
+    font-size: $font-size_xl;
+    font-weight: bold;
+    z-index: 5;
+    padding: $space_m;
+    @include mq(){
+        right: 1px;
+        top: 1px;
+        padding: $space_s;
+    }
+}

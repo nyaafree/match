@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -13,16 +15,19 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    // public function __construct()
+    // {
+    //     View::share('allItems', Auth::user()->items);
+    // }
+
     public function index()
     {
         $categories = Category::all();

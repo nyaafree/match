@@ -6,8 +6,15 @@
     padding: $space_xl;
     border: solid 1px #99f81e;
     box-sizing: border-box;
+    line-height: 130%;
+    @include mq(){
+        padding: $space_m;
+    }
     &__title{
         color: rgb(78, 182, 9);
+        @include mq(){
+            font-size: $font-size_m;
+        }
     }
     &__category{
         padding: $space_m;
@@ -18,6 +25,11 @@
         margin-top: $space_s;
         text-align: center;
         margin-right: $space_l;
+        color: #fff;
+        @include mq(){
+            font-size: $font-size_m;
+            width: 160px;
+        }
     }
     &:hover{
         background: rgba(170, 238, 158, 0.8);
@@ -45,6 +57,14 @@
     &__prof{
         display: flex;
         width: 250px;
+        @include mq(){
+            width: 200px;
+        }
+    }
+    &__span{
+        @include mq(){
+            font-size: $font-size_s;
+        }
     }
     &__price{
         padding: $space_m;
@@ -65,5 +85,56 @@
         border-radius: $space_s;
         margin-bottom: $space_m;
     }
+    &__btn{
+        z-index: 1;
+        width: 100px;
+        padding: $space_s $space_m;
+        box-sizing: border-box;
+        margin-right: $space_m;
+        border: none;
+        background: rgb(243, 103, 85);
+        margin-left: $space_m;
+        a{
+            &:hover{
+                color: #fff;
+            }
+        }
+    }
+    &__textarea{
+        margin: $space_m 0;
+        padding: $space_m;
+        box-sizing: border-box;
+        line-height: 150%;
+        color: rgb(10, 63, 143);
+        border: solid 1px rgb(175, 172, 8);
+        border-radius: $space_s;
+        display: block;
+        width: 95%;
+        min-height: 100px;
+    }
+    &__boards{
+        border: solid 1px rgb(26, 82, 156);
+        padding: $space_m;
+        box-sizing: border-box;
+        margin-top: $space_m;
+        margin-bottom: $space_l;
+        border-radius: $space_s;
+        color: rgb(11, 43, 131);
+        a{
+            color: rgb(72, 159, 209);
+            margin-top: $space_s;
+        }
+    }
+    &__latest{
+        border: solid 1px rgb(210, 70, 228);
+        margin-top: $space_m;
+        border-radius: $space_s;
+        box-sizing: border-box;
+        padding: $space_m;
+        margin-bottom: $space_m;
+        color: rgb(182, 103, 171);
+
+    }
+
 
 }

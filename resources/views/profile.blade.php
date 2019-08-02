@@ -55,6 +55,7 @@
 
 @section('footer')
   @include('includes.footer')
+  @parent
   <script>
         function readURL(input){
             if(input.files && input.files[0]){

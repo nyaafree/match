@@ -93,12 +93,11 @@ class CommentsController extends Controller
     public function comment(AddCommentRequest $request){
 
         $input['item_id'] = $request->input(['id']);
-        // $input['item_id'] = 4;
         $input['comment'] = $request->input(['comment']);
-        // $input['user_id'] = Auth::user()->id;
         $input['user_id'] = $request->input(['user_id']);
         Comment::create($input);
         $item = Item::find($input['item_id']);
+        // 案件申し込みページにつけられたコメントをすべて取得する(VueでLaravelのリレーションを使えるように設定しておく)
         $comments = $item->comments()->with(['user.photo','category'])->get();
 
         return $comments;
@@ -106,24 +105,4 @@ class CommentsController extends Controller
 
     }
 
-    // $input = $request->all();
-        // $input['user_id'] = Auth::user()->id;
-        // $input['item_id'] = $id;
-        // $comment = Comment::create($input);
-        // Session::flash('flash_message','コメント投稿が完了しました！');
-        // return redirect()->route('items.show',['id' => $id]);
-
-    // $categories = Category::all();
-    // $categories = json_encode($categories);
-    // $id = $request->input(['id']);
-    // if($id == 0){
-    //     // $items = Item::with(['user.photo', 'category'])->find(1);
-    //     $items = Item::with(['user.photo', 'category'])->get();
-    //     $items = json_encode($items);
-    // }else{
-    //     $category = Category::find($id);
-    //     $items = $category->items()->with(['user.photo','category'])->get();
-    //     $items = json_encode($items);
-    // }
-    // return $items;
 }

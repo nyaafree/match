@@ -4,12 +4,19 @@
     width:82%;
     padding: $space_xl;
     box-sizing: border-box;
+    @include mq(){
+        padding: $space_m;
+        width: 100%;
+    }
     &__title{
         font-size: $font-size_xxl;
         text-align: center;
         margin-bottom: $space_xl;
         font-weight: bold;
         color: #fff;
+        @include mq(){
+            font-size: $font-size_xl;
+        }
     }
     &__formArea{
         margin: $space_xl auto;
@@ -17,19 +24,34 @@
         box-sizing: border-box;
         padding: $space_m $space_xl;
         border-radius: $space_s;
+        @include mq(){
+            width: 100%;
+            padding: $space_m;
+        }
     }
     &__form{
         width: 100%;
         display: flex;
+        @include mq(){
+            display: block;
+        }
     }
     &__inputWrapper1{
         width:25%;
         margin-right: $space_xl;
         min-height: 800px;
+        @include mq(){
+            width: 100%;
+            min-height: 100%;
+        }
     }
     &__inputWrapper2{
         width:73%;
         min-height: 800px;
+        @include mq(){
+            min-height: 450px;
+            width: 100%;
+        }
     }
     &__inputGroup{
        width: 100%;
@@ -54,6 +76,9 @@
         background: #607af1;
         color: #fff;
         border: #fff solid 2px;
+        @include mq(){
+            width: 90%;
+        }
     }
     &__image{
         border: solid 3px #607af1;

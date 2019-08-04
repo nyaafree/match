@@ -3,7 +3,7 @@
     <div class="flex-right">
             <form action="">
                 <input type="hidden" name="_token" v-bind:value="csrf">
-                <select name="category" id="category_id" @change="registerId()" class="c-post__select"
+                <select name="category" id="category" @change="registerId()" class="c-post__select"
                 v-model="itemCategory.id">
                     <option class="c-post__option" value="0">全ての案件を表示</option>
 
@@ -36,7 +36,7 @@
 
     </a> -->
     <item-component :item = item  v-for=" item in displayItems" :key="item.key"/>
-    <div class="container paginate-original">
+    <div class="container paginate-original" id="paging">
         <nav>
     <ul class="pagination">
       <li class="page-item">

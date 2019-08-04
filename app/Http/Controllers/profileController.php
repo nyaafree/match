@@ -82,9 +82,13 @@ class profileController extends Controller
         $user = User::findOrFail($id);
         $input = $request->all();
         if($file = $request->file('file')){
+            // 画像ファイル名を設定
             $name = time().$file->getClientOriginalName();
+            // 画像ファイルをimages/profile 配下に移動
             $file->move('images/profile', $name);
+            // Photoモデルを使ってphotosテーブルにデータを追加
             $image = Photo::create(['filename' => $name]);
+            // UserモデルとPhotoモデルを紐づけられるようにusersテーブルにphoto_idを登録
             $input['photo_id'] = $image->id;
         }
         $user->update($input);

@@ -31,9 +31,7 @@ class Item extends Model
     public function applies(){
         return $this->hasMany('App\Apply');
     }
-    // public function latestComments(){
-    //     return $this->hasMany('App\Comment')->orderBy('created_at','DESC')->take(1)->get();
-    // }
+   
 
     // public function applyBoard(){
     //     return $this->hasManyThrough('App\Board','App\Apply','item_id','apply_id','id','id');

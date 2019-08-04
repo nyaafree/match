@@ -44,9 +44,10 @@
              @endif
             </ul>
     </nav>
-    <div class="u-menu-trigger js-toggle-sp-menu">
+    <div class="menu-trigger js-toggle-sp-menu">
      <span></span>
      <span></span>
      <span></span>
      </div>
+     @include('includes.hamburger');
  </header>

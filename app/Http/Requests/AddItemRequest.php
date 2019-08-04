@@ -23,6 +23,7 @@ class AddItemRequest extends FormRequest
      */
     public function rules()
     {
+        // 単発案件を選択されている場合はlowPrice,highPriceカラムの両方にrequired|integerのバリデーションチェックを行う
         $priceValidate = $this->input('category_id') == 1 ? 'required|integer': '';
         return [
             'title' => 'required|max:100',

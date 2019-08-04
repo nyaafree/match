@@ -2,11 +2,17 @@
     background: -moz-linear-gradient( #0b6eee, #70c6ff);
     background: -webkit-linear-gradient( #0b6eee, #70c6ff);
     background: linear-gradient(to right,  #0b6eee, #70c6ff);
-    height:50px;
+    height: 50px;
     padding: 0.5em 1em;
-    text-align:center;
-    color:#fff;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    align-items: center;
     width:100%;
+    @include mq(){
+        font-size: 10px;
+        padding: $space_s;
+    }
 }
 
 

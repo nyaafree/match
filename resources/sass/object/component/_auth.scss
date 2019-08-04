@@ -10,15 +10,24 @@
     border-radius: $space_m;
     color: #fff;
     font-weight: bold;
+    @include mq(){
+        width: 95%;
+    }
     &__title{
         font-size: $font-size_xxl;
         font-weight: bold;
         margin-bottom: $space_l;
+        @include mq(){
+            font-size: $font-size_xl;
+        }
     }
     &__inputGroup{
         width:70%;
         margin: 0 auto;
         margin-bottom:$space_l;
+        @include mq(){
+            width: 90%;
+        }
     }
     &__inputTitle{
         display: block;
@@ -48,9 +57,17 @@
         font-size: 80%;
         color:rgb(252, 86, 86);
     }
-   
+    &__checkLabel{
+        @include mq(){
+            font-size: $font-size_s;
+        }
+    }
+
     &__passLink{
         margin-right: $space_m;
+        @include mq(){
+            font-size: $font-size_s;
+        }
         &:hover{
             color: rgb(10, 127, 173);
         }

@@ -1,5 +1,5 @@
 .p-middleHead{
-    height:500px;
+    min-height:500px;
     background-image: url('/images/businessman-collaborate-collaboration-872957.jpg');
     background-size:cover;
     opacity: 1;
@@ -11,7 +11,7 @@
     @include mq(){
         padding: 0;
         margin-top: 80px;
-        height: 270px;
+        min-height: 270px;
     }
     &__content{
         padding-top:$space_3l;
@@ -25,6 +25,8 @@
         margin:0 auto;
         text-align: center;
         margin-top:$space_3l;
+        margin-bottom: $space_xl;
+
         @include mq(){
             line-height: 200%;
             padding: $space_m;

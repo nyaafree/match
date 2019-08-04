@@ -23,15 +23,15 @@ class mypageController extends Controller
     public function index()
     {
         $user = Auth::user();
-        // dd($user);
         $categories = Category::all();
+        // ログインユーザーが投稿した案件データすべてを取得
         $myItems = $user->items()->with(['user.photo','category','boards.apply.user'])->get();
-        // $applyItems = $user->applyItems()->with(['user.photo','category'])->get();
+        // ログインユーザーが応募した案件データすべてを取得
         $applyItems = $user->boards()->with(['item.user.photo','item.category'])->get();
-
+        // ログインユーザーが案件詳細画面で投稿したコメントすべてそ取得
         $myComments = $user->comments()->with(['item.comments'])->get();
+        // ログインユーザーが案件申し込み後の掲示板でやり取りしたダイレクトメッセージすべてを取得
         $myMessages = $user->messages()->with(['board.item'])->get();
-        // dd($myComments);
         return(view('mypage.index',compact('user','categories','myItems','applyItems','myComments','myMessages')));
     }
 

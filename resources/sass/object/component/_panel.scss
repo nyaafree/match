@@ -12,6 +12,7 @@
     }
     &__title{
         color: rgb(78, 182, 9);
+        margin-bottom: $space_s;
         @include mq(){
             font-size: $font-size_m;
         }
@@ -38,8 +39,11 @@
     }
     &__container1{
         display: flex;
+        flex-wrap: wrap;
         color: rgb(10, 63, 143);
         justify-content: space-between;
+        align-items: center;
+        margin-bottom: $space_s;
     }
     &__container2{
         display: flex;

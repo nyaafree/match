@@ -6,6 +6,9 @@
         border-radius:5px;
         padding:$space_s $space_m;
         box-sizing:border-box;
+        @include mq('lg'){
+            width: 200px;
+        }
     }
     &__btn{
         height:30px;
@@ -13,5 +16,11 @@
         border-radius: $space_s;
         padding: $space_s $space_m;
         box-sizing: border-box;
+        @include mq('md'){
+            font-size: $font-size_s;
+        }
+    }
+    @include mq(){
+        display: none;
     }
 }

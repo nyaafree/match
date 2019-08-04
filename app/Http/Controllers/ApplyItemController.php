@@ -18,18 +18,20 @@ class ApplyItemController extends Controller
     }
 
     public function store(Request $request, $id){
+        // 自分で投稿した案件には応募できないようにする
         if(Item::find($id)->user_id == Auth::user()->id){
             return redirect('/items/'.$id)->with('flash_message', '自分で投稿した案件には応募できません');
         }
         $applies = Item::find($id)->applies;
         foreach ($applies as $value) {
+            // ログインユーザーがすでにこの案件に応募してる場合には、応募できないようにする
             if($value->user_id == Auth::user()->id){
                 return redirect('/items/'.$id)->with('flash_message', 'この案件にはすでに応募してあります');
             }
         }
         $item = Item::findOrFail($id);
-        $input2['applicant_id'] = Auth::user()->id;
-        $input2['proposer_id'] = $item->user_id;
+        $input2['applicant_id'] = Auth::user()->id; // 案件申し込みした人のユーザーID
+        $input2['proposer_id'] = $item->user_id; // 案件登録者のユーザーID
         $input2['item_id'] = $item->id;
         $board = Board::create($input2);
         // dd($board);
@@ -52,7 +54,7 @@ class ApplyItemController extends Controller
     public function show($id){
         // $messages = Message::all();
         $board = Board::findOrfail($id);
-        $messages = $board->messages()->with(['user.photo','category'])->get();
+        $messages = $board->messages()->with(['user.photo','category'])->get(); // VueでLaravelのリレーションを使えるように設定。
         $applicant_id = $board->applicant_id;
         $item = $board->item;
         $user = Auth::user();
@@ -61,9 +63,12 @@ class ApplyItemController extends Controller
         // dd($item->user_id);
         // dd($apply->user_id);
         if($item->user_id != $user->id && $applicant_id != $user->id){
-            return redirect('/');
+            // ダイレクトメッセージをやり取りする掲示板にアクセスできるのは案件投稿者もしくは案件申し込み者のみで、違う場合には案件申し込みページにリダイレクト
+            return redirect('/items/'.$item->id)->with('flash_message','案件投稿者もしくは案件申し込み者しかこの掲示板にアクセスできません。');
         }
         if($board->proposer_id == $user->id){
+            // 案件投稿者がダイレクトメッセージをやり取りする掲示板にアクセスしたらappliesテーブルのreadカラムをfalse(デフォルト設定)からtrueに変更する
+            // appliesテーブルのreadカラムがfalseの場合はheaderのベルマークのアイコンに案件申し込みの未読通知を表示して、trueになったら未読通知から消えるようにする
             $input['read'] = true;
             $apply->update($input);
         }

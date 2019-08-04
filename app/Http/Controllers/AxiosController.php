@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Auth;
 class AxiosController extends Controller
 {
     public function category(Request $request){
-        $categories = Category::all();
-        $categories = json_encode($categories);
+
         $id = $request->input(['id']);
         if($id == 0){
-            // $items = Item::with(['user.photo', 'category'])->find(1);
             $items = Item::with(['user.photo', 'category'])->get();
             $items = json_encode($items);
         }else{
@@ -26,20 +24,17 @@ class AxiosController extends Controller
             $items = json_encode($items);
         }
         return $items;
-        // return $category;
 
     }
     public function delete($id){
         return Item::destroy($id);
     }
 
-    public function index(){
 
-
-    }
     public function comment(Request $request, $id){
         Comment::findOrFail($id)->update(['comment' => $request->input(['rcomment'])]);
     }
+
     public function fetch(Request $request, $id){
        return Comment::findOrFail($id);
 
@@ -63,8 +58,7 @@ class AxiosController extends Controller
         return Message::destroy($id);
     }
     public function allMessages(Request $request, $id){
-        // $user = User::find($id);
-        // return $user->messages()->with(['board.item'])->get();
+        
         return Message::findOrFail($id);
     }
 

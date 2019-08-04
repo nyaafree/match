@@ -2,7 +2,7 @@
     background:rgb(235, 205, 34);
     color:#fff;
     font-weight:bold;
-
+    margin-top: $space_m;
 }
 .background-creamGreen{
     background:rgb(147, 229, 147);
@@ -10,6 +10,11 @@
     margin-top: 100px;
     padding:50px;
     box-sizing: border-box;
+    @include mq(){
+        margin-top: 40px;
+        padding: $space_xxl $space_s;
+        min-height: 500px;
+    }
 }
 .btn-right{
     text-align: right;
@@ -112,6 +117,7 @@
     position:relative;
 }
 .paginate-original{
+    margin: 0 auto;
     margin-top: $space_3l;
 }
 .message-area{
@@ -194,6 +200,14 @@
     padding: $space_m;
     box-sizing: border-box;
     font-size: $font-size_s;
+    @include mq('xl'){
+        left: -200px;
+    }
+    @include mq(){
+        left: -120px;
+        padding: $space_s;
+        width: 300px;
+    }
     li{
         line-height: 1.5;
         padding: 0.5em 0;
@@ -216,6 +230,11 @@
     font-weight: bold;
     z-index: 10;
     padding: $space_s;
+    @include mq(){
+        right: -$space_s;
+        top: -$space_s;
+
+    }
 }
 .is-hide{
     display: none;
@@ -293,5 +312,51 @@
         right: 1px;
         top: 1px;
         padding: $space_s;
+    }
+}
+.menu-trigger{
+    display:none;
+    @include mq(){
+        display:inline-block;
+    }
+    transition: all .4s;
+    box-sizing: border-box;
+    position: absolute;
+    top:11px;
+    right:12px;
+    width: 40px;
+    height: 32px;
+    z-index: 3;
+    span{
+        display:inline-block;
+        transition: all .4s;
+        box-sizing: border-box;
+        position: absolute;
+        left:0;
+        width:100%;
+        height:4px;
+        background-color: rgb(92, 88, 84);
+        border-radius: 4px;
+
+        &:nth-of-type(1){
+            top:0;
+        }
+        &:nth-of-type(2){
+            top:14px;
+        }
+        &:nth-of-type(3){
+            bottom:0;
+        }
+    }
+    &.active span{
+        &:nth-of-type(1){
+            transform: translateY(12px) rotate(-45deg);
+        }
+        &:nth-of-type(2){
+            opacity:0;
+        }
+        &:nth-of-type(3){
+            transform: translateY(-15px) rotate(45deg);
+        }
     }
 }

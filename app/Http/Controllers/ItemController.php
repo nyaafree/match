@@ -55,13 +55,17 @@ class ItemController extends Controller
     {
        $input = $request->all();
        if($input['category_id'] == 1){
+        // 単発案件を登録した場合は宰相価格と最大価格と登録できるようにする
+        // また1000円単位で価格を設定できるように入力フォームの方では千の位から入力するようにしているので
+        // 入力した値を1000倍してからDBに登録する
         $input['lowPrice'] = $request->lowPrice.'000';
         $input['highPrice'] = $request->highPrice.'000';
        }else{
+        // レベニューシア案件を登録した場合は最小価格、最大価格ともにnullとして登録
         $input['lowPrice'] = null;
         $input['highPrice'] = null;
        }
-       $input['user_id'] = Auth::user()->id;
+       $input['user_id'] = Auth::user()->id; // 案件投稿者のユーザーIDを設定
        $item = Item::create($input);
        Session::flash('flash_message','案件投稿が完了しました！');
        return redirect('/mypage');
@@ -77,21 +81,9 @@ class ItemController extends Controller
     {
         $user = Auth::user();
         $item = Item::find($id);
+        // 案件詳細ページにつけられているコメントをすべて取得(LaravelのリレーションをVueでも使えるように設定)
         $comments = $item->comments()->with(['user.photo','category'])->get();
-        // $applicantComments = '';
-        // $proposerComments = '';
-        // foreach ($comments as $key => $value) {
-        //     if($value->user_id != $item->user_id){
-        //         $applicantComments = $value;
-        //     }else{
-        //         $proposerComments = $value;
-        //     }
-        // }
-        // $applicantComments = json_encode($applicantComments);
-        // $proposerComments = json_encode($proposerComments);
-        // dd($applicantComments,$proposerComments);
-        // $comments = json_encode($comments);
-        // dd(json_encode($comments));
+
         return(view('panelContent',compact('item','user','comments')));
     }
 
@@ -121,9 +113,13 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $input = $request->all();
         if($input['category_id'] == 1){
+            // 単発案件を登録した場合は宰相価格と最大価格と登録できるようにする
+            // また1000円単位で価格を設定できるように入力フォームの方では千の位から入力するようにしているので
+            // 入力した値を1000倍してからDBに登録する
             $input['lowPrice'] = $request->lowPrice.'000';
             $input['highPrice'] = $request->highPrice.'000';
         }else{
+            // レベニューシア案件を登録した場合は最小価格、最大価格ともにnullとして登録
             $input['lowPrice'] = null;
             $input['highPrice'] = null;
         }
@@ -151,7 +147,7 @@ class ItemController extends Controller
 
     }
 
-   
+
 
     public function list(){
         $items = Item::with('user.photo','category')->get();

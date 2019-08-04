@@ -28,7 +28,6 @@
 </head>
 <body>
     @section('header')
-
     @show
     @yield('content')
 

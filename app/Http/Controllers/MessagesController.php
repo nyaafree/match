@@ -87,12 +87,15 @@ class MessagesController extends Controller
     }
 
     public function message(AddMessageRequest $request, $id){
+        // ダイレクトメッセージをやり取りする掲示板を取得
         $board = Board::findorFail($id);
         $input['message'] = $request->message;
+        // メッセージ送信者のユーザーIDを登録
         $input['user_id'] = Auth::user()->id;
+        // ダイレクトメッセージがやり取りされている掲示板のIDを登録
         $input['board_id'] = $id;
         Message::Create($input);
-
+        // メッセージを送信した後はメッセージをやり取りしてる掲示板にリダイレクトする
         return redirect()->route('board',[$board]);
 
     }

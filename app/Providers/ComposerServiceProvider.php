@@ -27,6 +27,8 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // ログインしている場合には'loginUser'にログインユーザーのデータを、'applyNumbers'にログインユーザーが未読の案件応募掲示板の数を格納して
+        // 全てのviewファイルで使えるようにしておく
         view()->composer('*', function($view){
             if(Auth::check()){
                 $view->with('loginUser', Auth::user());

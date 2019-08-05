@@ -37,4 +37,15 @@ class HomeController extends Controller
 
         return view('index',compact('categories','items','jsons'));
     }
+    public function filter(Request $request){
+        $categories = Category::all();
+        $categories = json_encode($categories);
+
+        $items = Item::
+                        where('title','like','%'.$request->input('name').'%')->
+                        orWhere('detail','like','%'.$request->input('name').'%')
+                        ->with('user.photo','category')->orderBy('created_at','DESC')->get();
+        $jsons = json_encode($items);
+        return view('index',compact('categories','items','jsons'));
+    }
 }

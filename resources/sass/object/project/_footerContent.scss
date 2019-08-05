@@ -1,6 +1,7 @@
 .p-footer{
     padding:$space_l;
     box-sizing: border-box;
+    margin: 0 auto;
     @include mq(){
         padding: $space_s;
     }

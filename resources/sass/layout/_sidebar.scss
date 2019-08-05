@@ -4,6 +4,9 @@
     padding: $space_xl $space_m;
     box-sizing: border-box;
     background: rgb(111, 135, 243);
+    @include mq('md'){
+        width: 30%;
+    }
     @include mq(){
         display: none;
     }

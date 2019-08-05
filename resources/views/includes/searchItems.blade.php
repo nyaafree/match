@@ -1,6 +1,5 @@
 <div class="c-search">
-    <form action="/posts/filter/" method="GET">
-        @csrf
+    <form action="/search" method="GET">
         <div class="c-search__wrapper">
             <input type="text" class="c-search__input" name="name">
             <span class="c-search__btnWrap">

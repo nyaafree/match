@@ -61,7 +61,9 @@
     &__prof{
         display: flex;
         width: 250px;
+        margin-left: $space_s;
         @include mq(){
+            margin-top: $space_s;
             width: 200px;
         }
     }

@@ -6,6 +6,7 @@
         border-radius:5px;
         padding:$space_s $space_m;
         box-sizing:border-box;
+        margin-top: $space_m;
         @include mq('lg'){
             width: 200px;
         }

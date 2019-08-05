@@ -242,6 +242,12 @@ table {
   background: #6f87f3;
 }
 
+@media screen and (max-width: 768px) {
+  #sidebar {
+    width: 30%;
+  }
+}
+
 @media screen and (max-width: 414px) {
   #sidebar {
     display: none;
@@ -273,6 +279,7 @@ table {
   padding: 5px 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-top: 10px;
 }
 
 @media screen and (max-width: 1050px) {
@@ -411,6 +418,13 @@ table {
           box-sizing: border-box;
 }
 
+@media screen and (max-width: 768px) {
+  .c-post {
+    width: 70%;
+    padding: 20px 10px;
+  }
+}
+
 @media screen and (max-width: 414px) {
   .c-post {
     width: 100%;
@@ -489,6 +503,18 @@ table {
   text-align: center;
   width: 26%;
   margin: 20px auto;
+}
+
+@media screen and (max-width: 1050px) {
+  .c-post__priceWrapper {
+    width: 37%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .c-post__priceWrapper {
+    width: 50%;
+  }
 }
 
 .c-post__priceWrapper span {
@@ -624,6 +650,7 @@ table {
   padding: 15px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 414px) {
@@ -650,6 +677,7 @@ table {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     padding-bottom: 30px;
+    font-size: 18px;
   }
 
   .p-hamburger.active {
@@ -1098,10 +1126,12 @@ table {
   display: -ms-flexbox;
   display: flex;
   width: 250px;
+  margin-left: 5px;
 }
 
 @media screen and (max-width: 414px) {
   .c-panel__prof {
+    margin-top: 5px;
     width: 200px;
   }
 }
@@ -1199,6 +1229,13 @@ table {
   padding: 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .p-prof {
+    width: 70%;
+    padding: 20px 10px;
+  }
 }
 
 @media screen and (max-width: 414px) {
@@ -1474,6 +1511,19 @@ table {
   position: relative;
 }
 
+.flex-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .paginate-original {
   margin: 0 auto;
   margin-top: 40px;
@@ -1636,6 +1686,7 @@ table {
   background: #f36755;
   position: relative;
   z-index: 2;
+  margin-top: 10px;
 }
 
 .bg-yellow {
@@ -1777,5 +1828,15 @@ table {
 .menu-trigger.active span:nth-of-type(3) {
   -webkit-transform: translateY(-15px) rotate(45deg);
           transform: translateY(-15px) rotate(45deg);
+}
+
+.hamburger-search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
 }
 

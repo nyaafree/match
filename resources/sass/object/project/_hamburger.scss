@@ -12,6 +12,7 @@
         padding-top:50px;
         transition: .5s;
         padding-bottom:$space_xxl;
+        font-size: $font-size_l;
         &.active{
             transition: .5s;
             transform: translateX(-100%);

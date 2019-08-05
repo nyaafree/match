@@ -4,6 +4,10 @@
     width:82%;
     padding: $space_xl;
     box-sizing: border-box;
+    @include mq('md'){
+        width: 70%;
+        padding: $space_xl $space_m;
+    }
     @include mq(){
         padding: $space_m;
         width: 100%;

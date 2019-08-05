@@ -31,12 +31,17 @@
         <div class="c-panel__detail">
             {{ $item->detail }}
         </div>
-        <div class="flex-right">
+        <div class="flex-side">
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="match" data-show-count="false">Tweet</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
             <form action="/apply/{{ $item->id }}" method="POST">
             @csrf
                 <button class="btn btn-purple">応募する</button>
             </form>
+            
         </div>
+
         <p class="guide-message">
             案件について何か気になることがあればコメントしてみましょう
         </p>

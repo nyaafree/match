@@ -116,6 +116,12 @@
     flex-direction: row-reverse;
     position:relative;
 }
+.flex-side{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+}
 .paginate-original{
     margin: 0 auto;
     margin-top: $space_3l;
@@ -247,6 +253,7 @@
     background: rgb(243, 103, 85);
     position: relative;
     z-index: 2;
+    margin-top: $space_m;
 }
 .bg-yellow{
     border: rgb(243, 230, 52) solid 1px;
@@ -359,4 +366,9 @@
             transform: translateY(-15px) rotate(45deg);
         }
     }
+}
+.hamburger-search{
+    display:flex;
+    align-items: center;
+    padding: $space_m;
 }

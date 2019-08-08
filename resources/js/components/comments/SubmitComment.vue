@@ -1,7 +1,7 @@
 <template>
     <div>
-        <form action="/comments/{{ $item->id }}" method="POST">
-                @csrf
+        <form action="comments/{{ $item->id }}" method="POST">
+            
             <div class="p-item__container1">
                 <textarea name="comment" cols="30" rows="8" class="p-item__input">
 

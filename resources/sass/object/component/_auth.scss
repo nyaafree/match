@@ -1,7 +1,7 @@
 .c-auth{
     background:rgb(22, 240, 22);
     width:50%;
-    min-height:350px;
+    min-height:600px;
     margin:0 auto;
     padding:$space_l;
     box-sizing: border-box;
@@ -10,6 +10,9 @@
     border-radius: $space_m;
     color: #fff;
     font-weight: bold;
+    @include mq('lg'){
+        width: 80%;
+    }
     @include mq(){
         width: 95%;
     }

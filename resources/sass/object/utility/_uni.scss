@@ -34,9 +34,11 @@
     box-sizing: border-box;
     color: #fff;
     border: 2px solid #fff;
-    @include mq(){
+    @include mq('lg'){
         width: 150px;
+        padding: $space_m;
     }
+   
 }
 .btn-wide{
     padding: $space_m $space_l;

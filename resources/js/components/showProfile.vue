@@ -25,7 +25,7 @@ export default {
     data(){
         return{
             isActive: true,
-            imgFolder: "/images/profile/",
+            imgFolder: "images/profile/",
         }
     },
     methods:{

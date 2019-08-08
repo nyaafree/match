@@ -34,7 +34,7 @@ export default {
     data(){
         return{
             receiveApplyItems: this.applyItems,
-            imgFolder: '/images/profile/',
+            imgFolder: 'images/profile/',
 
         }
     },

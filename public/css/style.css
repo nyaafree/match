@@ -203,6 +203,13 @@ table {
           box-sizing: border-box;
 }
 
+@media screen and (max-width: 1050px) {
+  #main {
+    width: 90%;
+    padding: 15px;
+  }
+}
+
 @media screen and (max-width: 414px) {
   #main {
     width: 100%;
@@ -312,7 +319,7 @@ table {
 .c-auth {
   background: #16f016;
   width: 50%;
-  min-height: 350px;
+  min-height: 600px;
   margin: 0 auto;
   padding: 15px;
   -webkit-box-sizing: border-box;
@@ -322,6 +329,12 @@ table {
   border-radius: 10px;
   color: #fff;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1050px) {
+  .c-auth {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 414px) {
@@ -819,6 +832,12 @@ table {
   color: #fff;
 }
 
+@media screen and (max-width: 1050px) {
+  .p-item {
+    width: 94%;
+  }
+}
+
 @media screen and (max-width: 414px) {
   .p-item {
     width: 100%;
@@ -960,7 +979,7 @@ table {
 
 .p-middleHead {
   min-height: 500px;
-  background-image: url("/images/businessman-collaborate-collaboration-872957.jpg");
+  background-image: url("/match/images/businessman-collaborate-collaboration-872957.jpg");
   background-size: cover;
   opacity: 1;
   margin-top: 100px;
@@ -1404,9 +1423,10 @@ table {
   border: 2px solid #fff;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 1050px) {
   .btn {
     width: 150px;
+    padding: 10px;
   }
 }
 

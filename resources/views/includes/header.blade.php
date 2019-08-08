@@ -1,7 +1,7 @@
 <header id="header">
     <nav class="p-nav">
         <div class="p-nav__container1">
-            <a href="/" class="p-nav__title">Match</a>
+            <a href="{{ url('/') }}" class="p-nav__title">Match</a>
             @include('includes.searchItems')
             @if (Auth::check())
             <div class="bell-area">

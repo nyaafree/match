@@ -10,6 +10,9 @@
     margin-bottom: $space_3l;
     border-radius: $space_s;
     color: #fff;
+    @include mq('lg'){
+        width: 94%;
+    }
     @include mq(){
         width: 100%;
         padding: $space_xl $space_m;

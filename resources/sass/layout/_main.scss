@@ -6,6 +6,10 @@
     margin-bottom:100px;
     padding: $space_xxl;
     box-sizing: border-box;
+    @include mq('lg'){
+        width: 90%;
+        padding: $space_l;
+    }
     @include mq(){
         width: 100%;
         padding: $space_m;

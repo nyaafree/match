@@ -21,7 +21,7 @@ export default {
         props: ['aplComment'],
     data(){
         return{
-            imgFolder: '/images/profile/',
+            imgFolder: 'images/profile/',
 
         }
     },

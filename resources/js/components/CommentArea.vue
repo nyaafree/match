@@ -143,7 +143,7 @@ export default {
         fetchCommentList: function(){
             const self = this;
              console.log('Fetching Comments...');
-             axios.get('/api/index').then((response) => {
+             axios.get('../api/index').then((response) => {
                 console.log(response.data);
                 self.receiveComments = response.data;
             })
@@ -156,7 +156,8 @@ export default {
             let self = this;
             let params = Object.assign({}, self.input);
             console.log(params);
-            axios.post('/api/comment',params)
+            axios.post('../api/comment',params
+            )
             .then(function(response){
             self.input.comment = '';
             self.receiveComments = response.data;

@@ -54,7 +54,7 @@ export default {
     methods:{
         fetchCommentList(){
             console.log('Fetching Comments...');
-            axios.post('/api/fetch/'+ this.comment.id).then((response) => {
+            axios.post('api/fetch/'+ this.comment.id).then((response) => {
             console.log(response.data);
             this.edit = false;
             this.comment.rcomment = response.data.comment;
@@ -70,7 +70,7 @@ export default {
             console.log('Updating Comment'+ id + '...');
             let self = this;
             let params = Object.assign({}, self.comment);
-            axios.patch('/api/comment/'+id,params)
+            axios.patch('api/comment/'+id,params)
             .then(function(response){
                 self.fetchCommentList();
                 alert('コメント編集できました！');
@@ -82,7 +82,7 @@ export default {
         deleteComment(id){
             let self = this;
             if(window.confirm('本当に登録案件を削除しますか？')){
-                 axios.delete('/api/comment/'+id)
+                 axios.delete('api/comment/'+id)
                  .then(function(response){
                     self.$emit('update',self.user_id);
                      alert('コメント削除完了しました！');

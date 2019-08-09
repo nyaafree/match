@@ -30,7 +30,7 @@ export default {
     props:['item'],
     data(){
         return{
-             imgFolder: "match/images/profile/",
+             imgFolder: "/match/images/profile/",
         }
     },
     methods:{

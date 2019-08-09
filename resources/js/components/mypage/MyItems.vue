@@ -50,7 +50,7 @@ export default {
     methods:{
         fetchMyItems(){
             console.log('fetching MyItems ....');
-            axios.get('/api/items').then((response) => {
+            axios.get('api/items').then((response) => {
                 console.log(response.data);
                 // this.receiveMyItems = response.data;
             })

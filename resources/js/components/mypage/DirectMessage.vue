@@ -37,7 +37,7 @@ export default {
     methods:{
         fetchMessage(){
             console.log('Fetching Message...');
-            axios.post('/api/message/update/'+ this.message.id).then((response) => {
+            axios.post('api/message/update/'+ this.message.id).then((response) => {
             console.log(response.data);
             this.edit = false;
             this.message.rmessage = response.data.message;
@@ -53,7 +53,7 @@ export default {
             console.log('Updating Message'+ id + '...');
             let self = this;
             let params = Object.assign({}, self.message);
-            axios.patch('/api/message/'+id,params)
+            axios.patch('api/message/'+id,params)
             .then(function(response){
                 self.fetchMessage();
                 alert('メッセージ編集できました！');
@@ -65,7 +65,7 @@ export default {
         deleteMessage(id){
             let self = this;
             if(window.confirm('本当にこのメッセージを削除しますか？')){
-                 axios.delete('/api/message/'+id)
+                 axios.delete('api/message/'+id)
                  .then(function(response){
                     self.$emit('update',self.user_id);
                      alert('メッセージ削除完了しました！');

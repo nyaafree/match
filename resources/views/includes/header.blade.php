@@ -14,7 +14,7 @@
                            <?php $applies = $item->applies ?>
                            @foreach ($applies as $apply)
                                @if ($apply->read === 0)
-                                   <li><a href="/board/{{ $apply->board->id }}">{{ $apply->item->title }}に{{ $apply->user->name }}さんからの応募がありました。</a></li>
+                                   <li><a href="{{ url('board/'.$apply->board->id) }}">{{ $apply->item->title }}に{{ $apply->user->name }}さんからの応募がありました。</a></li>
                                @endif
                             @endforeach
                         @endforeach

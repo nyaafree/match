@@ -68,7 +68,7 @@ class ItemController extends Controller
        $input['user_id'] = Auth::user()->id; // 案件投稿者のユーザーIDを設定
        $item = Item::create($input);
        Session::flash('flash_message','案件投稿が完了しました！');
-       return redirect('/mypage');
+       return redirect('mypage');
     }
 
     /**

@@ -15,18 +15,20 @@
 </template>
 
 <script>
+
 import showProfile from "../showProfile";
 export default {
     // props: ['aplComments'],
         props: ['aplComment'],
     data(){
         return{
-            imgFolder: 'images/profile/',
+            imgFolder: '/match/images/profile/',
 
         }
     },
     mounted(){
         console.log(this.aplComment);
+        // console.log(this.baseUrl);
     },
     methods:{
         showProfile: function(event){

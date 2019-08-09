@@ -1,7 +1,7 @@
 <template>
     <div>
          <h1 class="index-title" id="apply">応募案件一覧</h1>
-         <a :href="'items/' + board.item.id" class="c-panel" v-for="(board, index) in applyItems" :key="board.id" >
+         <a :href="'/match/items/' + board.item.id" class="c-panel" v-for="(board, index) in applyItems" :key="board.id" >
         <div class="c-panel__container1">
             <h2 class="c-panel__title">{{ board.item.title }}</h2>
                 <div class="c-panel__prof" @click="showProfile(index, $event)">
@@ -20,7 +20,7 @@
         </div>
         <div class="c-panel__boards">
             <h3>取引掲示板</h3>
-            <a :href="'board/' + board.id "  style="display:block;">掲示板番号{{ board.id }}</a>
+            <a :href="'/match/board/' + board.id "  style="display:block;">掲示板番号{{ board.id }}</a>
         </div>
         <show-profile :item="board.item" ref="child"/>
 
@@ -34,7 +34,7 @@ export default {
     data(){
         return{
             receiveApplyItems: this.applyItems,
-            imgFolder: 'images/profile/',
+            imgFolder: '/match/images/profile/',
 
         }
     },

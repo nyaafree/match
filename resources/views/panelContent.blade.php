@@ -35,7 +35,7 @@
             <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="match" data-show-count="false">Tweet</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-            <form action="/apply/{{ $item->id }}" method="POST">
+            <form action="{{ url('/apply/'.$item->id) }}" method="POST">
             @csrf
                 <button class="btn btn-purple">応募する</button>
             </form>
@@ -50,7 +50,7 @@
             <p class="p-item__nothing">コメントはまだ投稿されていません。</p>
         @endif
         <div id="app">
-            <comment-area  comments="{{ $comments }}" item="{{ $item }}" user="{{ $user }}"/>
+            <comment-area  comments="{{ $comments }}" item="{{ $item }}" user="{{ $user }}" baseUrl="{{ json_encode(url('/')) }} "/>
         </div>
         @include('mypage.includes.formErrors');
 

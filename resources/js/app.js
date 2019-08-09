@@ -9,6 +9,8 @@ require('./bootstrap');
 // let axios = require('axios');
 import axios from 'axios';
 
+axios.defaults.baseURL = 'https://engineersmatch.sakura.ne.jp/match/';
+
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')

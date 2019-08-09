@@ -2,7 +2,7 @@
     <div>
             <h1 class="c-post__title">案件編集</h1>
             <div class="c-post__formArea">
-                <form :action="'items/' + item.id" method="POST" class="c-post__form">
+                <form :action="'/match/items/' + item.id" method="POST" class="c-post__form">
                     <input type="hidden" name="_token" :value="csrf">
                     <input type="hidden" name="_method" value="PATCH">
                     <div class="c-post__inputGroup">

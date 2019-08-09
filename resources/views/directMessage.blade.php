@@ -91,7 +91,7 @@
         @endforeach
        </div><!--/①LINE会話終 !-->
        @endif --}}
-       <form action="/message/{{ $board->id }}" method="POST">
+       <form action="{{ url('message/'.$board->id) }}" method="POST">
             @csrf
             <div class="p-item__container1">
                 <textarea name="message" cols="30" rows="8" class="p-item__input">

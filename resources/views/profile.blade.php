@@ -11,7 +11,7 @@
         <div class="p-prof">
             <h1 class="p-prof__title">プロフィール編集</h1>
             <div class="p-prof__formArea">
-              <form action="profile/{{ $user->id }}" method="POST" class="p-prof__form" enctype="multipart/form-data">
+              <form action="{{ url('profile/'.$user->id) }}" method="POST" class="p-prof__form" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="p-prof__inputWrapper1">

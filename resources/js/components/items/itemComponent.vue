@@ -1,6 +1,6 @@
 <template>
     <div>
-        <a :href="'items/' + item.id" class="c-panel">
+        <a :href="'/match/items/' + item.id" class="c-panel">
         <div class="c-panel__container1">
             <h2 class="c-panel__title">{{ item.title }}</h2>
                 <div class="c-panel__prof" @click="showProfile($event)">
@@ -30,7 +30,7 @@ export default {
     props:['item'],
     data(){
         return{
-             imgFolder: "images/profile/",
+             imgFolder: "match/images/profile/",
         }
     },
     methods:{

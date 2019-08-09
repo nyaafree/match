@@ -21,7 +21,7 @@ export default {
         props: ['aplMessage'],
     data(){
         return{
-            imgFolder: 'images/profile/',
+            imgFolder: 'match/images/profile/',
 
         }
     },

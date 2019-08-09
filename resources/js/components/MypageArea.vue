@@ -33,7 +33,7 @@ export default {
     methods:{
         updateMyItems(id){
             console.log('Updating Comments...');
-            axios.post('api/all/comments' + id).then((response) => {
+            axios.post('/api/all/comments' + id).then((response) => {
                 console.log(response.data);
                 this.receiveComments = response.data;
             })
@@ -42,7 +42,7 @@ export default {
             })
         },
         updateMyMessages(id){
-            axios.post('api/all/messages/' + id).then((response) => {
+            axios.post('/api/all/messages/' + id).then((response) => {
                 console.log(response.data);
                 this.receiveMessages = response.data;
             })

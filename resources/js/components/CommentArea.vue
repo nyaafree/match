@@ -10,7 +10,7 @@
                 <proposer-comments  :prp-comment="comment" v-else/> -->
                   <proposer-comments  :prp-comment="comment" v-if="comment.user_id == receiveItem.user_id"/>
 
-                  <applicant-comments :apl-comment="comment" v-else/>
+                  <applicant-comments :apl-comment="comment"  v-else/>
             </div>
         </div>
 
@@ -66,8 +66,10 @@ export default {
        if(Object.keys(this.receiveComments).length != 0){
             this.showComments = true;
         }
+        // console.log(this.baseUrl);
         // this.input.id = this.receiveItem.id;
-
+        
+ 
     },
     components:{
         ApplicantComments,
@@ -141,7 +143,7 @@ export default {
         fetchCommentList: function(){
             const self = this;
              console.log('Fetching Comments...');
-             axios.get('api/index').then((response) => {
+             axios.get('/api/index').then((response) => {
                 console.log(response.data);
                 self.receiveComments = response.data;
             })
@@ -154,7 +156,7 @@ export default {
             let self = this;
             let params = Object.assign({}, self.input);
             console.log(params);
-            axios.post('api/comment',params)
+            axios.post('/api/comment',params)
             .then(function(response){
             self.input.comment = '';
             self.receiveComments = response.data;

@@ -2,7 +2,7 @@
     <div>
             <h1 class="c-post__title">案件投稿</h1>
             <div class="c-post__formArea">
-                <form action="items" method="POST" class="c-post__form">
+                <form action="/match/items" method="POST" class="c-post__form">
                     <input type="hidden" name="_token" :value="csrf">
                     <div class="c-post__inputGroup">
                         <label for="title" class="c-post__labelTitle">案件タイトル</label>

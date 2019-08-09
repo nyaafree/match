@@ -1,5 +1,5 @@
 <div class="c-search">
-    <form action="search" method="GET">
+    <form action="{{ url('search') }}" method="GET">
         <div class="c-search__wrapper">
             <input type="text" class="c-search__input" name="name">
             <span class="c-search__btnWrap">

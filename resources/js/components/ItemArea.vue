@@ -164,7 +164,7 @@ export default {
           let self = this;
           let params = Object.assign({}, self.itemCategory);
           console.log(params);
-          axios.post('api/category',params)
+          axios.post('/api/category',params)
           .then((response)=>{
               console.log('success');
             //   console.log(response.data.items);

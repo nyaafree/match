@@ -35,6 +35,12 @@
         <script src="{{ asset('js/app.js')}}"></script>
         <script>
             $(function(){
+
+                var $ftr = $('#footer');
+                if ( window.innerHeight > $ftr.offset().top + $ftr.outerHeight() ){
+                    $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
+                };
+
                  $('.js-toggle-sp-menu').on('click', function () {
                      $(this).toggleClass('active');
                      $('.js-toggle-sp-menu-target').toggleClass('active');

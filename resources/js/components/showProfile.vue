@@ -3,7 +3,8 @@
         <div class="modal-window" :class="{ 'is-hide': isActive }" @click="preventLoad($event)">
             <div class="p-modal">
                 <div class="p-modal__container1">
-                    <img :src="imgFolder + item.user.photo.filename" class="p-modal__img">
+                    <img :src="imgFolder + item.user.photo.filename" class="p-modal__img" v-if="item.user.photo.filename != null">
+                    <img :src="imgFolder + 'noimage.png'" class="p-model__img" v-else>
                     <div class="p-modal__container2">
                         <h2 class="p-modal__title">ユーザー名:{{ item.user.name}}</h2>
                         <h2 class="p-modal__title">自己紹介</h2>

@@ -16,7 +16,11 @@
             <h2 class="c-panel__title">{{ $item->title }}</h2>
             <div class="c-panel__prof js-show-profile" data-user="{{ $item->user }}" id="user">
                 <span class="c-panel__span">registered by</span>
-                <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="c-panel__img">
+                @if( $item->user->photo->filename != null)
+                    <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="c-panel__img">
+                @else
+                    <img src="{{ url('images/profile/noimage.png') }}">
+                @endif
                 <span class="c-panel__span">{{ $item->user->name }}</span>
 
 

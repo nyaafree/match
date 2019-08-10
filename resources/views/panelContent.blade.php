@@ -16,10 +16,10 @@
             <h2 class="c-panel__title">{{ $item->title }}</h2>
             <div class="c-panel__prof js-show-profile" data-user="{{ $item->user }}" id="user">
                 <span class="c-panel__span">registered by</span>
-                @if( $item->user->photo->filename != null)
+                @if( $item->user->photo != null)
                     <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="c-panel__img">
                 @else
-                    <img src="{{ url('images/profile/noimage.png') }}">
+                    <img src="{{ url('images/profile/noimage.png') }}" class="c-panel__img">
                 @endif
                 <span class="c-panel__span">{{ $item->user->name }}</span>
 
@@ -73,7 +73,10 @@
                 <div class="p-modal__container2">
                     <h2 class="p-modal__title">ユーザー名:{{ $item->user->name}}</h2>
                     <h2 class="p-modal__title">自己紹介</h2>
-                    <p class="p-modal__introduction">{{ $item->user->introduction }}</p>
+                    <p class="p-modal__introduction">
+                        
+                        {{ $item->user->introduction }}
+                    </p>
                 </div>
             </div>
         </div>

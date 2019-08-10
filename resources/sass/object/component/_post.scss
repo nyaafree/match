@@ -4,13 +4,16 @@
     background: linear-gradient(to bottom right, rgb(241, 121, 235), #FFC778);
     min-height: 500px;
     width:82%;
+    margin-left: 18%;
     padding: $space_xl;
     box-sizing: border-box;
     @include mq('md'){
+        margin-left: 30%;
         width: 70%;
         padding: $space_xl $space_m;
     }
     @include mq(){
+        margin-left: 0;
         width: 100%;
     }
     &__title{

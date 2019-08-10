@@ -18,7 +18,11 @@
                     <div class="p-prof__inputGroup">
                         <label for="image" class="p-prof__labelTitle">画像</label>
                         <div>
-                            <img src="{{ url('/images/profile/'.$user->photo['filename']) }}" alt="" class="p-prof__image js-img-preview" width="50%">
+                            @if($user->photo != null)
+                                <img src="{{ url('/images/profile/'.$user->photo['filename']) }}" alt="" class="p-prof__image js-img-preview" width="50%">
+                            @else
+                                <img src="{{ url('/images/profile/noimage.png') }}" class="p-prof__image js-img-preview" width="50%">
+                            @endif 
                         </div>
                         <input type="file" name="file" id="image" class="js-img-input">
                     </div>
@@ -42,15 +46,14 @@
                         <button type="submit" class="btn btn-purple">編集</button>
                     </div>
                 </div>
-
+                @include('mypage.includes.formErrors')
               </form>
             </div>
         </div>
     </div>
 
-    @component('mypage.includes.formErrors')
+    
 
-    @endcomponent
 @endsection
 
 @section('footer')

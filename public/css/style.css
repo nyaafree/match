@@ -247,6 +247,8 @@ table {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   background: #6f87f3;
+  min-height: 800px;
+  position: fixed;
 }
 
 @media screen and (max-width: 768px) {
@@ -270,11 +272,21 @@ table {
   margin: 0 auto;
   padding: 20px 40px;
   box-sizing: border-box;
+  margin-left: 18%;
+}
+
+@media screen and (max-width: 768px) {
+  #myMain {
+    padding: 15px;
+    width: 70%;
+    margin-left: 30%;
+  }
 }
 
 @media screen and (max-width: 414px) {
   #myMain {
     width: 100%;
+    margin-left: 0;
     padding: 10px;
   }
 }
@@ -426,6 +438,7 @@ table {
   background: linear-gradient(to bottom right, #f179eb, #FFC778);
   min-height: 500px;
   width: 82%;
+  margin-left: 18%;
   padding: 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -433,6 +446,7 @@ table {
 
 @media screen and (max-width: 768px) {
   .c-post {
+    margin-left: 30%;
     width: 70%;
     padding: 20px 10px;
   }
@@ -440,6 +454,7 @@ table {
 
 @media screen and (max-width: 414px) {
   .c-post {
+    margin-left: 0;
     width: 100%;
   }
 }
@@ -1248,10 +1263,12 @@ table {
   padding: 20px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin-left: 18%;
 }
 
 @media screen and (max-width: 768px) {
   .p-prof {
+    margin-left: 30%;
     width: 70%;
     padding: 20px 10px;
   }
@@ -1260,6 +1277,7 @@ table {
 @media screen and (max-width: 414px) {
   .p-prof {
     padding: 10px;
+    margin-left: 0;
     width: 100%;
   }
 }
@@ -1272,7 +1290,7 @@ table {
   color: #fff;
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 768px) {
   .p-prof__title {
     font-size: 24px;
   }
@@ -1280,7 +1298,7 @@ table {
 
 .p-prof__formArea {
   margin: 20px auto;
-  width: 90%;
+  width: 100%;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 10px 20px;
@@ -1289,7 +1307,6 @@ table {
 
 @media screen and (max-width: 414px) {
   .p-prof__formArea {
-    width: 100%;
     padding: 10px;
   }
 }

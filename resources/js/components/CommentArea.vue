@@ -161,7 +161,7 @@ export default {
             .then(function(response){
             self.input.comment = '';
             self.receiveComments = response.data;
-
+　　　　　　　self.fetchCommentList();
             })
             .catch(function(error){
                 console.log(error.response.data.errors);

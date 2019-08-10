@@ -4,12 +4,15 @@
     width:82%;
     padding: $space_xl;
     box-sizing: border-box;
+    margin-left: 18%;
     @include mq('md'){
+        margin-left: 30%;
         width: 70%;
         padding: $space_xl $space_m;
     }
     @include mq(){
         padding: $space_m;
+        margin-left: 0;
         width: 100%;
     }
     &__title{
@@ -18,18 +21,17 @@
         margin-bottom: $space_xl;
         font-weight: bold;
         color: #fff;
-        @include mq(){
+        @include mq('md'){
             font-size: $font-size_xl;
         }
     }
     &__formArea{
         margin: $space_xl auto;
-        width: 90%;
+        width: 100%;
         box-sizing: border-box;
         padding: $space_m $space_xl;
         border-radius: $space_s;
         @include mq(){
-            width: 100%;
             padding: $space_m;
         }
     }

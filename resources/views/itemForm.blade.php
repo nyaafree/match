@@ -67,6 +67,6 @@
 @endsection
 
 @section('footer')
-  @parent
   @include('includes.footer')
+  @parent
 @endsection

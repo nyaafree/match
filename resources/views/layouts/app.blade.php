@@ -30,7 +30,7 @@
     @section('header')
 
     @show
-
+    
     @yield('content')
 
     @section('footer')
@@ -39,11 +39,9 @@
             $(function(){
 
                 var $ftr = $('#footer');
-                // if ( window.innerHeight > $ftr.offset().top + $ftr.outerHeight() ){
-                //     $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
-                // };
-                $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
-
+                if ( window.innerHeight > $ftr.offset().top + $ftr.outerHeight() ){
+                    $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
+                };
 
                  $('.js-toggle-sp-menu').on('click', function () {
                      $(this).toggleClass('active');

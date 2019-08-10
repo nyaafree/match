@@ -29,7 +29,7 @@
     <li class="p-hamburger__list"><a href="{{ route('login') }}">Login</a></li>
   @endif
   {{-- @include('includes.selectArea') --}}
-  <li class="p-hamburger__list js-nav-close"><a href="{{ url('match#category') }}" class="p-hamburger__link">案件種別表示</a></li>
-  <li class="p-hamburger__list js-nav-close"><a href="{{ url('match#paging') }}" class="p-hamburger__link">ページネーション</a></li>
+  <li class="p-hamburger__list js-nav-close"><a href="{{ url('#category') }}" class="p-hamburger__link">案件種別表示</a></li>
+  <li class="p-hamburger__list js-nav-close"><a href="{{ url('#paging') }}" class="p-hamburger__link">ページネーション</a></li>
 </ul>
 </nav>

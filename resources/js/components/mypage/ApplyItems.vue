@@ -6,7 +6,8 @@
             <h2 class="c-panel__title">{{ board.item.title }}</h2>
                 <div class="c-panel__prof" @click="showProfile(index, $event)">
                     <span class="c-panel__span">registered by</span>
-                    <img :src="imgFolder + board.item.user.photo.filename" class="c-panel__img">
+                    <img :src="imgFolder + board.item.user.photo.filename" class="c-panel__img" v-if="board.item.user.photo != null">
+                    <img :src="imgFolder + 'noimage.png'" class="c-panel__img" v-else>
                     <span class="c-panel__span">{{ board.item.user.name }}</span>
                 </div>
         </div>

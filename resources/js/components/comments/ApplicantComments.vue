@@ -3,6 +3,7 @@
         <div class="c-comment__questioner">
             <div class="c-comment__imgArea">
                 <img :src="imgFolder + aplComment.user.photo.filename" alt="" class="c-comment__image" @click="showProfile($event)">
+                <img :src="imgFolder + 'noimage.png'" class="c-comment__image" @click="showProfile($event)">
             </div>
             <div class="c-comment__question">
                 <div class="c-comment__says">

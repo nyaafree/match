@@ -65,7 +65,11 @@
 <div class="modal-window js-profile-window is-hide">
         <div class="p-modal">
             <div class="p-modal__container1">
-                <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="p-modal__img">
+                @if($item->user->photo != null)
+                    <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="p-modal__img">
+                @else
+                    <img src="{{ url('images/profile/noimage.png') }}" class="p-modal__img">
+                @endif
                 <div class="p-modal__container2">
                     <h2 class="p-modal__title">ユーザー名:{{ $item->user->name}}</h2>
                     <h2 class="p-modal__title">自己紹介</h2>

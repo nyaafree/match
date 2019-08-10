@@ -5,7 +5,7 @@
             <h2 class="c-panel__title">{{ item.title }}</h2>
                 <div class="c-panel__prof" @click="showProfile($event)">
                     <span class="c-panel__span">registered by</span>
-                    <img :src="imgFolder + item.user.photo.filename" class="c-panel__img" v-if="item.user.photo.filename != null">
+                    <img :src="imgFolder + item.user.photo.filename" class="c-panel__img" v-if="item.user.photo != null">
                     <img :src="imgFolder + 'noimage.png' "  class="c-panel__img" v-else>
                     <span class="c-panel__span">{{ item.user.name }}</span>
 
@@ -33,6 +33,9 @@ export default {
         return{
              imgFolder: "/match/images/profile/",
         }
+    },
+    mounted(){
+        console.log(this.item.user.photo);
     },
     methods:{
          showProfile: function(event){

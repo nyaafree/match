@@ -1,4 +1,6 @@
 <nav class="p-hamburger js-toggle-sp-menu-target">
+       
+<ul class="p-hamburger__menu">
         <form action="{{ url('search') }}" method="GET" class="hamburger-search">
                 <input type="text" class="c-search__input" name="name">
                 <span class="c-search__btnWrap">
@@ -7,7 +9,6 @@
                     </button>
                 </span>
         </form>
-<ul class="p-hamburger__menu">
 　
   <li class="p-hamburger__list js-nav-close"><a class="menu-link" href="/">TOP</a></li>
   @if (Auth::check())

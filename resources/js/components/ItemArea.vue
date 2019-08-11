@@ -40,6 +40,7 @@
   </div>
 </template>
 
+<script src="https://www.promisejs.org/polyfills/promise-6.1.0.min.js"></script>
 <script>
 import showProfile from "./showProfile";
 require('../object-assign');

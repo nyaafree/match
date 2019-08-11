@@ -1,29 +1,21 @@
 <template>
     <div>
         <div class="c-comment" v-if="showComments">
-            <!-- <applicant-comments :aplComments="applyComments"/>
-            <proposer-comments  :prpComments="proposeComments"/> -->
-            <!-- <applicant-comments :apl-comment="aplComment" v-for="aplComment in applyComments" :key="aplComment.id"/>
-            <proposer-comments  :prp-comment="prpComment" v-for="prpComment in proposeComments" :key="prpComment.id"/> -->
             <div v-for="comment in receiveComments" :key="comment.id">
-                <!-- <applicant-comments :apl-comment="comment" v-if="comment.user_id != item.user_id"/>
-                <proposer-comments  :prp-comment="comment" v-else/> -->
-                  <proposer-comments  :prp-comment="comment" v-if="comment.user_id == receiveItem.user_id"/>
-
-                  <applicant-comments :apl-comment="comment"  v-else/>
+                <!-- 案件投稿者のコメント -->
+                <proposer-comments  :prp-comment="comment" v-if="comment.user_id == receiveItem.user_id"/>
+                <!-- 案件に質問や疑問点がある人のコメント -->
+                <applicant-comments :apl-comment="comment"  v-else/>
             </div>
         </div>
 
         <form action="" @submit.prevent=" createComment() ">
-            <!-- <input type="hidden" name="_token" :value="csrf"> -->
             <div class="p-item__container1">
                 <textarea name="comment" cols="30" rows="8" class="p-item__input" v-model="input.comment">
 
                 </textarea>
-
                 <button type="submit" class="btn btn-lightblue">コメントする</button>
             </div>
-
         </form>
         <div class="error-area" v-if="errorMessages !== ''">
             <div class="error-show">
@@ -37,17 +29,15 @@
 <script>
 import ApplicantComments from "./comments/ApplicantComments";
 import ProposerComments from "./comments/ProposerComments";
-// import allComments from "./comments/AllComments";
-// import SubmitComment from "./comments/SubmitComment";
 
 export default {
     props:['comments','item','user'],
     data(){
         return{
+            // JSON.parse()でpropsとして渡ってきた文字列をJSON形式に変換
             receiveComments: JSON.parse(this.comments),
             receiveItem: JSON.parse(this.item),
-            // proposeComments:[],
-            // applyComments: [],
+           
 
             input:{
                 id: JSON.parse(this.item).id,
@@ -56,7 +46,6 @@ export default {
             },
             showComments: false,
             errorMessages: '',
-            // csrf: document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
         }
     },
     create(){
@@ -64,12 +53,10 @@ export default {
     },
     mounted(){
        if(Object.keys(this.receiveComments).length != 0){
+            // 案件詳細ページにコメントが一つでもつけられていればコメント一覧を表示。
+            // コメントが一つもなければ「コメントはまだ投稿されていません。」と表示
             this.showComments = true;
         }
-        // console.log(this.baseUrl);
-        // this.input.id = this.receiveItem.id;
-        
- 
     },
     components:{
         ApplicantComments,
@@ -81,66 +68,35 @@ export default {
       }
     },
     computed:{
-       applyComments: function(){
-            const self = this;
-            let arr = self.receiveComments;
-            let arr2 = self.receiveItem;
-            let a = [];
-            //  console.log(arr2.user_id);
-             // console.log(self.receiveItem.user_id);
-            // console.log(arr);
-            // console.log(self.receiveComments);
-            for (let comment of arr) {
-                if(comment.user_id != arr2.user_id ){
-                // console.log(comment.user_id);
-                   a.push(comment);
-                }
-            }
-            return a;
-       },
-       proposeComments: function(){
-           const self = this;
-            let arr = self.receiveComments;
-            // let arr3 = JSON.parse(self.receiveComments);
-            // console.log(arr);
-            // console.log(arr3);
-            let arr2 = self.receiveItem;
-            let b = [];
-            //  console.log(arr2.user_id);
-             // console.log(self.receiveItem.user_id);
-            // console.log(arr);
-            // console.log(self.receiveComments);
-            for (let comment of arr) {
-                if(comment.user_id == arr2.user_id ){
-                // console.log(comment.user_id);
-                   b.push(comment);
-                }
-            }
-            return b;
-       }
+    //    applyComments: function(){
+    //         const self = this;
+    //         let arr = self.receiveComments;
+    //         let arr2 = self.receiveItem;
+    //         let a = [];
+    //         for (let comment of arr) {
+    //             if(comment.user_id != arr2.user_id ){
+    //                a.push(comment);
+    //             }
+    //         }
+    //         return a;
+    //    },
+    //    proposeComments: function(){
+    //        const self = this;
+    //         let arr = self.receiveComments;
+    //         let arr2 = self.receiveItem;
+    //         let b = [];
+    //         for (let comment of arr) {
+    //             if(comment.user_id == arr2.user_id ){
+    //                b.push(comment);
+    //             }
+    //         }
+    //         return b;
+    //    }
 
     },
     methods:{
-        changeToJson: function(){
-            const self = this;
-            let arr = self.comments;
-            let arr2 = self.item;
-            //  console.log(arr2.user_id);
-             // console.log(self.receiveItem.user_id);
-            // console.log(arr);
-            // console.log(self.receiveComments);
-            for (let comment of arr) {
-                if(comment.user_id != arr2.user_id ){
-                // console.log(comment.user_id);
-                    self.applyComments.push(comment);
-                }else{
-                    self.proposeComments.push(comment);
-                }
-            }
-             console.log(self.applyComments);
-            console.log(self.proposeComments);
-        },
         fetchCommentList: function(){
+            // 案件詳細画面につけられたコメント一覧を取得
             const self = this;
              console.log('Fetching Comments...');
              axios.get('../api/index').then((response) => {
@@ -150,22 +106,26 @@ export default {
             .catch((error) => {
                 console.log(error);
             })
-    },
+        },
         createComment: function(){
-            console.log('Creating input...');
+            // コメントを投稿する
+            console.log('Creating Comment...');
             let self = this;
             let params = Object.assign({}, self.input);
             console.log(params);
             axios.post('../api/comment',params
             )
             .then(function(response){
-            self.input.comment = '';
-            self.receiveComments = response.data;
-　　　　　　　self.fetchCommentList();
+                // v-modelでフォームと紐づけられたself.input.commentを空にしておかないとコメント投稿後も投稿したコメント内容が入力フォームに表示されてしまう
+                self.input.comment = '';
+                self.receiveComments = response.data;
+                // コメント投稿後に案件詳細画面につけられたコメント一覧を更新する
+　　　　　　　    self.fetchCommentList();
             })
             .catch(function(error){
                 console.log(error.response.data.errors);
                 console.log(error.response.data.errors.comment);
+                // data属性のerrorMessagesにバリデーションエラーメッセージを格納する
                 self.errorMessages = error.response.data.errors;
            });
 

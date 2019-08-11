@@ -19,8 +19,6 @@ import axios from 'axios';
 // };
 window.Vue = require('vue');
 
-// window.Vue = require('vue');
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -49,7 +47,6 @@ Vue.component('message-area', require('./components/messageArea.vue').default);
 Vue.component('applicant-message', require('./components/messages/ApplicantMessage.vue').default);
 Vue.component('proposer-message',require('./components/messages/ProposerMessage.vue').default);
 Vue.component('item-component', require('./components/items/itemComponent.vue').default);
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

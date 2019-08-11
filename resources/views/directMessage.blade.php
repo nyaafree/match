@@ -43,55 +43,21 @@
                 <message-area  messages="{{ $messages }}" item="{{ $item }}" user="{{ $user }}"/>
         </div>
         <div class="modal-window js-profile-window is-hide">
-                <div class="p-modal">
-                    <div class="p-modal__container1">
-                        <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="p-modal__img">
-                        <div class="p-modal__container2">
-                            <h2 class="p-modal__title">ユーザー名:{{ $item->user->name}}</h2>
-                            <h2 class="p-modal__title">自己紹介</h2>
-                            <p class="p-modal__introduction">{{ $item->user->introduction }}</p>
-                        </div>
+            <div class="p-modal">
+                <div class="p-modal__container1">
+                    <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="p-modal__img">
+                    <div class="p-modal__container2">
+                        <h2 class="p-modal__title">ユーザー名:{{ $item->user->name}}</h2>
+                        <h2 class="p-modal__title">自己紹介</h2>
+                        <p class="p-modal__introduction">{{ $item->user->introduction }}</p>
                     </div>
                 </div>
-
-
             </div>
-            <div class="cover js-profile-background is-hide">
+        </div>
+        <div class="cover js-profile-background is-hide">
 
-            </div>
-        {{-- <div class="c-comment"><!--①LINE会話全体を囲う-->
-          @foreach ($messages as $message)
-
-             @if ($message->user_id != $item->user_id)
-                 <!--②左コメント始-->
-                 <div class="c-comment__questioner">
-                     <div class="c-comment__imgArea">
-                         <img src="{{ url('/images/profile/'.$message->user->photo->filename) }}" alt="" class="c-comment__image js-show-profile">
-                     </div>
-                     <div class="c-comment__question">
-                         <div class="c-comment__says">
-                            <p>{{ $message->message }}</p>
-                         </div>
-                     </div>
-                </div>
-
-               <!--②/左コメント終-->
-             @else
-             <!--③右コメント始-->
-               <div class="c-comment__answer">
-                 <p>
-                     {{ $message->message}}
-                 </p>
-               </div>
-               <!--/③右コメント終-->
-             @endif
-
-
-
-        @endforeach
-       </div><!--/①LINE会話終 !-->
-       @endif --}}
-       <form action="{{ url('message/'.$board->id) }}" method="POST">
+        </div>
+        <form action="{{ url('message/'.$board->id) }}" method="POST">
             @csrf
             <div class="p-item__container1">
                 <textarea name="message" cols="30" rows="8" class="p-item__input">
@@ -106,26 +72,19 @@
 @endsection
 
 @section('footer')
-  <script>
-       $(function(){
-        $('.js-show-profile').on('click', function(event){
-                    // event.stopPropagation();
-                     console.log('clicked!!');
-                     $('.js-profile-window').toggleClass('is-hide');
-                     $('.js-profile-background').toggleClass('is-hide');
-
-
-
-
-
-
-                 });
-                 $('.js-profile-background').on('click', function(){
-                        $('.js-profile-window').toggleClass('is-hide');
-                        $(this).toggleClass('is-hide');
-                 });
-      });
-  </script>
+    <script>
+        $(function(){
+            $('.js-show-profile').on('click', function(event){
+                console.log('clicked!!');
+                $('.js-profile-window').toggleClass('is-hide');
+                $('.js-profile-background').toggleClass('is-hide');
+            });
+            $('.js-profile-background').on('click', function(){
+                $('.js-profile-window').toggleClass('is-hide');
+                $(this).toggleClass('is-hide');
+            });
+        });
+    </script>
   @include('includes.footer')
 
   @parent

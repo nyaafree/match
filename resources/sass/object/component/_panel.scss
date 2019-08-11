@@ -90,6 +90,8 @@
         border: solid 1px rgb(86, 194, 162);
         border-radius: $space_s;
         margin-bottom: $space_m;
+        white-space: pre-wrap;
+        word-wrap: break-word;
     }
     &__btn{
         z-index: 1;
@@ -100,6 +102,7 @@
         border: none;
         background: rgb(243, 103, 85);
         margin-left: $space_m;
+       
         a{
             &:hover{
                 color: #fff;

@@ -16,11 +16,11 @@ class AxiosController extends Controller
 
         $id = $request->input(['id']);
         if($id == 0){
-            $items = Item::with(['user.photo', 'category'])->get();
+            $items = Item::with(['user.photo', 'category'])->orderBy('created_at','DESC')->get();
             $items = json_encode($items);
         }else{
             $category = Category::find($id);
-            $items = $category->items()->with(['user.photo','category'])->get();
+            $items = $category->items()->with(['user.photo','category'])->orderBy('created_at','DESC')->get();
             $items = json_encode($items);
         }
         return $items;
@@ -55,6 +55,7 @@ class AxiosController extends Controller
         return Message::findOrFail($id);
     }
     public function messageDelete($id){
+
         return Message::destroy($id);
     }
     public function allMessages(Request $request, $id){

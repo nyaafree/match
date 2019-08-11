@@ -640,6 +640,8 @@ table {
   margin: 0;
   padding: 0;
   line-height: 120%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .c-comment__answer {
@@ -656,6 +658,8 @@ table {
   border-radius: 12px;
   background: #30e852;
   font-size: 15px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .c-comment__answer p:after {
@@ -941,6 +945,9 @@ table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 @media screen and (max-width: 414px) {
@@ -981,6 +988,8 @@ table {
           box-sizing: border-box;
   margin-top: 15px;
   line-height: 150%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .p-message {
@@ -1198,6 +1207,8 @@ table {
   border: solid 1px #56c2a2;
   border-radius: 5px;
   margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .c-panel__btn {
@@ -1442,7 +1453,7 @@ table {
 
 @media screen and (max-width: 1050px) {
   .btn {
-    width: 150px;
+    width: 120px;
     padding: 10px;
   }
 }

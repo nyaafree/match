@@ -1,74 +1,48 @@
 <template>
   <div>
     <div class="flex-right">
-            <form action="">
-                <input type="hidden" name="_token" v-bind:value="csrf">
-                <select name="category" id="category" @change="registerId()" class="c-post__select"
-                v-model="itemCategory.id">
-                    <option class="c-post__option" value="0">全ての案件を表示</option>
-
-                        <option :value="category.id" v-for="category in categories" :key="category.id"
-                        >
-                                {{ category.name }}
-                        </option>
-                </select>
-            </form>
-        </div>
-    <!-- <a :href="'items/' + item.id" class="c-panel" v-for="(item, index) in displayItems" :key="item.id" >
-        <div class="c-panel__container1">
-            <h2 class="c-panel__title">{{ item.title }}</h2>
-                <div class="c-panel__prof" @click="showProfile(index, $event)">
-                    <span class="c-panel__span">registered by</span>
-                    <img :src="imgFolder + item.user.photo.filename" class="c-panel__img">
-                    <span class="c-panel__span">{{ item.user.name }}</span>
-
-
-                </div>
-        </div>
-        <div class="c-panel__container2">
-            <h4 class="c-panel__category">{{ item.category.name }}</h4>
-            <div class="c-panel__price" v-if="item.category_id == 1">¥{{ item.lowPrice}} ~ {{ item.highPrice }}</div>
-        </div>
-        <div class="c-panel__detail">
-            {{ item.detail.substr(0,110)}}...read more
-        </div>
-        <show-profile :item="item" ref="child"/>
-
-    </a> -->
+        <form action="">
+            <input type="hidden" name="_token" v-bind:value="csrf">
+            <select name="category" id="category" @change="registerId()" class="c-post__select"
+            v-model="itemCategory.id">
+                <option class="c-post__option" value="0">全ての案件を表示</option>
+                <option :value="category.id" v-for="category in categories" :key="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+        </form>
+    </div>
     <item-component :item = item  v-for=" item in displayItems" :key="item.key"/>
     <div class="container paginate-original" id="paging">
         <nav>
-    <ul class="pagination">
-      <li class="page-item">
-        <a @click="first" class="page-link" href="#">&laquo;</a>
-      </li>
-      <li class="page-item">
-        <a @click="prev" class="page-link" href="#">&lt;</a>
-      </li>
-
-      <li
-        v-for="i in displayPageRange"
-        class="page-item"
-        :class="{active: i-1 === currentPage}" :key="i.id">
-        <a @click="pageSelect(i)" class="page-link" href="#">{{ i }}</a>
-      </li>
-
-      <li class="page-item">
-        <a @click="next" class="page-link" href="#">&gt;</a>
-      </li>
-      <li class="page-item">
-        <a @click="last" class="page-link" href="#">&raquo;</a>
-      </li>
-    </ul>
-  </nav>
+            <ul class="pagination">
+                <li class="page-item">
+                    <a @click="first" class="page-link" href="#">&laquo;</a>
+                </li>
+                <li class="page-item">
+                    <a @click="prev" class="page-link" href="#">&lt;</a>
+                </li>
+                <li
+                v-for="i in displayPageRange"
+                class="page-item"
+                :class="{active: i-1 === currentPage}" :key="i.id">
+                    <a @click="pageSelect(i)" class="page-link" href="#">{{ i }}</a>
+                </li>  
+                <li class="page-item">
+                    <a @click="next" class="page-link" href="#">&gt;</a>
+                </li>
+                <li class="page-item">
+                    <a @click="last" class="page-link" href="#">&raquo;</a>
+                </li>
+            </ul>
+        </nav>
     </div>
-
   </div>
-
 </template>
 
 <script>
 import showProfile from "./showProfile";
+require('../object-assign');
 export default {
   components:{
       showProfile,
@@ -76,25 +50,17 @@ export default {
   props:['categories','items','csrf'],
   data(){
       return{
-
           receiveItems: this.items,
           itemCategory: {
               id: 0,
           },
           currentPage: 0,   // 現在のページ番号
-          size: 2,         // 1ページに表示するアイテムの上限
-          pageRange: 10,    // ページネーションに表示するページ数の上限
+          size: 5,         // 1ページに表示するアイテムの上限
+          pageRange: 5,    // ページネーションに表示するページ数の上限
       }
   },
-//   beforeCreate() {
-//       const json1 = categories->toJson();
-//   },
   created(){
-    //    let self = this;
-    //     axios.get('api/list').then(function(response){
-    //         self.items = response.data;
-    //         console.log(self.categories);
-    //     });
+   
   },
   mounted(){
       console.log(this.receiveItems);
@@ -105,6 +71,7 @@ export default {
      * @return {number} 総ページ数(1はじまり)
      */
     pages () {
+      // 案件総数を１ページに表示する案件数で割ったものの小数点を切り上げてページ総数を取得
       return Math.ceil(this.receiveItems.length / this.size);
     },
     /**
@@ -113,6 +80,7 @@ export default {
      */
     displayPageRange () {
       const half = Math.ceil(this.pageRange / 2);
+      // startは最初のページ番号、endは最後のページ番号
       let start, end;
 
       if (this.pages < this.pageRange) {
@@ -148,6 +116,7 @@ export default {
      */
     displayItems () {
       const head = this.currentPage * this.size;
+      // slice()を使って全ての案件情報が入った配列から現在のページで表示する物を切り出した配列オブジェクトをreturnする
       return this.receiveItems.slice(head, head + this.size);
     },
     /**
@@ -156,11 +125,13 @@ export default {
      * @return {boolean} 現在のページならtrue
      */
     isSelected (page) {
+      // ページは0から始まるので１を引く
       return page - 1 === this.currentPage;
     }
   },
   methods:{
      registerId: function(){
+         // セレクトボックスで選択したカテゴリの案件情報をaxiosで一括取得する。
           let self = this;
           let params = Object.assign({}, self.itemCategory);
           console.log(params);

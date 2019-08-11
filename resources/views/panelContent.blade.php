@@ -88,24 +88,19 @@
     </div>
   @include('includes.footer')
   <script>
-      $(function(){
+    $(function(){
         $('.js-show-profile').on('click', function(event){
-                    // event.stopPropagation();
-                     console.log('clicked!!');
-                     $('.js-profile-window').toggleClass('is-hide');
-                     $('.js-profile-background').toggleClass('is-hide');
-
-
-
-
-
-
-                 });
-                 $('.js-profile-background').on('click', function(){
-                        $('.js-profile-window').toggleClass('is-hide');
-                        $(this).toggleClass('is-hide');
-                 });
-      });
+            // クリックしたらプロフィールと背景のモーダルが出現
+            console.log('clicked!!');
+            $('.js-profile-window').toggleClass('is-hide');
+            $('.js-profile-background').toggleClass('is-hide');
+        });
+        $('.js-profile-background').on('click', function(){
+            // モーダルの背景をクリックしたらプロフィールが消える
+            $('.js-profile-window').toggleClass('is-hide');
+            $(this).toggleClass('is-hide');
+        });
+    });
   </script>
   @parent
 @endsection

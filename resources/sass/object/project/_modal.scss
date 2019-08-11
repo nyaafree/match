@@ -1,6 +1,7 @@
 .p-modal{
     &__container1{
         display: flex;
+        align-items: flex-start;
         @include mq(){
             display: block;
         }
@@ -30,6 +31,7 @@
         box-sizing: border-box;
         margin-top: $space_l;
         line-height: 150%;
-
+        white-space: pre-wrap;
+        word-wrap: break-word;
     }
 }

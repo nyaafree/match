@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Apply;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class mypageController extends Controller
 {

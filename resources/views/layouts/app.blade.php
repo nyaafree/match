@@ -30,7 +30,7 @@
     @section('header')
 
     @show
-    
+
     @yield('content')
 
     @section('footer')
@@ -43,7 +43,15 @@
                     $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
                 };
                 // $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
-
+                $('.js-click-quit').on('click', function(){
+                    if(!confirm('本当に退会しますか？')){
+                        /* キャンセルの時の処理 */
+                        return false;
+                    }else{
+                        /*　OKの時の処理 */
+                        return true;
+                    }
+                })
 
                  $('.js-toggle-sp-menu').on('click', function () {
                      $(this).toggleClass('active');

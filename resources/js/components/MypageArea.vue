@@ -45,7 +45,7 @@ export default {
             })
         },
         updateMyMessages(id){
-            // マイページに表示されているダイレクトメッsーじ一覧をaxiosで更新
+            // マイページに表示されているダイレクトメッセージ一覧をaxiosで更新
             axios.post('api/all/messages/' + id).then((response) => {
                 console.log(response.data);
                 this.receiveMessages = response.data;

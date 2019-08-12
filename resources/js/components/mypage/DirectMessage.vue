@@ -67,7 +67,7 @@ export default {
             if(window.confirm('本当にこのメッセージを削除しますか？')){
                  axios.delete('api/message/'+id)
                  .then(function(response){
-                    self.$emit('update',self.user_id);
+                    self.$emit('update',self.receiveMessage.board.id);
                      alert('メッセージ削除完了しました！');
                  }).catch(function(error){
                      console.log(error);

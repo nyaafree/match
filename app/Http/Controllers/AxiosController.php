@@ -59,8 +59,8 @@ class AxiosController extends Controller
         return Message::destroy($id);
     }
     public function allMessages(Request $request, $id){
-        
-        return User::find($id)->messages()->with(['item'])->get();
+
+        return Board::find($id)->messages()->with(['item'])->get();
     }
 
 }

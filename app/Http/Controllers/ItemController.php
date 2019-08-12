@@ -142,6 +142,10 @@ class ItemController extends Controller
     public function destroy($id)
     {
         Item::destroy($id);
+        Apply::where('item_id', $id)->destroy();
+        Borad::where('item_id', $id)->messages()->destroy();
+        Board::where('item_id', $id)->destroy();
+        Comment::where('item_id', $id)->destroy();        
         Session::flash('flash_message', '案件削除完了しました');
         return redirect('/mypage');
 

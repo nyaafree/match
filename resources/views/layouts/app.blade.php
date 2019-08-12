@@ -11,7 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
-
+    <script>window.Promise || document.write('<script src="//www.promisejs.org/polyfills/promise-7.0.4.min.js"><\/script>');</script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Righteous|Roboto:300,400,500,700&display=swap" rel="stylesheet">
@@ -42,6 +42,8 @@
                 if ( window.innerHeight > $ftr.offset().top + $ftr.outerHeight() ){
                     $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
                 };
+                // $ftr.attr({'style' : 'position:fixed; top:' + ( window.innerHeight - $ftr.outerHeight() ) + 'px;'});
+
 
                  $('.js-toggle-sp-menu').on('click', function () {
                      $(this).toggleClass('active');

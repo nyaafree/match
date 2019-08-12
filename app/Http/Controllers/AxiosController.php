@@ -60,7 +60,7 @@ class AxiosController extends Controller
     }
     public function allMessages(Request $request, $id){
         
-        return Message::findOrFail($id);
+        return User::find($id)->messages()->with(['item'])->get();
     }
 
 }

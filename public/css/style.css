@@ -232,6 +232,7 @@ table {
           align-items: center;
   width: 100%;
   z-index: 2;
+  position: relative;
 }
 
 @media screen and (max-width: 414px) {
@@ -1409,7 +1410,7 @@ table {
 
 .background-creamGreen {
   background: #93e593;
-  min-height: 1000px;
+  min-height: 1250px;
   margin-top: 100px;
   padding: 50px;
   -webkit-box-sizing: border-box;

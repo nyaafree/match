@@ -18,5 +18,9 @@
         <li class="p-side__li">
             <a href="{{ url('mypage#direct') }}" class="p-side__link">ダイレクトメッセージ一覧</a>
         </li>
+        <li class="p-side__li">
+            <a href="{{ url('mypage/quit') }}" class="p-side__link">退会する</a>
+        </li>
+        
     </ul>
 </section>

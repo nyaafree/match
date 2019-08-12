@@ -100,4 +100,9 @@ class mypageController extends Controller
     {
         //
     }
+    public function quit(){
+        User::destroy(Auth::user()->id);
+        Session::flash('flash_message', '退会処理が完了しました');
+        return redirect('/');
+    }
 }

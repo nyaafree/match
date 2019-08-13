@@ -5,9 +5,9 @@
            への<a :href="'/match/board/' + receiveMessage.board.id">応募掲示板{{ receiveMessage.board.id }}</a>に対してされたものです</h2>
            <!-- コメント表示領域をダブルクリックすることで表示用のdivタグと編集用のtextareaタグに切り替えることができる -->
            <div class="c-panel__textarea" v-if="!edit" @dblclick="editChange()">
-               {{ message.rmessage }}
+               {{ message.content }}
            </div>
-           <textarea class="c-panel__textarea" v-model="message.rmessage" v-if="edit"  @dblclick="editChange()">
+           <textarea class="c-panel__textarea" v-model="message.content" v-if="edit"  @dblclick="editChange()">
 
            </textarea>
            <button class="btn btn-yellow" @click="editMessage(receiveMessage.id)">編集</button>

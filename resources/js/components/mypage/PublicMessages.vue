@@ -40,7 +40,7 @@ export default {
         fetchComment(){
             // コメント情報を取得する
             console.log('Fetching Comment...');
-            axios.post('api/fetch/comment'+ this.comment.id).then((response) => {
+            axios.post('api/fetch/comment/'+ this.comment.id).then((response) => {
             console.log(response.data);
             // 編集モードをオフにする
             this.edit = false;
@@ -71,6 +71,7 @@ export default {
         },
         deleteComment(id){
             // コメントを削除
+            console.log('deleting Comments ...')
             let self = this;
             if(window.confirm('本当に登録案件を削除しますか？')){
                  axios.delete('api/comment/'+id)

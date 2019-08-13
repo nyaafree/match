@@ -72,7 +72,7 @@ class AxiosController extends Controller
     public function myComments(Request $request, $id){
         // 指定されたユーザーIDを持っているユーザーのコメントデータを全て取得
         $user = User::find($id);
-        return $user->comments()->with(['item'])->get();
+        return $user->comments()->with(['item.comments'])->get();
 
     }
     public function editMessage(Request $request, $id){

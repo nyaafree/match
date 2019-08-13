@@ -29,7 +29,7 @@ Route::post('apply/{id}', 'ApplyItemController@store');
 
 Route::get('board/{id}','ApplyItemController@show')->name('board');
 Route::post('message/{id}','MessagesController@message')->name('message');
-Route::get('mypage/quit','mypageController@quit');
+// Route::get('mypage/quit','mypageController@quit');
 
 Route::get('search','HomeController@filter')->name('search');
 

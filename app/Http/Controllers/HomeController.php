@@ -37,7 +37,9 @@ class HomeController extends Controller
 
         return view('index',compact('categories','items','jsons'));
     }
+
     public function filter(Request $request){
+        // 検索フォームからフリーワードで検索して、案件タイトルまたは案件詳細情報に合致した案件データ一覧を取得
         $categories = Category::all();
         $categories = json_encode($categories);
 

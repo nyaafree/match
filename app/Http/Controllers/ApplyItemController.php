@@ -63,7 +63,7 @@ class ApplyItemController extends Controller
         // dd($item->user_id);
         // dd($apply->user_id);
         if($item->user_id != $user->id && $applicant_id != $user->id){
-            // ダイレクトメッセージをやり取りする掲示板にアクセスできるのは案件投稿者もしくは案件申し込み者のみで、違う場合には案件申し込みページにリダイレクト
+            // ダイレクトメッセージをやり取りする掲示板にアクセスできるのは案件投稿者もしくは案件申し込み者のみで、違う場合には案件詳細ページにリダイレクト
             return redirect('/items/'.$item->id)->with('flash_message','案件投稿者もしくは案件申し込み者しかこの掲示板にアクセスできません。');
         }
         if($board->proposer_id == $user->id){

@@ -25,7 +25,7 @@ class EditProfileRequest extends FormRequest
     {
         return [
             'name' => 'required|max:30',
-            'email' => 'required',
+            'email' => 'required|email',
             'introduction' => 'required',
             'file' => 'image',
 

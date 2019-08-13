@@ -102,9 +102,21 @@ class mypageController extends Controller
     {
         //
     }
-    public function quit(){
-        User::destroy(Auth::user()->id);
-        Session::flash('flash_message', '退会処理が完了しました');
-        return redirect('/');
-    }
+    // public function quit(){
+    //     $user = User::findOrFail(Auth::user()->id);
+    //     // ログインユーザーが持っているコメントデータ全てを消去
+    //     $user->comments()->destroy();
+    //     // ログインユーザーが持っているダイレクトメッセージデータ全てを消去
+    //     $user->messages()->destroy();
+    //     // ログインユーザーの案件申し込み情報を全て削除
+    //     $user->applies()->destroy();
+    //     // ログインユーザーの案件に申し込みがあった際のダイレクトメッセージをやり取りする掲示板情報を全て削除
+    //     $user->boards()->destroy();
+    //     // ログインユーザーの案件情報を全て削除
+    //     $user->items()->destroy();
+    //     // ログインユーザーのユーザー情報を全て削除
+    //     $user->destroy();
+    //     Session::flash('flash_message', '退会処理が完了しました');
+    //     return redirect('/');
+    // }
 }

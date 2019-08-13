@@ -5,15 +5,16 @@
             <h2 class="c-panel__title">{{ item.title }}</h2>
                 <div class="c-panel__prof" @click="showProfile($event)">
                     <span class="c-panel__span">registered by</span>
+                    <!-- 案件投稿ユーザーのプロフィール写真が登録されていればそれを表示 -->
                     <img :src="imgFolder + item.user.photo.filename" class="c-panel__img" v-if="item.user.photo != null">
+                    <!-- 登録されていなければnoimage画像を表示 -->
                     <img :src="imgFolder + 'noimage.png' "  class="c-panel__img" v-else>
                     <span class="c-panel__span">{{ item.user.name }}</span>
-
-
                 </div>
         </div>
         <div class="c-panel__container2">
             <h4 class="c-panel__category">{{ item.category.name }}</h4>
+            <!-- 案件が単発案件なら価格帯を表示、レベニューシア案件なら価格帯は非表示 -->
             <div class="c-panel__price" v-if="item.category_id == 1">¥{{ item.lowPrice}} ~ {{ item.highPrice }}</div>
         </div>
         <div class="c-panel__detail">

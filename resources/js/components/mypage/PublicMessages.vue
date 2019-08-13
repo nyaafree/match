@@ -40,9 +40,9 @@ export default {
         fetchComment(){
             // コメント情報を取得する
             console.log('Fetching Comment...');
-            axios.post('api/fetch/'+ this.comment.id).then((response) => {
+            axios.post('api/fetch/comment'+ this.comment.id).then((response) => {
             console.log(response.data);
-            // フォームを編集オフにする
+            // 編集モードをオフにする
             this.edit = false;
             this.comment.content = response.data.comment;
         })

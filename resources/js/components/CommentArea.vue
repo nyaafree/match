@@ -37,7 +37,7 @@ export default {
             // JSON.parse()でpropsとして渡ってきた文字列をJSON形式に変換
             receiveComments: JSON.parse(this.comments),
             receiveItem: JSON.parse(this.item),
-           
+
 
             input:{
                 id: JSON.parse(this.item).id,
@@ -99,7 +99,7 @@ export default {
             // 案件詳細画面につけられたコメント一覧を取得
             const self = this;
              console.log('Fetching Comments...');
-             axios.get('../api/index').then((response) => {
+             axios.get('../api/item/comments').then((response) => {
                 console.log(response.data);
                 self.receiveComments = response.data;
             })
@@ -113,14 +113,14 @@ export default {
             let self = this;
             let params = Object.assign({}, self.input);
             console.log(params);
-            axios.post('../api/comment',params
+            axios.post('../api/create/comment',params
             )
             .then(function(response){
                 // v-modelでフォームと紐づけられたself.input.commentを空にしておかないとコメント投稿後も投稿したコメント内容が入力フォームに表示されてしまう
                 self.input.comment = '';
                 self.receiveComments = response.data;
                 // コメント投稿後に案件詳細画面につけられたコメント一覧を更新する
-　　　　　　　    self.fetchCommentList();
+                self.fetchCommentList();
             })
             .catch(function(error){
                 console.log(error.response.data.errors);

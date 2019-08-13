@@ -19,16 +19,16 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'api'], function(){
-    Route::post('category', 'AxiosController@category');
-    Route::post('comment','CommentsController@comment');
-    Route::delete('item/{id}', 'AxiosController@delete');
-    Route::get('items', 'AxiosController@index');
-    Route::patch('comment/{id}', 'AxiosController@comment');
-    Route::post('fetch/{id}', 'AxiosController@fetch');
-    Route::delete('comment/{id}', 'AxiosController@destroy');
-    Route::post('all/comments/{id}', 'AxiosController@all');
-    Route::patch('message/{id}', 'AxiosController@message');
-    Route::post('message/update/{id}', 'AxiosController@messageUpdate');
-    Route::delete('message/{id}', 'AxiosController@messageDelete');
-    Route::post('all/messages/{id}', 'AxiosController@allMessages');
+    Route::post('category', 'AxiosController@category');//
+    Route::post('create/comment','AxiosController@storeComment');//
+    Route::get('item/comments','AxiosController@itemComments');//
+    // Route::get('items', 'AxiosController@index');
+    Route::patch('comment/{id}', 'AxiosController@editMycomment');//
+    Route::post('fetch/comment/{id}', 'AxiosController@fetchComment');//
+    Route::delete('comment/{id}', 'AxiosController@deleteComment');//
+    Route::post('all/comments/{id}', 'AxiosController@myComments'); //
+    Route::patch('message/{id}', 'AxiosController@editMessage'); //
+    Route::post('message/update/{id}', 'AxiosController@messageUpdate');//
+    Route::delete('message/{id}', 'AxiosController@messageDelete');//
+    Route::post('all/messages/{id}', 'AxiosController@myMessages');
 });

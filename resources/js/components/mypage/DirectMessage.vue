@@ -3,6 +3,7 @@
          <div  class="c-panel bg-purple" >
            <h2 class="c-penel__title">このコメントは <a :href="'items/' + receiveMessage.board.item.id">{{ receiveMessage.board.item.title }}</a>
            への<a :href="'/match/board/' + receiveMessage.board.id">応募掲示板{{ receiveMessage.board.id }}</a>に対してされたものです</h2>
+           <!-- コメント表示領域をダブルクリックすることで表示用のdivタグと編集用のtextareaタグに切り替えることができる -->
            <div class="c-panel__textarea" v-if="!edit" @dblclick="editChange()">
                {{ message.rmessage }}
            </div>
@@ -19,14 +20,13 @@
 export default {
     props:['myMessage','user'],
     mounted(){
-        // console.log(this.myComment);
-    //    console.log(this.user.id);
+
     },
     data(){
        return{
            receiveMessage: this.myMessage,
            message:{
-                rmessage: this.myMessage.message,
+                content: this.myMessage.message,
                 id: this.myMessage.id,
            },
 
@@ -40,7 +40,7 @@ export default {
             axios.post('api/message/update/'+ this.message.id).then((response) => {
             console.log(response.data);
             this.edit = false;
-            this.message.rmessage = response.data.message;
+            this.message.content = response.data.message;
         })
         .catch((error) => {
           console.log(error);
@@ -55,6 +55,7 @@ export default {
             let params = Object.assign({}, self.message);
             axios.patch('api/message/'+id,params)
             .then(function(response){
+                // 編集したダイレクトメッセージデータを更新
                 self.fetchMessage();
                 alert('メッセージ編集できました！');
        })
@@ -67,12 +68,14 @@ export default {
             if(window.confirm('本当にこのメッセージを削除しますか？')){
                  axios.delete('api/message/'+id)
                  .then(function(response){
-                    self.$emit('update',self.receiveMessage.board.id);
+                     // ダイレクトメッセージ削除が完了したら削除したメッセージを画面から消したいので、親コンポーネントのダイレクトメッセージ一覧を取得するメソッドを実行
+                     self.$emit('update',self.user_id);
                      alert('メッセージ削除完了しました！');
                  }).catch(function(error){
                      console.log(error);
                  });
             }else{
+                // メッセージ削除の確認ダイアログでキャンセルを選択した場合には削除処理を止める
                 event.preventDefault();
             }
 

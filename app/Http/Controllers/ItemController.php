@@ -55,7 +55,7 @@ class ItemController extends Controller
     {
        $input = $request->all();
        if($input['category_id'] == 1){
-        // 単発案件を登録した場合は宰相価格と最大価格と登録できるようにする
+        // 単発案件を登録した場合は最小価格と最大価格と登録できるようにする
         // また1000円単位で価格を設定できるように入力フォームの方では千の位から入力するようにしているので
         // 入力した値を1000倍してからDBに登録する
         $input['lowPrice'] = $request->lowPrice.'000';
@@ -113,7 +113,7 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $input = $request->all();
         if($input['category_id'] == 1){
-            // 単発案件を登録した場合は宰相価格と最大価格と登録できるようにする
+            // 単発案件を登録した場合は最小価格と最大価格と登録できるようにする
             // また1000円単位で価格を設定できるように入力フォームの方では千の位から入力するようにしているので
             // 入力した値を1000倍してからDBに登録する
             $input['lowPrice'] = $request->lowPrice.'000';
@@ -141,21 +141,19 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
+        // 案件情報を削除
         Item::destroy($id);
+        // 案件への申し込み情報を削除
         Apply::where('item_id', $id)->destroy();
+        // 案件申し込み後にやり取りされたダイレクトメッセージを削除
         Borad::where('item_id', $id)->messages()->destroy();
+        // 案件申し込み後のダイレクトメッセージをやり取りする掲示板の情報を削除
         Board::where('item_id', $id)->destroy();
-        Comment::where('item_id', $id)->destroy();        
+        // 案件詳細画面につけられたコメント情報を削除
+        Comment::where('item_id', $id)->destroy();
         Session::flash('flash_message', '案件削除完了しました');
         return redirect('/mypage');
 
-    }
-
-
-
-    public function list(){
-        $items = Item::with('user.photo','category')->get();
-        return $items;
     }
 
 

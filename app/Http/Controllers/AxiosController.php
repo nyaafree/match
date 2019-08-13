@@ -10,6 +10,7 @@ use App\Message;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\AddCommentRequest;
 
 class AxiosController extends Controller
 {

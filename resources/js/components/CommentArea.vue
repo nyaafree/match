@@ -99,7 +99,7 @@ export default {
             // 案件詳細画面につけられたコメント一覧を取得
             const self = this;
              console.log('Fetching Comments...');
-             axios.get('../api/item/comments').then((response) => {
+             axios.get('../api/item/'+ this.input.id +'/comments').then((response) => {
                 console.log(response.data);
                 self.receiveComments = response.data;
             })

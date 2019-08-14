@@ -554,8 +554,20 @@ table {
 }
 
 @media screen and (max-width: 414px) {
+  .c-post__priceWrapper span {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 414px) {
   .c-post__priceWrapper {
-    width: 80%;
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .c-post__priceInput {
+    width: 150px;
   }
 }
 
@@ -773,7 +785,7 @@ table {
 }
 
 .p-nav__title:hover {
-  color: #b8f0b0;
+  color: #f3d795;
   text-decoration: none;
 }
 

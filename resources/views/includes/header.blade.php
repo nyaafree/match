@@ -20,8 +20,9 @@
                                     @endif
                                 @endforeach
                             @endforeach
-                        @else
-                            <li>案件に対する応募はありません</li>
+                        @endif
+                        @if (count($applyNumbers) == 0)
+                            <li>案件に対する最新の応募はありません</li>
                         @endif
                     </ul>
                 </div>

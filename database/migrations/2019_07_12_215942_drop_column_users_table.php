@@ -26,7 +26,7 @@ class DropColumnUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->string('api_token', 60)->unique()->nullable();
         });
     }
 }

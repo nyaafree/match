@@ -27,7 +27,8 @@ class ChangeColumnBoardsTable extends Migration
     public function down()
     {
         Schema::table('boards', function (Blueprint $table) {
-            //
+            $table->integer('propsoer_id');
+            $table->dropColumn('proposer_id');
         });
     }
 }

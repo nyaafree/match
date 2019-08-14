@@ -15,6 +15,7 @@ class AddColumnAppliesTable extends Migration
     {
         Schema::table('applies', function (Blueprint $table) {
             $table->integer('board_id');
+            $table->boolean('read')->default(false);
         });
     }
 
@@ -27,6 +28,7 @@ class AddColumnAppliesTable extends Migration
     {
         Schema::table('applies', function (Blueprint $table) {
             $table->dropColumn('board_id');
+            $table->dropColumn('read');
         });
     }
 }

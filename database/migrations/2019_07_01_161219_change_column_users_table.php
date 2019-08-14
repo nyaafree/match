@@ -15,6 +15,7 @@ class ChangeColumnUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('photo_id')->nullable()->change();
+            $table->longText('introduction')->nullable()->change();
         });
     }
 
@@ -27,6 +28,7 @@ class ChangeColumnUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->integer('photo_id')->change();
+            $table->longText('introduction')->change();
         });
     }
 }

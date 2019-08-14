@@ -89,10 +89,19 @@
             color: #fff;
             font-size: $font-size_l;
             line-height: 100%;
+            @include mq(){
+                font-size: $font-size_default;
+            }
         }
         @include mq(){
-            width: 80%;
+            width: 95%;
         }
+    }
+    &__priceInput{
+        @include mq(){
+            width: 150px;
+        }
+
     }
     &__center{
         line-height: 100%;

@@ -65,15 +65,16 @@ export default {
         },
         deleteMessage(id){
             let self = this;
+            console.log('deleting directMessages ...');
             if(window.confirm('本当にこのメッセージを削除しますか？')){
-                 axios.delete('api/message/'+id)
-                 .then(function(response){
-                     // ダイレクトメッセージ削除が完了したら削除したメッセージを画面から消したいので、親コンポーネントのダイレクトメッセージ一覧を取得するメソッドを実行
-                     self.$emit('update',self.user_id);
-                     alert('メッセージ削除完了しました！');
-                 }).catch(function(error){
-                     console.log(error);
-                 });
+                axios.delete('api/message/'+id)
+                .then(function(response){
+                    // ダイレクトメッセージ削除が完了したら削除したメッセージを画面から消したいので、親コンポーネントのダイレクトメッセージ一覧を取得するメソッドを実行
+                    self.$emit('update',self.user_id);
+                    alert('メッセージ削除完了しました！');
+                }).catch(function(error){
+                    console.log(error);
+                });
             }else{
                 // メッセージ削除の確認ダイアログでキャンセルを選択した場合には削除処理を止める
                 event.preventDefault();

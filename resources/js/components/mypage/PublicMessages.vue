@@ -31,7 +31,6 @@ export default {
                 content: this.myComment.comment,
                 id: this.myComment.id,
            },
-
            edit: false,
            user_id: this.user.id,
        }
@@ -55,7 +54,7 @@ export default {
             this.edit = !this.edit;
         },
         editComment(id){
-            // ko
+            // コメントを編集する
             console.log('Updating Comment'+ id + '...');
             let self = this;
             let params = Object.assign({}, self.comment);
@@ -74,14 +73,14 @@ export default {
             console.log('deleting Comments ...')
             let self = this;
             if(window.confirm('本当に登録案件を削除しますか？')){
-                 axios.delete('api/comment/'+id)
-                 .then(function(response){
-                     // 親コンポーネントのメソッドを使ってコメント一覧を更新する
-                     self.$emit('update',self.user_id);
-                     alert('コメント削除完了しました！');
-                 }).catch(function(error){
-                     console.log(error);
-                 });
+                axios.delete('api/comment/'+id)
+                .then(function(response){
+                    // 親コンポーネントのメソッドを使ってコメント一覧を更新する
+                    self.$emit('update',self.user_id);
+                    alert('コメント削除完了しました！');
+                }).catch(function(error){
+                    console.log(error);
+                });
             }else{
                 // 案件パネル全体がaタグになっているので画面遷移を防ぐ
                 event.preventDefault();
@@ -91,7 +90,7 @@ export default {
     },
     computed:{
         latestComment(){
-            // 自分がコメントした案件詳細ページにつけられているphp artisan make:seeder UsersTableSeeder最新コメントを取得
+            // 自分がコメントした案件詳細ページにつけられている最新コメントを取得
             return this.myComment.item.comments[(Object.keys(this.myComment.item.comments).length - 1)];
         }
     }

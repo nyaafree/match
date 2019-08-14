@@ -27,7 +27,8 @@ class DropColumnBoardsTable extends Migration
     public function down()
     {
         Schema::table('boards', function (Blueprint $table) {
-            //
+            $table->integer('apply_id');
+            $table->dropColumn('item_id');
         });
     }
 }

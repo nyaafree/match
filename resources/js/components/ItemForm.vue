@@ -26,11 +26,11 @@
                 <div class="c-post__inputGroup">
                     <label for="" class="c-post__labelTitle" v-if="input.category_id == 1">価格帯</label>
                     <div class="c-post__priceWrapper" v-if="input.category_id == 1">
-                        <div>
+                        <div class="c-post__priceInput">
                             <input type="text" name="lowPrice" class="c-post__price" v-model="input.lowPrice"><span>000</span>
                         </div>
                         <span class="c-post__center">〜</span>
-                        <div>
+                        <div class="c-post__priceInput">
                             <input type="text" name="highPrice" class="c-post__price" v-model="input.highPrice"><span>000</span>
                         </div>
                     </div>

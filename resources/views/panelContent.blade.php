@@ -43,7 +43,7 @@
             @csrf
                 <button class="btn btn-purple">応募する</button>
             </form>
-            
+
         </div>
 
         <p class="guide-message">
@@ -74,11 +74,12 @@
                     <h2 class="p-modal__title">ユーザー名:{{ $item->user->name}}</h2>
                     <h2 class="p-modal__title">自己紹介</h2>
                     <p class="p-modal__introduction">
-                        
+
                         {{ $item->user->introduction }}
                     </p>
                 </div>
             </div>
+            <span class="hide-profile js-hide-modal"><i class="far fa-times-circle"></i></span>
         </div>
 
 
@@ -95,10 +96,10 @@
             $('.js-profile-window').toggleClass('is-hide');
             $('.js-profile-background').toggleClass('is-hide');
         });
-        $('.js-profile-background').on('click', function(){
+        $('.js-profile-background, .js-hide-modal').on('click', function(){
             // モーダルの背景をクリックしたらプロフィールが消える
             $('.js-profile-window').toggleClass('is-hide');
-            $(this).toggleClass('is-hide');
+            $('.js-profile-background').toggleClass('is-hide');
         });
     });
   </script>

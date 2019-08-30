@@ -5,10 +5,10 @@
         <h1 class="index-title" id="public">投稿コメント一覧</h1>
         <!-- 案件詳細画面において自分がしたパブリックメッセージを表示 -->
         <public-messages :my-comment="myComment" v-for="myComment in receiveComments" :key="myComment.id" :user="user"
-        @update="updateMyComments"/>
+        @update="updateMyComments" @judge="judge(id)"/>
         <h1 class="index-title" id="direct">ダイレクトメッセージ一覧</h1>
         <!-- 案件応募完了した後の掲示板においてやり取りしたダイレクトメッセージを表示 -->
-        <direct-messages :my-message="myMessage" v-for="myMessage in receiveMessages" :user="user"
+        <direct-messages :my-message="myMessage" v-for="(myMessage,index) in receiveMessages" :key="index" :user="user"
         @update="updateMyMessages"/>
     </div>
 </template>
@@ -24,6 +24,8 @@ export default {
         return{
            receiveComments: this.myComments, // propsとして受け取った値をdata属性として登録
            receiveMessages: this.myMessages,
+        //    publicMessageItemNumbers: [],
+        //    directMessageItemNumbers: [],
         }
     },
     components:{
@@ -31,6 +33,19 @@ export default {
         ApplyItems,
         PublicMessages,
         DirectMessage,
+    },
+    mounted(){
+      let self = this;
+      console.log(this.myComments);
+    //   this.myComments.forEach(element => {
+    //     console.log(element);
+    //     Object.keys(element).forEach( key => {
+    //         if(key == 'item_id'){
+    //            self.publicMessageItemNumbers.push(element.item_id);
+    //         }
+    //     })
+    //   });
+      console.log(this.publicMessageItemNumbers);
     },
     methods:{
         updateMyComments(id){
@@ -53,6 +68,11 @@ export default {
             .catch((error) => {
                 console.log(error.error);
             })
+        },
+        jodge(id){
+            if( this.publicMessageItemNumbers.includes(id) ){
+                
+            }
         }
     }
 

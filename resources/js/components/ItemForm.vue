@@ -34,11 +34,12 @@
                             <input type="text" name="highPrice" class="c-post__price" v-model="input.highPrice"><span>000</span>
                         </div>
                     </div>
+                    <p class="c-post__warning" v-if="priceWarning">最少価格が最大価格を上回ってるので訂正してください。</p>
                 </div>
                 <div class="c-post__submit">
                     <button type="submit" class="btn-purple btn-wide">投稿する</button>
                 </div>
-　          </form>
+          </form>
         </div>
     </div>
 </template>
@@ -59,6 +60,16 @@ export default {
             },
             receiveOlds: this.olds,
         }
+    },
+    computed:{
+      priceWarning(){
+          // 最少価格が最大価格を上回っていてかつカテゴリーとして単発案件が設定されている場合に価格フォームの下に警告を出す
+          if( ( Number(this.input.lowPrice) > Number(this.input.highPrice) ) && this.input.category_id == 1 ){
+              return true;
+          }else{
+              return false;
+          }
+      }
     },
     mounted(){
         console.log(this.user);

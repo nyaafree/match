@@ -18,9 +18,6 @@
             </div>
         </form>
         <div class="error-area" v-if="errorMessages !== ''">
-            <div class="error-show">
-                <strong>エラー発生！フォームの入力内容に誤りがあります。</strong>
-            </div>
              <div v-for="error in errorMessages.comment" :key="error.id" class="error-message" role="alert">{{ error }}</div>
          </div>
     </div>
@@ -52,11 +49,9 @@ export default {
 
     },
     mounted(){
-       if(Object.keys(this.receiveComments).length != 0){
-            // 案件詳細ページにコメントが一つでもつけられていればコメント一覧を表示。
-            // コメントが一つもなければ「コメントはまだ投稿されていません。」と表示
-            this.showComments = true;
-        }
+        // マウントされた時にしかこの処理ができないのコメント投稿した場合反映されない
+        this.showComments();
+
     },
     components:{
         ApplicantComments,
@@ -121,6 +116,8 @@ export default {
                 self.receiveComments = response.data;
                 // コメント投稿後に案件詳細画面につけられたコメント一覧を更新する
                 self.fetchCommentList();
+                // コメントが１件でも投稿されていれば表示する
+                self.showComments();
             })
             .catch(function(error){
                 console.log(error.response.data.errors);
@@ -128,8 +125,13 @@ export default {
                 // data属性のerrorMessagesにバリデーションエラーメッセージを格納する
                 self.errorMessages = error.response.data.errors;
            });
-
-
+        },
+        showComments: function(){
+           if(Object.keys(this.receiveComments).length != 0){
+                // 案件詳細ページにコメントが一つでもつけられていればコメント一覧を表示。
+                // コメントが一つもなければ「コメントはまだ投稿されていません。」と表示
+                this.showComments = true;
+           }
         }
     }
 }

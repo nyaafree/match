@@ -17,9 +17,7 @@
             <h4 class="c-panel__category">{{ item.category.name }}</h4>
             <div class="c-panel__price" v-if="item.category_id == 1">¥{{ item.lowPrice}} ~ {{ item.highPrice }}</div>
         </div>
-        <div class="c-panel__detail">
-            {{ item.detail.substr(0,110)}}...read more
-        </div>
+        <div class="c-panel__detail">{{ item.detail.substr(0,110)}}...read more</div>
         <div class="c-panel__boards">
             <h3>取引掲示板一覧 応募総数{{ Object.keys(item.boards).length }}件</h3>
             <!-- 自分が投稿した案件に応募したユーザーとダイレクトメッセージをやり取りする掲示板へのリンクを表示 -->

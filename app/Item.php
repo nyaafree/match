@@ -31,7 +31,8 @@ class Item extends Model
     public function applies(){
         return $this->hasMany('App\Apply');
     }
-   
+    
+
 
     // public function applyBoard(){
     //     return $this->hasManyThrough('App\Board','App\Apply','item_id','apply_id','id','id');

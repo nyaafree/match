@@ -2,8 +2,9 @@
     <div>
         <div  class="c-panel bg-yellow" >
             <h2 class="c-penel__title">このコメントは <a :href="'/match/items/' + receiveComment.item.id">{{receiveComment.item.title }}</a>に対してされたものです</h2>
+            <h4 class="c-panel__notice">※ 下のコメントエリアをダブルクリックするとコメント編集フォームに切り替える事が出来ます</h4>
             <div class="c-panel__textarea" v-if="!edit" @dblclick="editChange()">
-                {{ comment.content }}
+                {{comment.content}}
             </div>
             <textarea class="c-panel__textarea" v-model="comment.content" v-if="edit"  @dblclick="editChange()">
 
@@ -33,6 +34,7 @@ export default {
            },
            edit: false,
            user_id: this.user.id,
+           item_id: this.myComment.item.id
        }
     },
     methods:{

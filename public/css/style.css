@@ -28,6 +28,54 @@ img {
   vertical-align: bottom;
 }
 
+@-webkit-keyframes modify {
+  0% {
+    padding-top: 110px;
+    margin-top: -110px;
+  }
+
+  100% {
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+
+@keyframes modify {
+  0% {
+    padding-top: 110px;
+    margin-top: -110px;
+  }
+
+  100% {
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+
+@-webkit-keyframes spmodify {
+  0% {
+    padding-top: 70px;
+    margin-top: -70px;
+  }
+
+  100% {
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+
+@keyframes spmodify {
+  0% {
+    padding-top: 70px;
+    margin-top: -70px;
+  }
+
+  100% {
+    padding-top: 0;
+    margin-top: 0;
+  }
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -438,7 +486,7 @@ table {
 .c-post {
   background: -webkit-gradient(linear, left top, right bottom, from(#f179eb), to(#FFC778));
   background: linear-gradient(to bottom right, #f179eb, #FFC778);
-  min-height: 500px;
+  min-height: 1250px;
   width: 82%;
   margin-left: 18%;
   padding: 20px;
@@ -569,6 +617,17 @@ table {
   .c-post__priceInput {
     width: 150px;
   }
+}
+
+.c-post__warning {
+  text-align: center;
+  padding: 5px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #f1e8b4;
+  margin: 10px auto;
+  text-align: center;
+  color: red;
 }
 
 .c-post__center {
@@ -1001,7 +1060,7 @@ table {
           box-sizing: border-box;
   margin-top: 15px;
   line-height: 150%;
-  white-space: pre-wrap;
+  white-space: pre-line;
   word-wrap: break-word;
 }
 
@@ -1208,6 +1267,7 @@ table {
   margin-top: 5px;
   text-align: center;
   font-size: 14px;
+  color: #fff;
 }
 
 .c-panel__detail {
@@ -1220,7 +1280,8 @@ table {
   border: solid 1px #56c2a2;
   border-radius: 5px;
   margin-bottom: 10px;
-  white-space: pre-wrap;
+  white-space: pre-line;
+  text-indent: 0px;
   word-wrap: break-word;
 }
 
@@ -1238,6 +1299,12 @@ table {
 
 .c-panel__btn a:hover {
   color: #fff;
+}
+
+.c-panel__notice {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #af553a;
 }
 
 .c-panel__textarea {
@@ -1283,7 +1350,7 @@ table {
 
 .p-prof {
   background: #f7af13;
-  min-height: 500px;
+  min-height: 1250px;
   width: 82%;
   padding: 20px;
   -webkit-box-sizing: border-box;
@@ -1899,5 +1966,49 @@ table {
       -ms-flex-align: center;
           align-items: center;
   padding: 10px;
+}
+
+.not-apply {
+  width: 90px;
+  padding: 10px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #b8b533;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.apply-done {
+  width: 90px;
+  padding: 10px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #404175;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: top;
+  display: inline-block;
+}
+
+#register:target,
+#apply:target,
+#public:target,
+#direct:target {
+  -webkit-animation: modify 0.1s;
+  animation: modify 0.1s;
+}
+
+@media screen and (max-width: 414px) {
+  #register:target,
+  #apply:target,
+  #public:target,
+  #direct:target {
+    -webkit-animation: spmodify 0.1s;
+    animation: spmodify 0.1s;
+  }
 }
 

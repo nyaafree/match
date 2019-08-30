@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Apply;
+use App\Board;
+use App\Comment;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddItemRequest;
 use App\Http\Requests\EditItemRequest;
@@ -83,8 +86,10 @@ class ItemController extends Controller
         $item = Item::find($id);
         // 案件詳細ページにつけられているコメントをすべて取得(LaravelのリレーションをVueでも使えるように設定)
         $comments = $item->comments()->with(['user.photo','category'])->get();
-
-        return(view('panelContent',compact('item','user','comments')));
+        // appliesテーブルから該当するする案件への応募レコードを検索して、それからログインユーザーが案件に応募してる場合はそのレコードのみを取得
+        $applyOrNot = DB::table('applies')->where('item_id',$id)->where('user_id',$user->id)->get();
+        // dd($applyOrNot);
+        return(view('panelContent',compact('item','user','comments','applyOrNot')));
     }
 
     /**
@@ -141,16 +146,21 @@ class ItemController extends Controller
      */
     public function destroy($id)
     {
-        // 案件情報を削除
-        Item::destroy($id);
+
         // 案件への申し込み情報を削除
-        Apply::where('item_id', $id)->destroy();
+        Apply::where('item_id', $id)->delete();
         // 案件申し込み後にやり取りされたダイレクトメッセージを削除
-        Borad::where('item_id', $id)->messages()->destroy();
+        $boards = Item::find($id)->boards;
+        // dd($boards);
+        foreach ($boards as $board) {
+            $board->messages()->delete();
+        }
         // 案件申し込み後のダイレクトメッセージをやり取りする掲示板の情報を削除
-        Board::where('item_id', $id)->destroy();
+        Board::where('item_id', $id)->delete();
         // 案件詳細画面につけられたコメント情報を削除
-        Comment::where('item_id', $id)->destroy();
+        Comment::where('item_id', $id)->delete();
+         // 案件情報を削除
+         Item::destroy($id);
         Session::flash('flash_message', '案件削除完了しました');
         return redirect('/mypage');
 

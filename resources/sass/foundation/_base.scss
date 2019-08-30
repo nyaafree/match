@@ -116,8 +116,6 @@ html, body {
   overflow-x: hidden;
 }
 
-
-
 a {
   color:#fff ;
   text-decoration: none;
@@ -129,4 +127,27 @@ a {
 img {
   width: 100%;
   vertical-align: bottom;
+}
+
+//==============================================================================================
+// ページ内リンクにおいてheaderをpositon:fixedに固定したことによるリンクのズレを解消するためのanimation
+//==============================================================================================
+
+// 上の二つはPC、タブレット画面用、下の二つはスマホ用
+@-webkit-keyframes modify{
+    0% { padding-top: 110px; margin-top: -110px; }
+  100% { padding-top: 0; margin-top: 0; }
+}
+@keyframes  modify{
+    0% { padding-top: 110px; margin-top: -110px; }
+  100% { padding-top: 0; margin-top: 0; }
+}
+
+@-webkit-keyframes spmodify{
+    0% { padding-top: 70px; margin-top: -70px; }
+    100% { padding-top: 0; margin-top: 0; }
+}
+@keyframes spmodify{
+    0% { padding-top: 70px; margin-top: -70px; }
+    100% { padding-top: 0; margin-top: 0; }
 }

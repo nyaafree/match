@@ -32,10 +32,11 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $categories = json_encode($categories);
-        $items = Item::with('user.photo','category')->orderBy('created_at','DESC')->get();
+        $items = Item::with('user.photo','category','applies')->orderBy('created_at','DESC')->get();
         $jsons = json_encode($items);
+        $user = json_encode(Auth::user());
 
-        return view('index',compact('categories','items','jsons'));
+        return view('index',compact('categories','items','jsons','user'));
     }
 
     public function filter(Request $request){

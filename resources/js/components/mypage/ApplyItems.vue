@@ -19,9 +19,7 @@
             <!-- 案件が単発案件なら価格帯を表示、レベニューシア案件なら価格帯は非表示 -->
             <div class="c-panel__price" v-if="board.item.category_id == 1">¥{{ board.item.lowPrice}} ~ {{ board.item.highPrice }}</div>
         </div>
-        <div class="c-panel__detail">
-            {{ board.item.detail.substr(0,110)}}...read more
-        </div>
+        <div class="c-panel__detail">{{ board.item.detail.substr(0,110)}}...read more</div>
         <div class="c-panel__boards">
             <h3>取引掲示板</h3>
             <!--  案件に応募してきたユーザーとのダイレクトメッセージをやり取りする掲示板のリンク -->

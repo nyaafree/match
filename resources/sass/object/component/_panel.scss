@@ -80,6 +80,7 @@
         margin-top: $space_s;
         text-align: center;
         font-size: $font-size_m;
+        color: #fff;
     }
     &__detail{
         margin-top: $space_m;
@@ -90,7 +91,9 @@
         border: solid 1px rgb(86, 194, 162);
         border-radius: $space_s;
         margin-bottom: $space_m;
-        white-space: pre-wrap;
+        // white-space: pre-wrap;
+        white-space: pre-line;
+        text-indent: 0px;
         word-wrap: break-word;
     }
     &__btn{
@@ -102,12 +105,17 @@
         border: none;
         background: rgb(243, 103, 85);
         margin-left: $space_m;
-       
+
         a{
             &:hover{
                 color: #fff;
             }
         }
+    }
+    &__notice{
+        font-size: $font-size_s;
+        margin-top: $space_m;
+        color: rgb(175, 85, 58);
     }
     &__textarea{
         margin: $space_m 0;

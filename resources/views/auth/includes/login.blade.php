@@ -36,6 +36,7 @@
               @endif
               <button class="c-auth__submit btn-yellow" type="submit">ログイン</button>
             </div>
+            @include('mypage.includes.formErrors')
 
         </form>
 

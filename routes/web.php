@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::group(['prefix' => 'match'], function(){
+    //
+});
+
 Route::get('/','HomeController@index');
+
 
 Auth::routes();
 

@@ -2,7 +2,7 @@
     background: -moz-linear-gradient(top left, rgb(241, 121, 235), #FFC778);
     background: -webkit-linear-gradient(top left, rgb(241, 121, 235), #FFC778);
     background: linear-gradient(to bottom right, rgb(241, 121, 235), #FFC778);
-    min-height: 500px;
+    min-height: 1250px;
     width:82%;
     margin-left: 18%;
     padding: $space_xl;
@@ -102,6 +102,15 @@
             width: 150px;
         }
 
+    }
+    &__warning{
+        text-align: center;
+        padding: $space_s $space_m;
+        box-sizing: border-box;
+        background: rgb(241, 232, 180);
+        margin: $space_m auto;
+        text-align: center;
+        color: red;
     }
     &__center{
         line-height: 100%;

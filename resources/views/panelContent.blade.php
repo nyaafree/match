@@ -22,8 +22,6 @@
                     <img src="{{ url('images/profile/noimage.png') }}" class="c-panel__img">
                 @endif
                 <span class="c-panel__span">{{ $item->user->name }}</span>
-
-
             </div>
         </div>
         <div class="c-panel__container2">
@@ -32,12 +30,23 @@
                 <div class="c-panel__price">¥{{ $item->lowPrice}} ~ {{ $item->highPrice }}</div>
             <?php endif ?>
         </div>
-        <div class="c-panel__detail">
-            {{ $item->detail }}
-        </div>
+        <div class="c-panel__detail">{{ $item->detail }}</div>
         <div class="flex-side">
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="match" data-show-count="false">Tweet</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div>
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-hashtags="match" data-show-count="false">Tweet</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                {{-- この案件に応募してない場合は未応募、してる場合は応募済みを表示 --}}
+                @if (empty(count($applyOrNot)))
+                    <span class="not-apply">
+                        未応募
+                    </span>
+                @else
+                    <span class="apply-done">
+                        応募済み
+                    </span>
+                @endif
+            </div>
+
 
             <form action="{{ url('/apply/'.$item->id) }}" method="POST">
             @csrf

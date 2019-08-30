@@ -17,7 +17,11 @@
             <h2 class="c-panel__title">{{ $item->title }}</h2>
             <div class="c-panel__prof js-show-profile">
                 <span class="c-panel__span">registered by</span>
-                <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="c-panel__img">
+                @if ($item->user->photo != null)
+                    <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="c-panel__img">
+                @else
+                    <img src="{{ url('images/profile/noimage.png') }}" class="c-panel__img">
+                @endif
                 <span class="c-panel__span">{{ $item->user->name }}</span>
             </div>
         </div>
@@ -45,7 +49,11 @@
         <div class="modal-window js-profile-window is-hide">
             <div class="p-modal">
                 <div class="p-modal__container1">
-                    <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="p-modal__img">
+                    @if ($item->user->photo != null)
+                        <img src="{{ url('images/profile/'.$item->user->photo->filename) }}" class="p-modal__img">
+                    @else
+                        <img src="{{ url('images/profile/noimage.png') }}" class="p-modal__img">
+                    @endif
                     <div class="p-modal__container2">
                         <h2 class="p-modal__title">ユーザー名:{{ $item->user->name}}</h2>
                         <h2 class="p-modal__title">自己紹介</h2>

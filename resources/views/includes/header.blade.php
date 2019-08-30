@@ -47,5 +47,5 @@
      <span></span>
      <span></span>
      </div>
-     @include('includes.hamburger');
+     @include('includes.hamburger')
  </header>

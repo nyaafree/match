@@ -38,7 +38,7 @@
         <div class="c-auth__inputGroup btn-right">
           <button class="c-auth__submit btn-yellow" type="submit">送信</button>
         </div>
-
+        @include('mypage.includes.formErrors')
     </form>
 
 

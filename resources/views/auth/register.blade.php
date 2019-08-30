@@ -8,6 +8,7 @@
 @section('content')
     <div class="background-creamGreen">
         @include('auth.includes.register')
+        @include('mypage.includes.formErrors')
     </div>
 @endsection
 

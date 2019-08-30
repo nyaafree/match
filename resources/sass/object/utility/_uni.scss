@@ -37,7 +37,7 @@
         width: 120px;
         padding: $space_m;
     }
-   
+
 }
 .btn-wide{
     padding: $space_m $space_l;
@@ -373,3 +373,35 @@
     align-items: center;
     padding: $space_m;
 }
+
+.not-apply{
+    width: 90px;
+    padding: $space_m $space_m;
+    box-sizing: border-box;
+    background: rgb(184, 181, 51);
+    color: #fff;
+    font-size: $font-size_m;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+}
+.apply-done{
+    width: 90px;
+    padding: $space_m $space_m;
+    box-sizing: border-box;
+    background: rgb(64, 65, 117);
+    color: #fff;
+    font-size: $font-size_m;
+    text-align: center;
+    vertical-align: top;
+    display: inline-block;
+}
+#register:target,#apply:target,#public:target,#direct:target{
+    -webkit-animation: modify 0.1s;
+    animation: modify 0.1s;
+    @include mq(){
+        -webkit-animation: spmodify 0.1s;
+        animation: spmodify 0.1s;
+    }
+}
+

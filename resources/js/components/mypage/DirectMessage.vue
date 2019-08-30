@@ -3,6 +3,7 @@
          <div  class="c-panel bg-purple" >
            <h2 class="c-penel__title">このコメントは <a :href="'items/' + receiveMessage.board.item.id">{{ receiveMessage.board.item.title }}</a>
            への<a :href="'/match/board/' + receiveMessage.board.id">応募掲示板{{ receiveMessage.board.id }}</a>に対してされたものです</h2>
+           <h4 class="c-panel__notice">※ 下のメッセージエリアをダブルクリックするとメッセージ編集フォームに切り替える事が出来ます</h4>
            <!-- コメント表示領域をダブルクリックすることで表示用のdivタグと編集用のtextareaタグに切り替えることができる -->
            <div class="c-panel__textarea" v-if="!edit" @dblclick="editChange()">
                {{ message.content }}

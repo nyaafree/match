@@ -12,7 +12,7 @@
             </select>
         </form>
     </div>
-    <item-component :item = item  v-for=" item in displayItems" :key="item.key"/>
+    <item-component :item = item  :user = user v-for=" item in displayItems" :key="item.key"/>
     <div class="container paginate-original" id="paging">
         <nav>
             <ul class="pagination">
@@ -27,7 +27,7 @@
                 class="page-item"
                 :class="{active: i-1 === currentPage}" :key="i.id">
                     <a @click="pageSelect(i)" class="page-link" href="#">{{ i }}</a>
-                </li>  
+                </li>
                 <li class="page-item">
                     <a @click="next" class="page-link" href="#">&gt;</a>
                 </li>
@@ -48,7 +48,7 @@ export default {
   components:{
       showProfile,
   },
-  props:['categories','items','csrf'],
+  props:['categories','items','csrf','user'],
   data(){
       return{
           receiveItems: this.items,
@@ -61,10 +61,11 @@ export default {
       }
   },
   created(){
-   
+
   },
   mounted(){
       console.log(this.receiveItems);
+    //   console.log(this.user);
   },
   computed: {
     /**
@@ -129,6 +130,11 @@ export default {
       // ページは0から始まるので１を引く
       return page - 1 === this.currentPage;
     }
+  },
+  watch:{
+      displayItems: function(){
+        console.log(this.displayItems);
+      }
   },
   methods:{
      registerId: function(){

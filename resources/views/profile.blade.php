@@ -22,7 +22,7 @@
                                 <img src="{{ url('/images/profile/'.$user->photo['filename']) }}" alt="" class="p-prof__image js-img-preview" width="50%">
                             @else
                                 <img src="{{ url('/images/profile/noimage.png') }}" class="p-prof__image js-img-preview" width="50%">
-                            @endif 
+                            @endif
                         </div>
                         <input type="file" name="file" id="image" class="js-img-input">
                     </div>
@@ -45,14 +45,15 @@
                     <div class="p-prof__inputGroup flex-reverse">
                         <button type="submit" class="btn btn-purple">編集</button>
                     </div>
+                    @include('mypage.includes.formErrors')
                 </div>
-                @include('mypage.includes.formErrors')
+
               </form>
             </div>
         </div>
     </div>
 
-    
+
 
 @endsection
 

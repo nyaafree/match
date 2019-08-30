@@ -141,6 +141,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'file' => '画像フォーム',
+        'email' => 'メールアドレス',
+        'introduction' => '自己紹介',
+        'comment' => 'コメント',
+        'title' => '案件タイトル',
+        'category_id' => '案件カテゴリ',
+        'detail' => '案件詳細',
+        'lowPrice' => '最小価格',
+        'highPrice' => '最大価格',
+
+    ],
 
 ];

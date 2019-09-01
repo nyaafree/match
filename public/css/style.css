@@ -2012,3 +2012,38 @@ table {
   }
 }
 
+.mypage-panel {
+  display: inline-block;
+  width: 100%;
+  min-height: 180px;
+  background: #fbfbfa;
+  padding: 20px;
+  border: solid 1px #99f81e;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  line-height: 130%;
+  color: #777;
+}
+
+.mypage-panel a {
+  color: #777;
+}
+
+.mypage-title {
+  color: #489fd1;
+  margin-bottom: 10px;
+}
+
+.mypage-latest {
+  margin-top: 10px;
+}
+
+.show-comment-btn {
+  padding: 5px 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: #82ca60;
+  color: #fff;
+  font-size: 14px;
+}
+

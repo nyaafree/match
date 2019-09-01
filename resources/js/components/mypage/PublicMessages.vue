@@ -1,7 +1,7 @@
 <template>
     <div>
-        <div  class="c-panel bg-yellow" >
-            <h2 class="c-penel__title">このコメントは <a :href="'/match/items/' + receiveComment.item.id">{{receiveComment.item.title }}</a>に対してされたものです</h2>
+        <div  class="c-panel bg-yellow">
+            <h2 class="c-panel__title">このコメントは <a :href="'/match/items/' + receiveComment.item.id">{{receiveComment.item.title }}</a>に対してされたものです</h2>
             <h4 class="c-panel__notice">※ 下のコメントエリアをダブルクリックするとコメント編集フォームに切り替える事が出来ます</h4>
             <div class="c-panel__textarea" v-if="!edit" @dblclick="editChange()">
                 {{comment.content}}
@@ -78,7 +78,7 @@ export default {
                 axios.delete('api/comment/'+id)
                 .then(function(response){
                     // 親コンポーネントのメソッドを使ってコメント一覧を更新する
-                    self.$emit('update',self.user_id);
+                    self.$emit('update');
                     alert('コメント削除完了しました！');
                 }).catch(function(error){
                     console.log(error);
@@ -94,7 +94,10 @@ export default {
         latestComment(){
             // 自分がコメントした案件詳細ページにつけられている最新コメントを取得
             return this.myComment.item.comments[(Object.keys(this.myComment.item.comments).length - 1)];
-        }
+        },
+        // showOrHideSelf(){
+        //     if(this.myComment.item)
+        // }
     }
 }
 </script>

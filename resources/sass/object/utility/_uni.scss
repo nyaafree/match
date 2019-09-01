@@ -404,4 +404,33 @@
         animation: spmodify 0.1s;
     }
 }
+.mypage-panel{
+    display:inline-block;
+    width:100%;
+    min-height: 180px;
+    background: #fbfbfa;
+    padding: $space_xl;
+    border: solid 1px #99f81e;
+    box-sizing: border-box;
+    line-height: 130%;
+    color: #777;
+    a{
+        color: #777;
+    }
 
+
+}
+.mypage-title{
+    color:rgb(72, 159, 209);
+    margin-bottom: $space_m;
+}
+.mypage-latest{
+    margin-top: $space_m;
+}
+.show-comment-btn{
+    padding: $space_s $space_m;
+    box-sizing: border-box;
+    background: rgb(130, 202, 96);
+    color: #fff;
+    font-size: $font-size_m;
+}

@@ -41,7 +41,6 @@ export default {
                 comment:'',
                 user_id: JSON.parse(this.user).id
             },
-            showComments: false,
             errorMessages: '',
         }
     },
@@ -130,7 +129,9 @@ export default {
            if(Object.keys(this.receiveComments).length != 0){
                 // 案件詳細ページにコメントが一つでもつけられていればコメント一覧を表示。
                 // コメントが一つもなければ「コメントはまだ投稿されていません。」と表示
-                this.showComments = true;
+                return true;
+           }else{
+               return false;
            }
         }
     }

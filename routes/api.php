@@ -31,4 +31,5 @@ Route::group(['middleware' => 'api'], function(){
     Route::post('message/update/{id}', 'AxiosController@messageUpdate');//
     Route::delete('message/{id}', 'AxiosController@messageDelete');//
     Route::post('all/messages/{id}', 'AxiosController@myMessages');
+    Route::post('fetch/public/items/{id}', 'AxiosController@publicItems');
 });

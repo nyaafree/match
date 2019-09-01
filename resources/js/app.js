@@ -47,6 +47,9 @@ Vue.component('message-area', require('./components/messageArea.vue').default);
 Vue.component('applicant-message', require('./components/messages/ApplicantMessage.vue').default);
 Vue.component('proposer-message',require('./components/messages/ProposerMessage.vue').default);
 Vue.component('item-component', require('./components/items/itemComponent.vue').default);
+Vue.component('public-info',require('./components/mypage/itemInfo/publicInfo.vue').default);
+Vue.component('direct-info', require('./components/mypage/itemInfo/directInfo.vue').default);
+Vue.component('public-comment',require('./components/mypage/itemInfo/contents/publicComment.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

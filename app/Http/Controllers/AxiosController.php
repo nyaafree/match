@@ -92,5 +92,8 @@ class AxiosController extends Controller
         return User::find($id)->messages()->with(['board.item'])->get();
 
     }
+    public function publicItems(Request $request, $id){
+        return User::find($id)->commentItems()->groupBy('item_id')->with(['comments'])->get();
+    }
 
 }

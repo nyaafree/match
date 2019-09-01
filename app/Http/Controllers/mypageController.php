@@ -31,10 +31,15 @@ class mypageController extends Controller
         // ログインユーザーが応募した案件データすべてを取得
         $applyItems = $user->boards()->with(['item.user.photo','item.category'])->get();
         // ログインユーザーが案件詳細画面で投稿したコメントすべてそ取得
-        $myComments = $user->comments()->with(['item.comments'])->get();
+        // $myComments = $user->comments()->with(['item.comments'])->get();
+        // \DB::enableQueryLog();
+        // $myComments = $user->commentItems()->comments()->where('user_id',$user->id)->get();
+        $myCommentItems = $user->commentItems()->groupBy('item_id')->with(['comments'])->get();
+        // dd($myComments);
+        // dd(\DB::getQueryLog());
         // ログインユーザーが案件申し込み後の掲示板でやり取りしたダイレクトメッセージすべてを取得
         $myMessages = $user->messages()->with(['board.item'])->get();
-        return(view('mypage.index',compact('user','categories','myItems','applyItems','myComments','myMessages')));
+        return(view('mypage.index',compact('user','categories','myItems','applyItems','myCommentItems','myMessages')));
     }
 
     /**

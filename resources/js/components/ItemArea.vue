@@ -211,6 +211,7 @@ export default {
             //   console.log(response.data.items);
               self.receiveItems = response.data;
               self.currentPage = 0;
+              self.errorMessages = '';
               console.log(self.receiveItems);
 
           }).catch((error)=>{

@@ -81,7 +81,7 @@ $font-family_main: 'Kosugi Maru', sans-serif;
 
 // マップ型変数を使うと便利
 $breakpoints: (
-  'sm': 'screen and (max-width: 414px)',
+  'sm': 'screen and (max-width: 560px)',
   'md': 'screen and (max-width: 768px)',
   'lg': 'screen and (max-width: 1050px)',
   'xl': 'screen and (max-width: 1200px)',

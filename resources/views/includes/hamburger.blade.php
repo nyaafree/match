@@ -26,7 +26,7 @@
                 </span>
             </form>
         @else
-            <li class="p-hamburger__list js-nav-close"><a class="menu-link" href="/">Home</a></li>
+            <li class="p-hamburger__list js-nav-close"><a class="menu-link" href="{{ url('/') }}">Home</a></li>
 
         @endif
         @if (Auth::check())

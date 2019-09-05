@@ -87,13 +87,7 @@ export default {
         }
     },
     computed:{
-        // latestComment(){
-        //     // 自分がコメントした案件詳細ページにつけられている最新コメントを取得
-        //     return this.myComment.item.comments[(Object.keys(this.myComment.item.comments).length - 1)];
-        // },
-        // showOrHideSelf(){
-        //     if(this.myComment.item)
-        // }
+       
     }
 }
 </script>

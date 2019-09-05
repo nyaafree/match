@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" @yield('description') ">
+    <meta name="keywords" content=" @yield('keywords') ">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Match</title>
+    <title>Match | @yield('title', 'HOME')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('/vendor/jquery/jquery-3.3.1.min.js') }}"></script>
@@ -48,7 +50,7 @@
                         /* キャンセルの時の処理 */
                         return false;
                     }else{
-                        /*　OKの時の処理 */
+                        /* OKの時の処理 */
                         return true;
                     }
                 })
@@ -78,6 +80,24 @@
                          $('.flash_message').slideUp('slow');
                      },5000);
                  });
+
+                   // laravelからエラーメッセージの入った変数$errorsを受け取る
+                   let priceError = <?php echo $errors; ?>;
+                   console.log(priceError);
+                   console.log(priceError.length);
+                   console.log(location.pathname);
+                   // 価格検索フォームでエラーが発生した場合には下の処理を実行
+                   if( priceError.length != 0 ){
+                       if(priceError.lowPrice  || priceError.highPrice ){
+                           // 価格検索フォームで検索後、Home画面にGET送信で遷移した場合にエラーメッセージをキャッチした場合にはハンバーガーメニューを自動的に開く
+                           if(location.pathname == '/'){
+                               $('.js-toggle-sp-menu').toggleClass('active');
+                               $('.js-toggle-sp-menu-target').toggleClass('active');
+                           }
+
+                       }
+                   }
+
 
 
             });

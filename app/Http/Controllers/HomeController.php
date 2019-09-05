@@ -7,6 +7,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use App\Http\Requests\SearchPriceRequest;
 
 class HomeController extends Controller
 {
@@ -43,12 +44,27 @@ class HomeController extends Controller
         // 検索フォームからフリーワードで検索して、案件タイトルまたは案件詳細情報に合致した案件データ一覧を取得
         $categories = Category::all();
         $categories = json_encode($categories);
+        $user = json_encode(Auth::user());
 
         $items = Item::
                         where('title','like','%'.$request->input('name').'%')->
                         orWhere('detail','like','%'.$request->input('name').'%')
-                        ->with('user.photo','category')->orderBy('created_at','DESC')->get();
+                        ->with('user.photo','category','applies')->orderBy('created_at','DESC')->get();
         $jsons = json_encode($items);
-        return view('index',compact('categories','items','jsons'));
+        return view('index',compact('categories','items','jsons','user'));
+    }
+
+    public function priceFilter(SearchPriceRequest $request){
+        $user = json_encode(Auth::user());
+        $categories = json_encode(Category::all());
+        $items = Item::
+                     where('lowPrice','>=',$request->input('lowPrice'))->
+                     where('highPrice','<=',$request->input('highPrice'))->
+                     with('user.photo','category','applies')->orderBy('created_at', 'DESC')->get();
+        $jsons = json_encode($items);
+
+       
+
+        return view('index', compact('categories','items','jsons','user'));
     }
 }

@@ -37,6 +37,7 @@ Route::post('message/{id}','MessagesController@message')->name('message');
 // Route::get('mypage/quit','mypageController@quit');
 
 Route::get('search','HomeController@filter')->name('search');
+Route::get('priceSearch', 'HomeController@priceFilter')->name('priceSearch');
 
 
 

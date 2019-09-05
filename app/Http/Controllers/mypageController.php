@@ -30,16 +30,11 @@ class mypageController extends Controller
         $myItems = $user->items()->with(['user.photo','category','boards.apply.user'])->get();
         // ログインユーザーが応募した案件データすべてを取得
         $applyItems = $user->boards()->with(['item.user.photo','item.category'])->get();
-        // ログインユーザーが案件詳細画面で投稿したコメントすべてそ取得
-        // $myComments = $user->comments()->with(['item.comments'])->get();
-        // \DB::enableQueryLog();
-        // $myComments = $user->commentItems()->comments()->where('user_id',$user->id)->get();
+        // ログインユーザーがコメントを投稿した案件情報一覧を取得
         $myCommentItems = $user->commentItems()->groupBy('item_id')->with(['comments'])->get();
-        // dd($myComments);
-        // dd(\DB::getQueryLog());
-        // ログインユーザーが案件申し込み後の掲示板でやり取りしたダイレクトメッセージすべてを取得
-        $myMessages = $user->messages()->with(['board.item'])->get();
-        return(view('mypage.index',compact('user','categories','myItems','applyItems','myCommentItems','myMessages')));
+        // ログインユーザーがダイレクトメッセージをやり取りした掲示板情報一覧を取得
+        $myMessageBoards = $user->messageboards()->groupBy('board_id')->with('item','messages')->get();
+        return(view('mypage.index',compact('user','categories','myItems','applyItems','myCommentItems','myMessageBoards')));
     }
 
     /**

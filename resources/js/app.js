@@ -11,12 +11,14 @@ import axios from 'axios';
 
 // axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 
-// axios.defaults.baseURL = 'http://engineersmatch.sakura.ne.jp/match';
 
-// axios.defaults.headers.common = {
-//     'X-Requested-With': 'XMLHttpRequest',
-//     'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-// };
+axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+};
+
+
+
 window.Vue = require('vue');
 
 /**
@@ -50,6 +52,7 @@ Vue.component('item-component', require('./components/items/itemComponent.vue').
 Vue.component('public-info',require('./components/mypage/itemInfo/publicInfo.vue').default);
 Vue.component('direct-info', require('./components/mypage/itemInfo/directInfo.vue').default);
 Vue.component('public-comment',require('./components/mypage/itemInfo/contents/publicComment.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

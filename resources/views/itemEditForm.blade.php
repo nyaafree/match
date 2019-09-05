@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', '案件編集')
+@section('description', 'こちらのページでは投稿した案件情報を編集する事が出来ます。')
+@section('keywords', '案件編集')
+
 @section('header')
   @parent
   @include('includes.header')

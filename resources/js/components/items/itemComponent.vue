@@ -36,8 +36,9 @@ export default {
     data(){
         return{
              imgFolder: "/match/images/profile/",
-             receiveUser: JSON.parse(this.user),
+             receiveUser: JSON.parse(JSON.stringify(this.user)),
              receiveItem: JSON.parse(JSON.stringify(this.item.applies)),
+             // applyOrNotがtrueであればこの案件は応募済み、falseであれば未応募と表示される
              applyOrNot: ''
         }
     },
@@ -45,14 +46,14 @@ export default {
         // console.log(this.item.user.photo);
         // console.log(this.item.applies);
         // console.log(this.receiveUser.id);JSON.parse(user)JSON.parse(user)JSON.parse(user)
-        console.log(JSON.parse(JSON.stringify(this.item)));
+        console.log(this.item);
         this.applyJodge();
 
 
     },
     watch:{
         item: function(){
-            console.log(JSON.parse(JSON.stringify(this.item.applies)));
+            console.log(JSON.parse(JSON.stringify(this.item)).applies);
             this.applyJodge();
         }
     },
@@ -73,10 +74,12 @@ export default {
         },
         applyJodge(){
             let self = this;
+            // ログインしてる場合は応募済みかどうかの判定を行う
             if(JSON.parse(JSON.stringify(this.user)) != null){
-                console.log(JSON.parse(JSON.stringify(self.item.applies)).some( (apply) => apply.user_id == JSON.parse(self.user).id));
-                self.applyOrNot =  JSON.parse(JSON.stringify(self.item.applies)).some( (apply) => apply.user_id == JSON.parse(self.user).id);
-                // self.applyOrNot = self.receiveItem.applies.some( (apply) => apply.user_id == self.receiveUser.id) ;
+                console.log(JSON.parse(JSON.stringify(self.item)).applies);
+                console.log(JSON.parse(JSON.stringify(self.item)).applies.some( (apply) => apply.user_id == JSON.parse(self.user).id));
+                // この案件への応募情報一覧の中に応募ユーザーのIDとログインユーザーのIDが一致するものがあればtrueをdata属性applyOrNotの中に入れる
+                self.applyOrNot =  JSON.parse(JSON.stringify(self.item)).applies.some( (apply) => apply.user_id == JSON.parse(self.user).id);
             }
         }
     },

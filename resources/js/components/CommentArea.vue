@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="c-comment" v-if="showComments">
+        <div class="c-comment" v-if="showOrHide">
             <div v-for="comment in receiveComments" :key="comment.id">
                 <!-- 案件投稿者のコメント -->
                 <proposer-comments  :prp-comment="comment" v-if="comment.user_id == receiveItem.user_id"/>
@@ -42,13 +42,13 @@ export default {
                 user_id: JSON.parse(this.user).id
             },
             errorMessages: '',
+            showOrHide: false
         }
     },
     create(){
 
     },
     mounted(){
-        // マウントされた時にしかこの処理ができないのコメント投稿した場合反映されない
         this.showComments();
 
     },
@@ -62,30 +62,6 @@ export default {
       }
     },
     computed:{
-    //    applyComments: function(){
-    //         const self = this;
-    //         let arr = self.receiveComments;
-    //         let arr2 = self.receiveItem;
-    //         let a = [];
-    //         for (let comment of arr) {
-    //             if(comment.user_id != arr2.user_id ){
-    //                a.push(comment);
-    //             }
-    //         }
-    //         return a;
-    //    },
-    //    proposeComments: function(){
-    //        const self = this;
-    //         let arr = self.receiveComments;
-    //         let arr2 = self.receiveItem;
-    //         let b = [];
-    //         for (let comment of arr) {
-    //             if(comment.user_id == arr2.user_id ){
-    //                b.push(comment);
-    //             }
-    //         }
-    //         return b;
-    //    }
 
     },
     methods:{
@@ -129,9 +105,9 @@ export default {
            if(Object.keys(this.receiveComments).length != 0){
                 // 案件詳細ページにコメントが一つでもつけられていればコメント一覧を表示。
                 // コメントが一つもなければ「コメントはまだ投稿されていません。」と表示
-                return true;
+                this.showOrHide = true;
            }else{
-               return false;
+               this.showOrHide = false;
            }
         }
     }

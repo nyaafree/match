@@ -1,0 +1,26 @@
+.p-price{
+    @include mq(){
+        margin-top: $space_xl;
+        color: #fff;
+    }
+    &__btn{
+        padding: $space_m;
+        @include mq(){
+            padding: $space_l $space_m
+        }
+        color: #fff;
+        box-sizing: border-box;
+        border-radius: $space_s;
+    }
+    &__input{
+        width: 130px;
+        @include mq(){
+            width: 100px;
+        }
+        padding: $space_s;
+        box-sizing: border-box;
+        border-radius: $space_s;
+        background: #ebcd2f;
+        color: #fff;
+    }
+}

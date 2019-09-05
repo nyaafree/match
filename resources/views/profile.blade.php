@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title','プロフィール設定')
+@section('description','こちらのページはプロフィール設定ページです。こちらのページではユーザー名、メールアドレス、自己紹介、プロフィール画像を設定、編集する事が出来ます。')
+@section('keywords', 'プロフィール,ユーザ名,メールアドレス,自己紹介,プロフィール画像')
+
 @section('header')
   @parent
   @include('includes.header')

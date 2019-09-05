@@ -1,6 +1,34 @@
 <template>
   <div>
+    <!-- スマホの場合はこちらを表示 -->
     <div class="flex-right">
+       <form action="">
+            <input type="hidden" name="_token" v-bind:value="csrf">
+            <select name="category" id="category" @change="registerId()" class="c-post__select"
+            v-model="itemCategory.id">
+                <option class="c-post__option" value="0">全ての案件を表示</option>
+                <option :value="category.id" v-for="category in categories" :key="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+        </form>
+    </div>
+
+    <!-- スマホ以外のデバイスではこちらを表示 -->
+    <div class="flex-side">
+        <div class="p-price">
+                <div class="p-price__wrapper">
+                    <input type="hidden" name="_token" v-bind:value="csrf">
+                    ¥<input type="text" class="p-price__input" name="lowPrice" v-model="price.lowPrice"> ~
+                    ¥<input type="text" class="p-price__input" name="highPrice" v-model="price.highPrice">
+                    <span class="p-price__btnWrap">
+                        <button class="p-price__btn btn-lightGreen" @click="priceSearch()">
+                            <i class="fa fa-search fa-fw"></i>価格で絞り込む
+                        </button>
+                    </span>
+                </div>
+        </div>
+
         <form action="">
             <input type="hidden" name="_token" v-bind:value="csrf">
             <select name="category" id="category" @change="registerId()" class="c-post__select"
@@ -12,6 +40,13 @@
             </select>
         </form>
     </div>
+
+    <!-- 価格フォームでエラーが発生してる場合はエラーメッセージを表示 -->
+    <div class="error-area" v-if="errorMessages !== ''">
+        <div v-for="error in errorMessages.lowPrice" :key="error.id" class="error-message" role="alert">{{ error }}</div>
+        <div v-for="error in errorMessages.highPrice" :key="error.id" class="error-message" role="alert">{{ error }}</div>
+    </div>
+
     <item-component :item = item  :user = user v-for=" item in displayItems" :key="item.key"/>
     <div class="container paginate-original" id="paging">
         <nav>
@@ -43,10 +78,15 @@
 
 <script>
 import showProfile from "./showProfile";
+// import priceSearch from "./search/priceSearch";
+// import categorySelect from "./search/categorySelect";
 require('../object-assign');
 export default {
   components:{
       showProfile,
+    //   priceSearch,
+    //   categorySelect,
+
   },
   props:['categories','items','csrf','user'],
   data(){
@@ -55,9 +95,15 @@ export default {
           itemCategory: {
               id: 0,
           },
+          price:{
+              lowPrice: '',
+              highPrice: '',
+          },
           currentPage: 0,   // 現在のページ番号
           size: 5,         // 1ページに表示するアイテムの上限
           pageRange: 5,    // ページネーションに表示するページ数の上限
+          errorMessages: '',
+
       }
   },
   created(){
@@ -152,6 +198,26 @@ export default {
 
           }).catch((error)=>{
               console.log(error);
+          })
+        },
+        priceSearch(){
+            // セレクトボックスで選択したカテゴリの案件情報をaxiosで一括取得する。
+          let self = this;
+          let params = Object.assign({}, self.price);
+          console.log(params);
+          axios.post('api/price/search',params)
+          .then((response)=>{
+              console.log('success');
+            //   console.log(response.data.items);
+              self.receiveItems = response.data;
+              self.currentPage = 0;
+              console.log(self.receiveItems);
+
+          }).catch((error)=>{
+               console.log(error.response.data.errors);
+               // data属性のerrorMessagesにバリデーションエラーメッセージを格納する
+               self.errorMessages = error.response.data.errors;
+
           })
         },
 

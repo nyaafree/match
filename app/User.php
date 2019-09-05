@@ -46,6 +46,9 @@ class User extends Authenticatable
     public function commentItems(){
         return $this->hasManyThrough('App\Item','App\Comment','user_id','id','id','item_id');
     }
+    public function messageBoards(){
+        return $this->hasManyThrough('App\Board','App\Message','user_id','id','id','board_id');
+    }
     public function boards(){
         return $this->hasManyThrough('App\Board','App\Apply');
     }

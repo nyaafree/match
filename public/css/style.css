@@ -591,7 +591,7 @@ table {
 
 @media screen and (max-width: 768px) {
   .c-post__priceWrapper {
-    width: 50%;
+    width: 60%;
   }
 }
 
@@ -1480,11 +1480,61 @@ table {
   margin-bottom: 15px;
 }
 
+@media screen and (max-width: 414px) {
+  .p-price {
+    margin-top: 20px;
+    color: #fff;
+  }
+}
+
+.p-price__btn {
+  padding: 10px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 414px) {
+  .p-price__btn {
+    padding: 15px 10px;
+  }
+}
+
+.p-price__input {
+  width: 130px;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+  background: #ebcd2f;
+  color: #fff;
+}
+
+@media screen and (max-width: 414px) {
+  .p-price__input {
+    width: 100px;
+  }
+}
+
 .btn-yellow {
   background: #ebcd22;
   color: #fff;
   font-weight: bold;
   margin-top: 10px;
+}
+
+.btn-lightGreen {
+  background: #6ceb22;
+  color: #fff;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 414px) {
+  .btn-lightGreen {
+    font-size: 14px;
+  }
 }
 
 .background-creamGreen {
@@ -1564,6 +1614,7 @@ table {
   .btn-lightblue {
     position: absolute;
     right: 5px;
+    width: 200px;
     bottom: 5px;
   }
 }
@@ -1629,14 +1680,20 @@ table {
 }
 
 .flex-right {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  position: relative;
+  display: none;
+}
+
+@media screen and (max-width: 414px) {
+  .flex-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    position: relative;
+  }
 }
 
 .flex-side {
@@ -1650,6 +1707,12 @@ table {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+@media screen and (max-width: 414px) {
+  .flex-side {
+    display: none;
+  }
 }
 
 .paginate-original {
@@ -2045,5 +2108,6 @@ table {
   background: #82ca60;
   color: #fff;
   font-size: 14px;
+  margin-top: 10px;
 }
 

@@ -32,4 +32,9 @@ Route::group(['middleware' => 'api'], function(){
     Route::delete('message/{id}', 'AxiosController@messageDelete');//
     Route::post('all/messages/{id}', 'AxiosController@myMessages');
     Route::post('fetch/public/items/{id}', 'AxiosController@publicItems');
+    Route::post('item/comments/{id}','AxiosController@myItemComments');
+    Route::post('board/messages/{id}', 'AxiosController@myBoardsMessages');
+    Route::post('price/search', 'AxiosController@priceSearch');
+    Route::post('all/public/items/{id}','AxiosController@publicAllItems');
+    Route::post('all/direct/items/{id}', 'AxiosController@directAllItems');
 });

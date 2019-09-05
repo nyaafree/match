@@ -148,9 +148,10 @@ return [
         'comment' => 'コメント',
         'title' => '案件タイトル',
         'category_id' => '案件カテゴリ',
-        'detail' => '案件詳細',
+        'detail' => '案件詳細情報',
         'lowPrice' => '最小価格',
         'highPrice' => '最大価格',
+        'password' => 'パスワード',
 
     ],
 

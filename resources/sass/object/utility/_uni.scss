@@ -4,6 +4,15 @@
     font-weight:bold;
     margin-top: $space_m;
 }
+.btn-lightGreen{
+    background:rgb(108, 235, 34);
+    color:#fff;
+    font-weight:bold;
+    margin-top: $space_m;
+    @include mq(){
+        font-size: $font-size_m;
+    }
+}
 .background-creamGreen{
     background:rgb(147, 229, 147);
     min-height: 1250px;
@@ -59,6 +68,7 @@
     @include mq(){
         position: absolute;
         right: $space_s;
+        width: 200px;
         bottom: $space_s;
 
 
@@ -112,16 +122,29 @@
       margin-bottom: $space_m;
   }
 }
+// .sp-price-search{
+//     display:none;
+//     @include mq(){
+//         display: block;
+//     }
+// }
 .flex-right{
-    display: flex;
-    flex-direction: row-reverse;
-    position:relative;
+    display:none;
+    @include mq(){
+        display: flex;
+        flex-direction: row-reverse;
+        position:relative;
+    }
+
 }
 .flex-side{
     display: flex;
     justify-content: space-between;
     position: relative;
     align-items: center;
+    @include mq(){
+        display: none;
+    }
 }
 .paginate-original{
     margin: 0 auto;
@@ -404,6 +427,7 @@
         animation: spmodify 0.1s;
     }
 }
+
 .mypage-panel{
     display:inline-block;
     width:100%;
@@ -433,4 +457,5 @@
     background: rgb(130, 202, 96);
     color: #fff;
     font-size: $font-size_m;
+    margin-top: $space_m;
 }

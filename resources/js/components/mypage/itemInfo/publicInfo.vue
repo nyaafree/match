@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="mypage-panel">
-            <h2 class="mypage-title">これらのコメントは <a :href="'/match/items/' + receiveComment.id">{{receiveComment.title }}</a>に対してされたものです</h2>
-            <public-comment :my-comment="myComment" v-for="myComment in receiveComments" :key="myComment.id" :user="user"
-            @update="updateParent"/>
+            <h2 class="mypage-title">これらのコメントは <a :href="'/match/items/' + receiveItemInfo.id">{{receiveItemInfo.title }}</a>に対してされたものです</h2>
+            <public-comment :my-comment="myComment" v-for="myComment in receiveMyComments" :key="myComment.id" :user="user"
+            @update="updateMyComments(itemInfo.id)"/>
             <h3 class="mypage-latest">この案件に対する最新のコメントはコチラ↓</h3>
             <p class="c-panel__latest">
                 {{latestComment.comment}}
@@ -25,32 +25,46 @@ export default {
     },
     data(){
        return{
-           receiveComment: this.itemInfo,
+           receiveItemInfo: this.itemInfo,
            showAllComments: false,
            arrayComments: [],
            latestMyComment: [],
-        //    receiveComments: this.itemInfo.comments
-        //    this.itemInfo.comments[(Object.keys(this.itemInfo.comments).length - 1)];
-        //    comment:{
-        //         content: this.myComment.comment,
-        //         id: this.myComment.id,
-        //    },
-        //    edit: false,
-        //    user_id: this.user.id,
-        //    item_id: this.myComment.item.id
+
        }
     },
     methods:{
        editShow(){
            this.showAllComments = !this.showAllComments;
        },
-       updateParent(){
-           this.$emit('updateComments');
-       }
+       updateMyComments(id){
+            let self = this;
+            // 案件詳細画面につけられているコメント情報一覧を取得
+            console.log('Updating Comments...');
+            axios.post('api/item/comments/' + id).then((response) => {
+                console.log(response.data);
+                // 案件詳細画面につけられた全てのコメント情報を取得しているので、そこから自分のコメントのみをarrayCommentsに入れる
+                response.data.forEach(element => {
+                    if(element.user_id == self.user.id){
+                        self.arrayComments.push(element);
+                    }
+
+                });
+                 console.log(self.arrayComments);
+                 // 案件詳細画面につけられている自分のコメントが0になったら案件情報をマイページから削除する為に親のメソッドを呼び出す
+                    if(self.arrayComments.length == 0){
+                       self.$emit('update');
+                    }
+
+            })
+            .catch((error) => {
+                console.log(error.error);
+            })
+        },
 
     },
     created(){
         let self = this;
+        // 案件詳細画面につけられた全てのコメント情報を取得しているので、そこから自分のコメントのみをarrayCommentsに入れる
         this.itemInfo.comments.forEach(element => {
             if(element.user_id == self.user.id){
                 self.arrayComments.push(element);
@@ -65,17 +79,16 @@ export default {
             // 自分がコメントした案件詳細ページにつけられている最新コメントを取得
             return this.itemInfo.comments[(Object.keys(this.itemInfo.comments).length - 1)];
         },
-        receiveComments(){
+        receiveMyComments(){
             let self = this;
             if(this.showAllComments){
+                // 案件詳細画面に自分がつけた全てのコメントを表示
                 return self.arrayComments;
             }else{
+                // 案件詳細画面に自分がつけた最新コメントのみを表示
                 return Array(self.arrayComments[(Object.keys(self.arrayComments).length - 1)]);
             }
         }
-        // showOrHideSelf(){
-        //     if(this.myComment.item)
-        // }
     },
     components:{
         publicComment,

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'ユーザー登録')
+
 @section('header')
   @parent
   @include('includes.header')
@@ -8,7 +10,6 @@
 @section('content')
     <div class="background-creamGreen">
         @include('auth.includes.register')
-        @include('mypage.includes.formErrors')
     </div>
 @endsection
 

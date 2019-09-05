@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('title','案件詳細')
+@section('description','このページは案件詳細ページです。案件について気になることがある場合は案件投稿者とコメントのやり取りができます。
+案件に応募したい場合は応募ボタンから応募する事が出来ます。')
+@section('keywords','案件詳細,応募,コメント')
+
 @section('header')
   @parent
   @if (Session::has('flash_message'))

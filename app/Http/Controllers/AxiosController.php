@@ -11,6 +11,7 @@ use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\AddCommentRequest;
+use App\Http\Requests\SearchPriceRequest;
 
 class AxiosController extends Controller
 {
@@ -20,13 +21,13 @@ class AxiosController extends Controller
         if($id == 0){
             // カテゴリIDが0なら全案件データを取得
             // VueでLaravelのリレーションが使えるようにwithを使ってモデル間のリレーションもデータに追加する
-            $items = Item::with(['user.photo', 'category'])->orderBy('created_at','DESC')->get();
+            $items = Item::with(['user.photo', 'category','applies'])->orderBy('created_at','DESC')->get();
             // Json形式に変換
             $items = json_encode($items);
         }else{
             // カテゴリIDが1（単発案件）または2（レベニューシア案件）ならそれそれに属するデータのみを取得
             $category = Category::find($id);
-            $items = $category->items()->with(['user.photo','category'])->orderBy('created_at','DESC')->get();
+            $items = $category->items()->with(['user.photo','category','applies'])->orderBy('created_at','DESC')->get();
             $items = json_encode($items);
         }
         return $items;
@@ -94,6 +95,25 @@ class AxiosController extends Controller
     }
     public function publicItems(Request $request, $id){
         return User::find($id)->commentItems()->groupBy('item_id')->with(['comments'])->get();
+    }
+    public function myItemComments(Request $request, $id){
+        return Item::findOrFail($id)->comments;
+    }
+    public function myBoardsMessages(Request $request, $id){
+        return Board::findOrFail($id)->messages;
+    }
+    public function priceSearch(SearchPriceRequest $request){
+        // $lowPrice = DB::table('items')->select('lowPrice')->get();
+        // $highPrice = DB::table('items')->select('highPrice')->get();
+        return Item::where('lowPrice','>=',$request->input(['lowPrice']))->
+                    where('highPrice','<=',$request->input(['highPrice']))->
+                    with('user.photo','category','applies')->orderBy('created_at', 'DESC')->get();
+    }
+    public function publicAllItems(Request $request, $id){
+       return User::find($id)->commentItems()->groupBy('item_id')->with(['comments'])->get();
+    }
+    public function directAllItems(Request $request, $id){
+       return User::find($id)->messageboards()->groupBy('board_id')->with('item','messages')->get();
     }
 
 }

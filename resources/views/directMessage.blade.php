@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title', '取引掲示板')
+@section('description', 'このページは案件への応募が完了したユーザーが案件投稿者とダイレクトメッセージをやり取りでき掲示板ページです。')
+@section('keywords','取引掲示板,ダイレクトメッセージ')
+
 @section('header')
 @if (Session::has('flash_message'))
 <div class="flash_message">

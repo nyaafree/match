@@ -46,18 +46,21 @@ export default {
                 if(response.data.length == 0){
                     self.$emit('update');
                 }else{
+                    // arrayCommentsをリセットして空にする
+                    self.arrayComments = [];
                     response.data.forEach(element => {
                         if(element.user_id == self.user.id){
                             self.arrayComments.push(element);
                         }
                     });
-                }
-
-                 console.log(self.arrayComments);
-                 // 案件詳細画面につけられている自分のコメントが0になったら案件情報をマイページから削除する為に親のメソッドを呼び出す
+                    console.log(self.arrayComments);
+                     // 案件詳細画面につけられている自分のコメントが0になったら案件情報をマイページから削除する為に親のメソッドを呼び出す
                     if(self.arrayComments.length == 0){
                        self.$emit('update');
                     }
+                }
+
+
 
             })
             .catch((error) => {

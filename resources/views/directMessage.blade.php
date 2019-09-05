@@ -45,7 +45,7 @@
 
 
         @if (empty($messages->count()))
-        <p class="p-item__nothing">コメントはまだ投稿されていません。</p>
+        <p class="p-item__nothing">メッセージはまだ投稿されていません。</p>
         @endif
         <div id="app">
                 <message-area  messages="{{ $messages }}" item="{{ $item }}" user="{{ $user }}"/>

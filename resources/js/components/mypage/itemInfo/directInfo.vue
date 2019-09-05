@@ -36,14 +36,17 @@ export default {
             console.log('Updating Messages...');
             axios.post('api/board/messages/' + id).then((response) => {
                 console.log(response.data);
-                this.arrayMessages = [];
-                // 掲示板に投稿された全てのダイレクトメッセージを取得しているのでそこから自分が投稿したもののみ配列arrayMessagesに入れる
-                response.data.forEach(element => {
-                    if(element.user_id == self.user.id){
-                        self.arrayMessages.push(element);
-                    }
+                if(response.data.length == 0){
+                    self.$emit('update');
+                }else{
+                    // 掲示板に投稿された全てのダイレクトメッセージを取得しているのでそこから自分が投稿したもののみ配列arrayMessagesに入れる
+                    response.data.forEach(element => {
+                        if(element.user_id == self.user.id){
+                            self.arrayMessages.push(element);
+                        }
+                    });
+                }
 
-                });
                 console.log(self.arrayMessages);
                 // 掲示板につけられている自分のメッセージが0になったら掲示板情報を削除する為に親のメソッドを呼び出す
                     if(self.arrayMessages.length == 0){

@@ -152,6 +152,7 @@ return [
         'lowPrice' => '最小価格',
         'highPrice' => '最大価格',
         'password' => 'パスワード',
+        'name' => 'ユーザー名',
 
     ],
 

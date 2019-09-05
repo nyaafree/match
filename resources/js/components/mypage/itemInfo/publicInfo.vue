@@ -43,12 +43,16 @@ export default {
             axios.post('api/item/comments/' + id).then((response) => {
                 console.log(response.data);
                 // 案件詳細画面につけられた全てのコメント情報を取得しているので、そこから自分のコメントのみをarrayCommentsに入れる
-                response.data.forEach(element => {
-                    if(element.user_id == self.user.id){
-                        self.arrayComments.push(element);
-                    }
+                if(response.data.length == 0){
+                    self.$emit('update');
+                }else{
+                    response.data.forEach(element => {
+                        if(element.user_id == self.user.id){
+                            self.arrayComments.push(element);
+                        }
+                    });
+                }
 
-                });
                  console.log(self.arrayComments);
                  // 案件詳細画面につけられている自分のコメントが0になったら案件情報をマイページから削除する為に親のメソッドを呼び出す
                     if(self.arrayComments.length == 0){

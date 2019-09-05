@@ -33,7 +33,7 @@
                 </div>
                 <div class="p-prof__inputWrapper2">
                     <div class="p-prof__inputGroup">
-                        <label for="name" class="p-prof__labelTitle">名前</label>
+                        <label for="name" class="p-prof__labelTitle">ユーザー名</label>
                         <input type="text" class="p-prof__input" value="{{ $user->name }}" name="name" id="name">
                     </div>
                     <div class="p-prof__inputGroup">

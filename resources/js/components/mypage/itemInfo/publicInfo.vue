@@ -3,10 +3,11 @@
         <div class="mypage-panel">
             <h2 class="mypage-title">これらのコメントは <a :href="'/match/items/' + receiveItemInfo.id">{{receiveItemInfo.title }}</a>に対してされたものです</h2>
             <public-comment :my-comment="myComment" v-for="myComment in receiveMyComments" :key="myComment.id" :user="user"
-            @update="updateMyComments(itemInfo.id)"/>
+            @update="updateMyComments(itemInfo.id)" @latest="updateLatestComment()"/>
             <h3 class="mypage-latest">この案件に対する最新のコメントはコチラ↓</h3>
             <p class="c-panel__latest">
-                {{latestComment.comment}}
+                <span v-if="!updateOrNot">{{latestComment.comment}}</span>
+                <span v-else>{{ updatedComment }}</span>
             </p>
             <div>
                 <button @click="editShow()" v-if="!showAllComments" class="show-comment-btn">この案件詳細掲示板につけた全てのコメントを表示する</button>
@@ -29,12 +30,17 @@ export default {
            showAllComments: false,
            arrayComments: [],
            latestMyComment: [],
+           updateOrNot: false,
+           updatedComment: '',
 
        }
     },
     methods:{
        editShow(){
            this.showAllComments = !this.showAllComments;
+       },
+       updateLatestComment(comment){
+         this.updateOrNot = true;
        },
        updateMyComments(id){
             let self = this;
@@ -84,7 +90,7 @@ export default {
     computed:{
         latestComment(){
             // 自分がコメントした案件詳細ページにつけられている最新コメントを取得
-            return this.itemInfo.comments[(Object.keys(this.itemInfo.comments).length - 1)];
+            return this.receiveItemInfo.comments[(Object.keys(this.receiveItemInfo.comments).length - 1)];
         },
         receiveMyComments(){
             let self = this;

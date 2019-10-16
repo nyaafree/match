@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title','パスワード再設定')
+
 @section('header')
   @parent
   @include('includes.header')

@@ -33,4 +33,24 @@ class EditItemRequest extends FormRequest
             'highPrice' => $priceValidate,
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'category_id.integer' => '単発案件かレベニューシアかを選択してください',
+        ];
+
+    }
+
+    public function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+           if(intval( $this->input('lowPrice') ) > intval( $this->input('highPrice') )){
+              $validator->errors()->add('field', '最少価格が最大価格を上回っているので訂正してください');
+           }
+
+        });
+    }
+
+
 }

@@ -1013,23 +1013,30 @@ table {
   }
 }
 
-.p-modal__container1 {
+.p-modal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
 }
 
 @media screen and (max-width: 560px) {
-  .p-modal__container1 {
+  .p-modal {
     display: block;
   }
 }
 
-.p-modal__img {
+.p-modal__container1 {
   width: 30%;
+}
+
+@media screen and (max-width: 560px) {
+  .p-modal__container1 {
+    width: 100%;
+  }
+}
+
+.p-modal__img {
+  width: 100%;
   display: block;
   height: auto;
 }
@@ -1044,6 +1051,14 @@ table {
 .p-modal__container2 {
   margin-left: 20px;
   line-height: 130%;
+  width: 68%;
+}
+
+@media screen and (max-width: 560px) {
+  .p-modal__container2 {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 .p-modal__title {
@@ -1513,7 +1528,7 @@ table {
 
 @media screen and (max-width: 560px) {
   .p-price__input {
-    width: 100px;
+    width: 80px;
   }
 }
 
@@ -1713,6 +1728,19 @@ table {
   .flex-side {
     display: none;
   }
+}
+
+.flex-side-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .paginate-original {

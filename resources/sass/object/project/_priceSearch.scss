@@ -15,7 +15,7 @@
     &__input{
         width: 130px;
         @include mq(){
-            width: 100px;
+            width: 80px;
         }
         padding: $space_s;
         box-sizing: border-box;

@@ -5,11 +5,16 @@
                 <div class="p-modal__container1">
                     <img :src="imgFolder + item.user.photo.filename" class="p-modal__img" v-if="item.user.photo != null">
                     <img :src="imgFolder + 'noimage.png'" class="p-modal__img" v-else>
-                    <div class="p-modal__container2">
+                    <!-- <div class="p-modal__container2">
                         <h2 class="p-modal__title">ユーザー名:{{ item.user.name}}</h2>
                         <h2 class="p-modal__title">自己紹介</h2>
                         <p class="p-modal__introduction">{{ item.user.introduction }}</p>
-                    </div>
+                    </div> -->
+                </div>
+                <div class="p-modal__container2">
+                    <h2 class="p-modal__title">ユーザー名:{{ item.user.name}}</h2>
+                    <h2 class="p-modal__title">自己紹介</h2>
+                    <p class="p-modal__introduction">{{ item.user.introduction }}</p>
                 </div>
                 <span class="hide-profile" @click="profileHide($event)"><i class="far fa-times-circle"></i></span>
             </div>

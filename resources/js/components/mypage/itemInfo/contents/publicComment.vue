@@ -42,6 +42,8 @@ export default {
             // 編集モードをオフにする
             this.edit = false;
             this.comment.content = response.data.comment;
+            this.$parent.updatedComment = response.data.comment;
+            this.$emit('latest');
         })
         .catch((error) => {
           console.log(error);
@@ -87,7 +89,7 @@ export default {
         }
     },
     computed:{
-       
+
     }
 }
 </script>
